@@ -7,6 +7,8 @@ public class ActivityOfCard {
 
     private Integer cardid;
 
+    private Integer flag;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class ActivityOfCard {
 
     public void setCardid(Integer cardid) {
         this.cardid = cardid;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

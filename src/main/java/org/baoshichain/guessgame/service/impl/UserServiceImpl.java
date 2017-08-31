@@ -1,16 +1,10 @@
 package org.baoshichain.guessgame.service.impl;
 
-import org.baoshichain.guessgame.dao.BookDao;
 import org.baoshichain.guessgame.dao.UserDao;
-import org.baoshichain.guessgame.entity.Book;
 import org.baoshichain.guessgame.entity.User;
-import org.baoshichain.guessgame.service.BookService;
 import org.baoshichain.guessgame.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by hisen on 17-4-24.

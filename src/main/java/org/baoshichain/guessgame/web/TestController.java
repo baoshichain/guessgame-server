@@ -1,10 +1,6 @@
 package org.baoshichain.guessgame.web;
 
-import org.baoshichain.guessgame.entity.Book;
 import org.baoshichain.guessgame.entity.User;
-import org.baoshichain.guessgame.entity.UserOfCard;
-import org.baoshichain.guessgame.service.BookService;
-import org.baoshichain.guessgame.service.UserOfCardService;
 import org.baoshichain.guessgame.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * Created by hisen on 17-4-24.

@@ -6,10 +6,11 @@
     <result column="no" property="no" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="discribe" property="discribe" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, no, name, discribe, flag
+    id, no, name, discribe, price, flag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +24,11 @@
   </delete>
   <insert id="insert" parameterType="org.baoshichain.guessgame.entity.Card" >
     insert into tb_card (id, no, name, 
-      discribe, flag)
+      discribe, price, flag
+      )
     values (#{id,jdbcType=INTEGER}, #{no,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{discribe,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER})
+      #{discribe,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.Card" >
     insert into tb_card
@@ -41,6 +44,9 @@
       </if>
       <if test="discribe != null" >
         discribe,
+      </if>
+      <if test="price != null" >
+        price,
       </if>
       <if test="flag != null" >
         flag,
@@ -59,6 +65,9 @@
       <if test="discribe != null" >
         #{discribe,jdbcType=VARCHAR},
       </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
       <if test="flag != null" >
         #{flag,jdbcType=INTEGER},
       </if>
@@ -76,6 +85,9 @@
       <if test="discribe != null" >
         discribe = #{discribe,jdbcType=VARCHAR},
       </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
       <if test="flag != null" >
         flag = #{flag,jdbcType=INTEGER},
       </if>
@@ -87,6 +99,7 @@
     set no = #{no,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       discribe = #{discribe,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

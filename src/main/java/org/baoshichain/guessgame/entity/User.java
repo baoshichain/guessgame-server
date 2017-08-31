@@ -21,6 +21,8 @@ public class User {
 
     private Integer token;
 
+    private String bond;
+
     private Integer flag;
 
     public Integer getId() {
@@ -101,6 +103,14 @@ public class User {
 
     public void setToken(Integer token) {
         this.token = token;
+    }
+
+    public String getBond() {
+        return bond;
+    }
+
+    public void setBond(String bond) {
+        this.bond = bond == null ? null : bond.trim();
     }
 
     public Integer getFlag() {

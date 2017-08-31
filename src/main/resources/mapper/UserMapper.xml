@@ -12,10 +12,12 @@
     <result column="ethaddress" property="ethaddress" jdbcType="VARCHAR" />
     <result column="portrait" property="portrait" jdbcType="VARCHAR" />
     <result column="token" property="token" jdbcType="INTEGER" />
+    <result column="bond" property="bond" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, loginname, name, password, wechat, qq, phone, ethaddress, portrait, token, flag
+    id, loginname, name, password, wechat, qq, phone, ethaddress, portrait, token, bond, 
+    flag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,11 +33,11 @@
     insert into tb_user (id, loginname, name, 
       password, wechat, qq, 
       phone, ethaddress, portrait, 
-      token, flag)
+      token, bond, flag)
     values (#{id,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{ethaddress,jdbcType=VARCHAR}, #{portrait,jdbcType=VARCHAR}, 
-      #{token,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER})
+      #{token,jdbcType=INTEGER}, #{bond,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.User" >
     insert into tb_user
@@ -69,6 +71,9 @@
       </if>
       <if test="token != null" >
         token,
+      </if>
+      <if test="bond != null" >
+        bond,
       </if>
       <if test="flag != null" >
         flag,
@@ -105,6 +110,9 @@
       <if test="token != null" >
         #{token,jdbcType=INTEGER},
       </if>
+      <if test="bond != null" >
+        #{bond,jdbcType=VARCHAR},
+      </if>
       <if test="flag != null" >
         #{flag,jdbcType=INTEGER},
       </if>
@@ -140,6 +148,9 @@
       <if test="token != null" >
         token = #{token,jdbcType=INTEGER},
       </if>
+      <if test="bond != null" >
+        bond = #{bond,jdbcType=VARCHAR},
+      </if>
       <if test="flag != null" >
         flag = #{flag,jdbcType=INTEGER},
       </if>
@@ -157,6 +168,7 @@
       ethaddress = #{ethaddress,jdbcType=VARCHAR},
       portrait = #{portrait,jdbcType=VARCHAR},
       token = #{token,jdbcType=INTEGER},
+      bond = #{bond,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

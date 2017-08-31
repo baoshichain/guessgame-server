@@ -7,6 +7,8 @@ public class UserOfCard {
 
     private Integer cardid;
 
+    private String flag;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class UserOfCard {
 
     public void setCardid(Integer cardid) {
         this.cardid = cardid;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag == null ? null : flag.trim();
     }
 }

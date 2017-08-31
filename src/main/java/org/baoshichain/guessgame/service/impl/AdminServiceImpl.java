@@ -1,11 +1,8 @@
 package org.baoshichain.guessgame.service.impl;
 
 import org.baoshichain.guessgame.dao.AdminDao;
-import org.baoshichain.guessgame.dao.UserDao;
 import org.baoshichain.guessgame.entity.Admin;
-import org.baoshichain.guessgame.entity.User;
 import org.baoshichain.guessgame.service.AdminService;
-import org.baoshichain.guessgame.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

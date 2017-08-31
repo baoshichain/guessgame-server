@@ -5,9 +5,10 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="activityid" property="activityid" jdbcType="INTEGER" />
     <result column="cardid" property="cardid" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, activityid, cardid
+    id, activityid, cardid, flag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,10 +21,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.baoshichain.guessgame.entity.ActivityOfCard" >
-    insert into tb_activityofcard (id, activityid, cardid
-      )
-    values (#{id,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER}, #{cardid,jdbcType=INTEGER}
-      )
+    insert into tb_activityofcard (id, activityid, cardid, 
+      flag)
+    values (#{id,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER}, #{cardid,jdbcType=INTEGER}, 
+      #{flag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.ActivityOfCard" >
     insert into tb_activityofcard
@@ -37,6 +38,9 @@
       <if test="cardid != null" >
         cardid,
       </if>
+      <if test="flag != null" >
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -47,6 +51,9 @@
       </if>
       <if test="cardid != null" >
         #{cardid,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -59,13 +66,17 @@
       <if test="cardid != null" >
         cardid = #{cardid,jdbcType=INTEGER},
       </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.baoshichain.guessgame.entity.ActivityOfCard" >
     update tb_activityofcard
     set activityid = #{activityid,jdbcType=INTEGER},
-      cardid = #{cardid,jdbcType=INTEGER}
+      cardid = #{cardid,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

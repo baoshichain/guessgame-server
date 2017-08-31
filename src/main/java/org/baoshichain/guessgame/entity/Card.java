@@ -9,6 +9,8 @@ public class Card {
 
     private String discribe;
 
+    private String price;
+
     private Integer flag;
 
     public Integer getId() {
@@ -41,6 +43,14 @@ public class Card {
 
     public void setDiscribe(String discribe) {
         this.discribe = discribe == null ? null : discribe.trim();
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price == null ? null : price.trim();
     }
 
     public Integer getFlag() {

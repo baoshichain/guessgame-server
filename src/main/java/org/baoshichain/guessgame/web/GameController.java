@@ -1,17 +1,11 @@
 package org.baoshichain.guessgame.web;
 
 import org.baoshichain.guessgame.contract.Game;
-import org.baoshichain.guessgame.entity.Book;
-import org.baoshichain.guessgame.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.web3j.abi.datatypes.Address;
 import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
@@ -19,12 +13,11 @@ import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
+import org.web3j.utils.Numeric;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.List;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -74,6 +67,7 @@ public class GameController {
       Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.newGame(new Uint256(2), new Uint256(10), new Uint256(7));
       try {
           System.out.println(transactionReceiptFuture.get().getTransactionHash());
+
           return transactionReceiptFuture.get().getTransactionHash();
       } catch (InterruptedException e) {
           e.printStackTrace();
@@ -127,6 +121,25 @@ public class GameController {
         }
         return null;
     }
+
+    @RequestMapping("/lottery/address")
+    private String getGameAddress(){
+        //test
+        Future<Address> transactionReceiptFuture = guessGameContract.gameMap(new Uint256(2));
+        String address = null;
+        try {
+            address = Numeric.toHexString(transactionReceiptFuture.get().getValue().toByteArray());
+            System.out.println("address:"+address);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
 
 
 
