@@ -1,10 +1,18 @@
 package org.baoshichain.guessgame.web;
 
+import net.sf.json.JSONObject;
 import org.baoshichain.guessgame.contract.Game;
+import org.baoshichain.guessgame.entity.Activity;
+import org.baoshichain.guessgame.entity.User;
+import org.baoshichain.guessgame.service.ActivityService;
+import org.baoshichain.guessgame.service.UserService;
+import org.baoshichain.guessgame.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.web3j.abi.datatypes.Address;
 import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.CipherException;
@@ -16,6 +24,7 @@ import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Numeric;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.concurrent.ExecutionException;
@@ -27,17 +36,23 @@ import java.util.concurrent.Future;
 @Controller
 @RequestMapping("/game/eth")
 public class GameController {
-  private Logger logger = LoggerFactory.getLogger(this.getClass());
-  //ResourceBundle resource = null;
-  String ethUrl = "http://192.168.132.133:8545";
-  String gameAddress = "0x83f50B60Cf76BDe819e4cc1dF6b5d4f16D55CAf8";
-  String adminPassword = "123";
-  String keystorePath = "D:/workspace/baoshichain/src/main/resources/UTC--2017-07-26T10-38-48.569288272Z--e559eddf4367634912316d71d4f0b52766c64a79";
-  BigInteger GAS_PRICE = BigInteger.valueOf(20_000_000_000L);
-  BigInteger GAS_LIMIT = BigInteger.valueOf(4_700_000);
-  Web3j web3 = null;
-  Credentials credentials = null;
-  Game guessGameContract = null;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    //ResourceBundle resource = null;
+    String ethUrl = "http://192.168.132.133:8545";
+    String gameAddress = "0x83f50B60Cf76BDe819e4cc1dF6b5d4f16D55CAf8";
+    String adminPassword = "123";
+    String keystorePath = "D:/workspace/baoshichain/src/main/resources/UTC--2017-07-26T10-38-48.569288272Z--e559eddf4367634912316d71d4f0b52766c64a79";
+    BigInteger GAS_PRICE = BigInteger.valueOf(20_000_000_000L);
+    BigInteger GAS_LIMIT = BigInteger.valueOf(4_700_000);
+    Web3j web3 = null;
+    Credentials credentials = null;
+    Game guessGameContract = null;
+
+    @Autowired
+    private ActivityService activityService;
+
+
+
 
     @PostConstruct
     public void initWeb3(){
@@ -61,26 +76,37 @@ public class GameController {
 
 
 
-  @RequestMapping("/lottery/add")
-  private String addActivity(){
-      //test
-      Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.newGame(new Uint256(2), new Uint256(10), new Uint256(7));
-      try {
-          System.out.println(transactionReceiptFuture.get().getTransactionHash());
+    @RequestMapping("/lottery/add")
+    @ResponseBody
+    private JSONObject addActivity(Activity activity, HttpSession session){
+        User user = (User)session.getAttribute("user");
+        //先判断用户是否已经缴纳保证金
+        if(Integer.parseInt(user.getBond()) < 100){
+            return CommonUtil.constructHtmlResponse(301,"缴纳金不足",null);
+        }
+        //处理用户提交的开房（活动提交申请）
+        int insertId = activityService.insert(activity);
+        if(insertId <1){
+            return  CommonUtil.constructHtmlResponse(302,"信息提交失败",null);
+        }
+        //写入数据库成功后，开始进行链上操作
+        Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.newGame(new Uint256(insertId), new Uint256(Integer.parseInt(activity.getLimitmax())), new Uint256(Integer.parseInt(activity.getLimitmin())));
+        try {
+            System.out.println(transactionReceiptFuture.get().getTransactionHash());
 
-          return transactionReceiptFuture.get().getTransactionHash();
-      } catch (InterruptedException e) {
-          e.printStackTrace();
-      } catch (ExecutionException e) {
-          e.printStackTrace();
-      }
-      return null;
-  }
+            // return transactionReceiptFuture.get().getTransactionHash();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return CommonUtil.constructHtmlResponse(200,"成功",null);
+    }
 
     @RequestMapping("/lottery/start")
     private String startActivity(){
-      //test
-      Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.startGame(new Uint256(2),new Uint256(10));
+        //test
+        Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.startGame(new Uint256(2),new Uint256(10));
         try {
             System.out.println(transactionReceiptFuture.get().getTransactionHash());
             return transactionReceiptFuture.get().getTransactionHash();

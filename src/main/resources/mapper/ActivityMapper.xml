@@ -18,11 +18,11 @@
     <result column="num" property="num" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, userid, activityname, describe, type, flag, startBlock, endBlock, token, limitMax, 
+    id, userid, activityname, describe, type, flag, startBlock, endBlock, token, limitMax,
     limitMin, winrate, numMax, num
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from tb_activity
     where id = #{id,jdbcType=INTEGER}
@@ -31,18 +31,26 @@
     delete from tb_activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <!--插入活动信息，返回主键-->
   <insert id="insert" parameterType="org.baoshichain.guessgame.entity.Activity" >
-    insert into tb_activity (id, userid, activityname, 
-      describe, type, flag, 
-      startBlock, endBlock, token, 
-      limitMax, limitMin, winrate, 
-      numMax, num)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityname,jdbcType=VARCHAR}, 
-      #{describe,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}, 
-      #{startblock,jdbcType=INTEGER}, #{endblock,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, 
-      #{limitmax,jdbcType=VARCHAR}, #{limitmin,jdbcType=VARCHAR}, #{winrate,jdbcType=VARCHAR}, 
-      #{nummax,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR})
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_activity (id, userid, activityname,
+    describe, type, flag,
+    startBlock, endBlock, token,
+    limitMax, limitMin, winrate,
+    numMax, num)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityname,jdbcType=VARCHAR},
+    #{describe,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER},
+    #{startblock,jdbcType=INTEGER}, #{endblock,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR},
+    #{limitmax,jdbcType=VARCHAR}, #{limitmin,jdbcType=VARCHAR}, #{winrate,jdbcType=VARCHAR},
+    #{nummax,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR})
   </insert>
+
+
+
+
   <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.Activity" >
     insert into tb_activity
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -182,18 +190,18 @@
   <update id="updateByPrimaryKey" parameterType="org.baoshichain.guessgame.entity.Activity" >
     update tb_activity
     set userid = #{userid,jdbcType=INTEGER},
-      activityname = #{activityname,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
-      flag = #{flag,jdbcType=INTEGER},
-      startBlock = #{startblock,jdbcType=INTEGER},
-      endBlock = #{endblock,jdbcType=INTEGER},
-      token = #{token,jdbcType=VARCHAR},
-      limitMax = #{limitmax,jdbcType=VARCHAR},
-      limitMin = #{limitmin,jdbcType=VARCHAR},
-      winrate = #{winrate,jdbcType=VARCHAR},
-      numMax = #{nummax,jdbcType=VARCHAR},
-      num = #{num,jdbcType=VARCHAR}
+    activityname = #{activityname,jdbcType=VARCHAR},
+    describe = #{describe,jdbcType=VARCHAR},
+    type = #{type,jdbcType=VARCHAR},
+    flag = #{flag,jdbcType=INTEGER},
+    startBlock = #{startblock,jdbcType=INTEGER},
+    endBlock = #{endblock,jdbcType=INTEGER},
+    token = #{token,jdbcType=VARCHAR},
+    limitMax = #{limitmax,jdbcType=VARCHAR},
+    limitMin = #{limitmin,jdbcType=VARCHAR},
+    winrate = #{winrate,jdbcType=VARCHAR},
+    numMax = #{nummax,jdbcType=VARCHAR},
+    num = #{num,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
