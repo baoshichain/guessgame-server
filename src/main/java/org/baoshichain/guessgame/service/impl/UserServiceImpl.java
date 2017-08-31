@@ -44,4 +44,18 @@ public class UserServiceImpl implements UserService{
   public int updateByPrimaryKey(User record) {
     return 0;
   }
+
+  @Override
+  public User checkLogin(String phone, String password) {
+    User user = userDao.selectByPhone(phone);
+    if(user == null){
+      return null;
+    }
+    if(user.getPassword().equals(password)){
+      return user;
+    }else{
+      return null;
+    }
+
+  }
 }
