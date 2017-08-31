@@ -32,4 +32,17 @@
 
   <!-- 4.扫描web相关的bean -->
   <context:component-scan base-package="org.baoshichain.guessgame.web" />
+
+  <!--配置拦截器-->
+  <!-- 类似于全局的拦截器的配置 -->
+  <mvc:interceptors>
+    <!-- 多个拦截器，顺序执行 -->
+    <!-- 登录认证拦截器 -->
+    <mvc:interceptor>
+      <mvc:mapping path="/**"/>
+      <bean class="org.baoshichain.guessgame.interceptor.LoginInterceptor"/>
+    </mvc:interceptor>
+
+  </mvc:interceptors>
+
 </beans>

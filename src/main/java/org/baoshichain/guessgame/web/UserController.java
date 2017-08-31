@@ -30,12 +30,14 @@ public class UserController {
 
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   @ResponseBody
-  public JSONObject login(User user, Model model){
+  public JSONObject login(User user,HttpSession session){
     user = userService.checkLogin(user.getPhone(), user.getPassword());
     if(user != null){
       user.setPassword("");
-      model.addAttribute("user",user);
+     // model.addAttribute("user",user);
+      session.setAttribute("user",user);
     }else{
+      session.setAttribute("user",null);
       return CommonUtil.constructHtmlResponse(201,"用户名或密码错误",null);
     }
     return CommonUtil.constructHtmlResponse(200,"成功",user);
