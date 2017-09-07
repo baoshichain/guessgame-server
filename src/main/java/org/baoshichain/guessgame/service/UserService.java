@@ -16,4 +16,10 @@ public interface UserService {
     int updateByPrimaryKey(User record);
 
     User checkLogin(String phone,String password);
+
+    int getCountofActivity(int userId);
+
+    int getCountofJoinActivity(int userId);
+
+    int insertUser(User user);
 }

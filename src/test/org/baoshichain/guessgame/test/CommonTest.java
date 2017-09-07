@@ -32,4 +32,6 @@ public class CommonTest {
         keystorePath = resource.getString("admin.keystore");
         System.out.println(ethUrl);
     }
+
+
 }

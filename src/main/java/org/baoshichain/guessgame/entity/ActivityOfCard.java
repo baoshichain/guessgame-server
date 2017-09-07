@@ -3,11 +3,11 @@ package org.baoshichain.guessgame.entity;
 public class ActivityOfCard {
     private Integer id;
 
-    private Integer activityid;
+    private Integer activityid;  // 房间id
 
-    private Integer cardid;
+    private Integer cardid; //卡牌id
 
-    private Integer flag;
+    private Integer flag;  //标识房间当前卡牌是否抽奖后 ，已中奖发出 0 未  1 发出
 
     public Integer getId() {
         return id;

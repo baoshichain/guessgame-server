@@ -3,9 +3,9 @@ package org.baoshichain.guessgame.entity;
 public class UserOfCard {
     private Integer id;
 
-    private Integer userid;
+    private Integer userid; //用户id
 
-    private Integer cardid;
+    private Integer cardid; //中奖卡牌id
 
     private String flag;
 

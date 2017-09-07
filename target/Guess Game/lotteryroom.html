@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>卡游宝</title>
+		<style>
+			.box {
+				width: 100%;
+				height: auto!important;
+				min-height: 600px;
+				height: 600px;
+				background: #fff;
+				margin: auto;
+				padding-top: 46px; //设置据顶部高度
+			}
+			
+			.user {
+				background-color: bisque;
+				height: 50px;
+				margin: 10px;
+			}
+			
+			.account {
+				margin: 10px;
+				height: 160px;
+				margin-top: 20px;
+			}
+			
+			.join {
+				margin: 10px;
+				margin-top: 10px;
+			}
+			
+			.activity {
+				margin: 10px;
+				margin-top: 10px;
+				height: 40px;
+				background-color: deepskyblue;
+				text-align: center;
+			}
+			
+			.choose {
+				margin-top: 20px;
+				height: 100%;
+				text-align: center;
+			}
+			
+			.nav {
+				margin-left: 10px;
+				margin-right: 10px;
+				border-top: dotted;
+				border-color: deepskyblue;
+			}
+			
+			.bottom {
+				margin: 10px;
+				margin-top: 10px;
+				margin-left: 20px;
+				margin-right: 20px;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.list-group {
+				margin: 10px;
+			}
+			/* WebKit browsers */
+			
+			::-webkit-input-placeholder {
+				color: white;
+			}
+			/* Mozilla Firefox 4 to 18 */
+			
+			:-moz-placeholder {
+				color: white;
+				opacity: 1;
+			}
+			/* Mozilla Firefox 19+ */
+			
+			::-moz-placeholder {
+				color: white;
+				opacity: 1;
+			}
+			/* Internet Explorer 10+ */
+			
+			:-ms-input-placeholder {
+				color: white;
+			}
+			
+			.btn{
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 40px;">
+				<table width="100% " height="50px " border="0" cellpadding="0 " cellspacing="0 " style="background-color: #4D478F; ">
+					<tr>
+						<td width="15% " align="left " style="padding: 5px;"><img src="./img/back.png " width="15px " height="20px" style="margin-left: 10px;"></img>
+						</td>
+						<td width="85% " align="center" style="padding-right: 10px; "><span style="color: white; ">开奖房间</span></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="user">
+				<table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 " style="background-color: deepskyblue; ">
+					<tr>
+						<td width="30% " align="center" style="padding: 5px; color: white;">ID:</img>
+						</td>
+						<td width="70% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;">1234</span></td>
+					</tr>
+					<tr>
+						<td width="30% " align="center" style="padding: 5px;color: white; ">账户积分:</img>
+						</td>
+						<td width="70% " align="left" style="padding-right: 10px; "><span style="color: white; ">12345</span></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="account">
+				<table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 " style="background-color: goldenrod; ">
+					<tr>
+						<td width="10% " align="center" style="padding: 5px; color: white; ">.</img>
+						</td>
+						<td width="40% " align="left" style="padding: 5px; color: white; ">房间名称:</img>
+						</td>
+						<td width="50% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="room_name">****</span></td>
+					</tr>
+					<tr>
+						<td width="10% " align="center" style="padding: 5px; color: white; ">.</img>
+						</td>
+						<td width="40% " align="left" style="padding: 5px; color: white; ">房间价值：</img>
+						</td>
+						<td width="50% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="room_price">****</span></td>
+					</tr>
+					<tr>
+						<td width="10% " align="center" style="padding: 5px; color: white; ">.</img>
+						</td>
+						<td width="30% " align="left" style="padding: 5px; color: white; ">房间剩余时间:</img>
+						</td>
+						<td width="60% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="room_time">****</span></td>
+					</tr>
+					<tr>
+						<td width="10% " align="center" style="padding: 5px; color: white; ">.</img>
+						</td>
+						<td width="30% " align="left" style="padding: 5px; color: white; ">房间参与人数：</img>
+						</td>
+						<td width="60% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="room_peopleNumber">****</span></td>
+					</tr>
+					<tr>
+						<td width="10% " align="center" style="padding: 5px; color: white; ">.</img>
+						</td>
+						<td width="30% " align="left" style="padding: 5px; color: white; ">房间介绍：</img>
+						</td>
+						<td width="60% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="room_describe">****</span></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="join" id="paydiv">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="inputvalue" class="col-sm-2 control-label">投人次</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="inputvalue" placeholder="请输入投入数量">
+						</div>
+					</div>
+					<button type="button" class="btn btn-success" onclick="joinGame()" id="btn_submit">参与开奖</button></td>
+				</form>
+			</div>
+			<div id="loading"  style="visibility:hidden;"><img src="/img/loading.gif" alt="" />正在写入数据和提交到区块链，大约1分钟...</div>
+			<div style="margin-left: 10px;">
+				<h5>房间公告信息：</h5>
+				<h5 id="room_result"></h5>
+			</div>
+			
+<!--		<div class="list-group">
+				<a href="#" class="list-group-item">
+					<p class="list-group-item-text">
+						房间名称: <span>123</span>
+					</p>
+					<p class="list-group-item-text">
+						中奖玩家ID: <span>3456</span>
+					</p>
+					<p class="list-group-item-text">
+						中奖玩家地址: <span>上海</span>
+					</p>
+				</a>-->
+<!--				<a href="#" class="list-group-item">
+					<p class="list-group-item-text">
+						房间名称: <span>123</span>
+					</p>
+					<p class="list-group-item-text">
+						中奖玩家ID: <span>3456</span>
+					</p>
+					<p class="list-group-item-text">
+						中奖玩家地址: <span>上海</span>
+					</p>
+				</a>
+			</div>-->
+
+
+
+
+		</div>
+
+		<script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
+		<script type="text/javascript ">
+
+            function GetQueryString(name)
+            {
+                var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if(r!=null)return  unescape(r[2]); return null;
+            }
+
+            function ShowDiv() {
+
+                $("#loading").show();
+            }
+
+            //隐藏加载数据
+            function HiddenDiv() {
+                $("#loading").hide();
+            }
+
+           // HiddenDiv();
+
+            $.ajax({
+                type: 'POST',
+                url: "/activity/ethlottery/detail",
+				data: {
+                  "id":GetQueryString("id")
+				},
+                success: function (rs) {
+                    dataStr = JSON.stringify(rs.data);
+                    dataArr = JSON.parse(dataStr);
+                    $("#room_name").html(dataArr["activityName"]);
+                    $("#room_describe").html(dataArr["describe"]);
+                    $("#room_peopleNumber").html(dataArr["activityMembersNum"]);
+                    $("#room_price").html(dataArr["cardPrice"]);
+                    $("#room_time").html(dataArr["endBlock"]-dataArr["nowBlock"])+"block";
+                    if (rs.code == 200) {
+                        alert(rs.msg);
+                    }else{
+                        $("#paydiv").hide();
+                        $("#room_result").append("该房间活动已经结束");
+                        alert(rs.msg);
+					}
+                },
+                error:function (XMLHttpRequest, textStatus, errorThrown) {
+					/*                  alert("error");
+					 alert("textSTATUS="+textStatus +errorThrown+" "+XMLHttpRequest.LOADING);*/
+                }
+            });
+
+            function joinGame(){
+                alert("提交");
+                inputvalue = $("#inputvalue").val();
+                $.ajax({
+                    type: 'POST',
+                    url: "/activity/ethlottery/join",
+                    data: {
+                        "id":GetQueryString("id"),
+                        "value":$("#inputvalue").val()
+                    },
+                    beforeSend: function () {
+                        $("#btn_submit").attr("disabled", true);
+                        ShowDiv();
+                    },
+                    complete: function () {
+                        $("#btn_submit").attr("disabled", false);
+                        HiddenDiv();
+                    },
+                    success: function (rs) {
+                        if (rs.code == 200) {
+                            alert(rs.msg);
+                            location.href="lotteryroom.html?id="+GetQueryString("id");
+                        }else{
+                            alert(rs.msg);
+						}
+                    },
+                    error:function (XMLHttpRequest, textStatus, errorThrown) {
+						/*                  alert("error");
+						 alert("textSTATUS="+textStatus +errorThrown+" "+XMLHttpRequest.LOADING);*/
+                    }
+                });
+			}
+
+		</script>
+	</body>
+
+</html>

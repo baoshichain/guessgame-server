@@ -16,4 +16,10 @@ public interface UserDao {
     int updateByPrimaryKey(User record);
 
     User selectByPhone(String phone);
+
+    int getCountofActivity(int userId);
+
+    int getCountofJoinActivity(int userId);
+
+    int insertUser(User user);
 }

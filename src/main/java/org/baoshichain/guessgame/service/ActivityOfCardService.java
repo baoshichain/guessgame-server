@@ -2,6 +2,8 @@ package org.baoshichain.guessgame.service;
 
 import org.baoshichain.guessgame.entity.ActivityOfCard;
 
+import java.util.List;
+
 public interface ActivityOfCardService {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,8 @@ public interface ActivityOfCardService {
     int updateByPrimaryKeySelective(ActivityOfCard record);
 
     int updateByPrimaryKey(ActivityOfCard record);
+
+    List<ActivityOfCard> selectActivityOfCardList(int id);
+
+    int updateActivityOfcard(int cardid,int activityid);
 }

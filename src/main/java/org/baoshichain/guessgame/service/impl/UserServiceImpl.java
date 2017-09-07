@@ -58,4 +58,40 @@ public class UserServiceImpl implements UserService{
     }
 
   }
+
+  /**
+   * 获取发布的活动总数
+   * @param userId
+   * @return
+   */
+  @Override
+  public int getCountofActivity(int userId) {
+    return userDao.getCountofActivity(userId);
+  }
+
+  /**
+   * 获取参与的活动总数
+   * @param userId
+   * @return
+   */
+  @Override
+  public int getCountofJoinActivity(int userId) {
+    return userDao.getCountofJoinActivity(userId);
+  }
+
+  @Override
+  public int insertUser(User user) {
+    User newuser=new User();
+    newuser.setPassword(user.getPassword());
+    newuser.setBond("");
+    newuser.setEthaddress(user.getEthaddress());
+    newuser.setFlag(0);
+    newuser.setLoginname(user.getLoginname());
+    newuser.setName(user.getName());
+    newuser.setPhone(user.getPhone());
+    newuser.setQq(user.getQq());
+    newuser.setPortrait("");
+    return userDao.insert(user);
+  }
+
 }

@@ -1,10 +1,22 @@
 package org.baoshichain.guessgame.web;
 
+import net.sf.json.JSONObject;
+import org.baoshichain.guessgame.bean.EthActivity;
+import org.baoshichain.guessgame.bean.EthRoom;
 import org.baoshichain.guessgame.contract.Game;
+import org.baoshichain.guessgame.entity.Activity;
+import org.baoshichain.guessgame.entity.Card;
+import org.baoshichain.guessgame.entity.User;
+import org.baoshichain.guessgame.entity.UserOfActivity;
+import org.baoshichain.guessgame.service.ActivityService;
+import org.baoshichain.guessgame.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.web3j.abi.datatypes.Address;
 import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.CipherException;
@@ -16,8 +28,10 @@ import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Numeric;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -25,76 +39,93 @@ import java.util.concurrent.Future;
  * Created by hisen on 17-4-24.
  */
 @Controller
-@RequestMapping("/game/eth")
+@RequestMapping("/activity")
 public class GameController {
-  private Logger logger = LoggerFactory.getLogger(this.getClass());
-  //ResourceBundle resource = null;
-  String ethUrl = "http://192.168.132.133:8545";
-  String gameAddress = "0x83f50B60Cf76BDe819e4cc1dF6b5d4f16D55CAf8";
-  String adminPassword = "123";
-  String keystorePath = "D:/workspace/baoshichain/src/main/resources/UTC--2017-07-26T10-38-48.569288272Z--e559eddf4367634912316d71d4f0b52766c64a79";
-  BigInteger GAS_PRICE = BigInteger.valueOf(20_000_000_000L);
-  BigInteger GAS_LIMIT = BigInteger.valueOf(4_700_000);
-  Web3j web3 = null;
-  Credentials credentials = null;
-  Game guessGameContract = null;
+    @Autowired
+    private ActivityService activityService;
 
-    @PostConstruct
-    public void initWeb3(){
-        //resource = ResourceBundle.getBundle("C:/Users/think/Documents/GitHub/guessgame-server/src/main/resources/contract.properties");
-        //ethUrl = resource.getString("eth.url");
-        //gameAddress = resource.getString("game.address");
-        //adminPassword = resource.getString("admin.password");
-        //keystorePath = resource.getString("admin.keystore");
-        //GAS_PRICE = BigInteger.valueOf(20_000_000_000L);
-        //GAS_LIMIT = BigInteger.valueOf(4_700_000);
-        web3 = Web3j.build(new HttpService(ethUrl));
-        try {
-            credentials = WalletUtils.loadCredentials(adminPassword, keystorePath);
-            guessGameContract = Game.load(gameAddress,web3,credentials,GAS_PRICE, GAS_LIMIT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (CipherException e) {
-            e.printStackTrace();
+
+
+
+    @RequestMapping("/ethlottery/add")
+    @ResponseBody
+    private JSONObject addActivity(EthActivity ethActivity, HttpSession session){
+        User user = (User)session.getAttribute("user");
+        System.out.println(user.toString());
+        //���ж��û��Ƿ��Ѿ����ɱ�֤��
+        if(Integer.parseInt(user.getBond()) < 100){
+            return CommonUtil.constructHtmlResponse(301,"���ɽ���",null);
         }
+        //�����û��ύ�Ŀ�������ύ���룩
+        //����activity
+        Activity activity = new Activity();
+        activity.setActivityname(ethActivity.getActivityName());
+        activity.setToken(ethActivity.getToken());
+        activity.setLimitmax(ethActivity.getLimitmax());
+        activity.setLimitmin(ethActivity.getLimitmin());
+        activity.setDescribe(ethActivity.getActivityDescribe());
+        activity.setEndblock(ethActivity.getBlockTime());
+        activity.setUserid(((User) session.getAttribute("user")).getId());
+        //����card
+        Card card = new Card();
+        card.setName(ethActivity.getCardName());
+        card.setPrice(ethActivity.getCardPrice());
+        card.setDiscribe(ethActivity.getCardDescribe());
+        //�ύ
+        int activityId = activityService.addEthActivityInfo(activity,card);
+        if(activityId < 1){
+            return CommonUtil.constructHtmlResponse(301,"����ʧ��",null);
+        }
+        return CommonUtil.constructHtmlResponse(200,"��Ϣ�Ѿ��ύ�����Ժ�鿴",null);
     }
 
 
 
-  @RequestMapping("/lottery/add")
-  private String addActivity(){
-      //test
-      Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.newGame(new Uint256(2), new Uint256(10), new Uint256(7));
-      try {
-          System.out.println(transactionReceiptFuture.get().getTransactionHash());
-
-          return transactionReceiptFuture.get().getTransactionHash();
-      } catch (InterruptedException e) {
-          e.printStackTrace();
-      } catch (ExecutionException e) {
-          e.printStackTrace();
-      }
-      return null;
-  }
-
-    @RequestMapping("/lottery/start")
-    private String startActivity(){
-      //test
-      Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.startGame(new Uint256(2),new Uint256(10));
-        try {
-            System.out.println(transactionReceiptFuture.get().getTransactionHash());
-            return transactionReceiptFuture.get().getTransactionHash();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+    @RequestMapping("/ethlottery/list")
+    @ResponseBody
+    private JSONObject ethActivityList(){
+        List<EthRoom> ethRooms = activityService.selectAllLotteryActivityInfo();
+        return CommonUtil.constructHtmlResponse(200,"ok",ethRooms);
     }
+
+    @RequestMapping(value = "/ethlottery/detail")
+    @ResponseBody
+    public JSONObject ethActivityDetail(String id,HttpSession session){
+
+        //��ѯ������ϸ��Ϣ
+        EthRoom ethRoom = activityService.selectLotteryActivityInfoByActivityId(id);
+        //��鷿���״̬
+        int status = activityService.checkActivityStatus(id);
+        //������Ѿ������ķ���
+        if(status == -1) return CommonUtil.constructHtmlResponse(300,"-1",ethRoom);//�÷����Ѿ�������
+        if(status == 1)  return CommonUtil.constructHtmlResponse(200,"1",ethRoom);//����״̬���û����������һ�л
+        if(status == 2) return CommonUtil.constructHtmlResponse(301,"2",ethRoom);//������״̬���Ҹ÷��䱻�����ˣ��û�Ҳ���������������
+        if(status == 3) return CommonUtil.constructHtmlResponse(301,"3",ethRoom);//������״̬���Ҹ÷�����Ϊ�������������������˿�û�Ҳ���������������
+        if(status == -2) return CommonUtil.constructHtmlResponse(301,"-2",ethRoom);//������״̬����������
+        return CommonUtil.constructHtmlResponse(301,"err",null);
+    }
+
+    @RequestMapping("/ethlottery/join")
+    @ResponseBody
+    private JSONObject joinActivity(String id, String value, HttpSession session){
+        System.out.println("control value:"+value);
+        /*String id,String value,String phone, String userId*/
+        User user = (User) session.getAttribute("user");
+        int result = activityService.joinLotteryActivity(id, value, user.getPhone(), user.getId().toString());
+        if(result == -1){
+            return CommonUtil.constructHtmlResponse(301,"����",null);
+        }
+        if (result == 1){
+            return CommonUtil.constructHtmlResponse(200,"�ɹ�",null);
+        }
+        return CommonUtil.constructHtmlResponse(302,"����",null);
+    }
+
+
 
     @RequestMapping("/lottery/finish")
     private String finishActivity(){
-        //test
+      /*  //test
         Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.getResult(new Uint256(2));
         try {
             System.out.println(transactionReceiptFuture.get().getTransactionHash());
@@ -103,29 +134,16 @@ public class GameController {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }
+        }*/
         return null;
     }
 
-    @RequestMapping("/lottery/join")
-    private String joinActivity(){
-        //test
-        Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.joinGame(new Uint256(2),new Uint256(new BigInteger("13342579293")), new Uint256(5));
-        try {
-            System.out.println(transactionReceiptFuture.get().getTransactionHash());
-            return transactionReceiptFuture.get().getTransactionHash();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
     @RequestMapping("/lottery/address")
     private String getGameAddress(){
         //test
-        Future<Address> transactionReceiptFuture = guessGameContract.gameMap(new Uint256(2));
+/*        Future<Address> transactionReceiptFuture = guessGameContract.gameMap(new Uint256(2));
         String address = null;
         try {
             address = Numeric.toHexString(transactionReceiptFuture.get().getValue().toByteArray());
@@ -134,10 +152,13 @@ public class GameController {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }
-
+        }*/
         return null;
     }
+
+
+
+
 
 
 
