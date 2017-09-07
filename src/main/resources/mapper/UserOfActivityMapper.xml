@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<<<<<<< HEAD
 <mapper namespace="org.baoshichain.guessgame.dao.UserOfActivityDao" >
+=======
+<mapper namespace="org.baoshichain.guessgame.dao.UserOfActivityMapper" >
+>>>>>>> d5be35ebbd69282512d4f61ab4316fd0e0d36fd3
   <resultMap id="BaseResultMap" type="org.baoshichain.guessgame.entity.UserOfActivity" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
@@ -10,7 +14,11 @@
   <sql id="Base_Column_List" >
     id, userid, activityid, flag
   </sql>
+<<<<<<< HEAD
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="INTEGER" >
+=======
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+>>>>>>> d5be35ebbd69282512d4f61ab4316fd0e0d36fd3
     select 
     <include refid="Base_Column_List" />
     from tb_userofactivity
@@ -79,6 +87,7 @@
       flag = #{flag,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+<<<<<<< HEAD
 
   <insert id="insertUser" parameterType="org.baoshichain.guessgame.entity.UserOfActivity" >
      insert into tb_userofactivity (id, userid, activityid,flag)values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER},
@@ -96,4 +105,6 @@
     from tb_userofactivity
     where activityId = #{id,jdbcType=INTEGER}
   </select>
+=======
+>>>>>>> d5be35ebbd69282512d4f61ab4316fd0e0d36fd3
 </mapper>

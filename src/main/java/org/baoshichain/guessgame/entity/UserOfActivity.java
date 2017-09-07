@@ -3,9 +3,15 @@ package org.baoshichain.guessgame.entity;
 public class UserOfActivity {
     private Integer id;
 
+<<<<<<< HEAD
     private Integer userid; //用户id
 
     private Integer activityid; // 用户参与房间
+=======
+    private Integer userid;
+
+    private Integer activityid;
+>>>>>>> d5be35ebbd69282512d4f61ab4316fd0e0d36fd3
 
     private String flag;
 
