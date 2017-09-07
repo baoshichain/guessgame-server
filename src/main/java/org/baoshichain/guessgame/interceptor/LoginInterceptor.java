@@ -21,7 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         //这里公开地址是登录提交的地址
         if(url.indexOf("login") >= 0){
             //如果进行登录提交，则放行
-            //System.out.println("fangxing");
+            System.out.println("fangxing");
             return true;
         }
         //判断session
@@ -34,7 +34,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         //执行到这里表示用户身份需要认真，跳转到登录页面
         request.getRequestDispatcher("login.html").forward(request, response);
-        //System.out.println("lanjie!");
+        System.out.println("lanjie!");
         //return false表示拦截住，不向下执行
         //return true 表示放行
         return false;
