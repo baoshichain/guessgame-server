@@ -10,16 +10,22 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>卡游宝</title>
     <style>
+        /* 适配全屏幕高度*/
+        html {
+            height: 100%;
+            width: 100%;
+            background: #5A6378;
+        }
+
+        /* padding-top 控制距离标题距离*/
         .box {
             width: 100%;
-            height: auto !important;
-            min-height: 600px;
-            height: 600px;
-            background: #fff;
+            height: 100%;
+            background: #5A6378;
             margin: auto;
             padding-top: 46px;
-        / / 设置据顶部高度
         }
+
 
         .user {
             background-color: bisque;
@@ -46,81 +52,32 @@
             text-align: center;
         }
 
-        .choose {
-            margin-top: 20px;
-            height: 100%;
-            text-align: center;
-        }
-
-        .nav {
-            margin-left: 10px;
-            margin-right: 10px;
-            border-top: dotted;
-            border-color: deepskyblue;
-        }
-
-        .bottom {
-            margin: 10px;
-            margin-top: 10px;
-            margin-left: 20px;
-            margin-right: 20px;
-            height: 40px;
-            text-align: center;
-        }
-
-        .list-group {
-            margin: 10px;
-        }
-
         /* WebKit browsers */
-
         ::-webkit-input-placeholder {
-            color: white;
+            color: gray;
         }
 
         /* Mozilla Firefox 4 to 18 */
-
         :-moz-placeholder {
-            color: white;
+            color: gray;
             opacity: 1;
         }
 
         /* Mozilla Firefox 19+ */
 
         ::-moz-placeholder {
-            color: white;
+            color: gray;
             opacity: 1;
         }
 
         /* Internet Explorer 10+ */
-
         :-ms-input-placeholder {
-            color: white;
+            color: gray;
         }
 
         .btn {
             width: 100%;
             margin-top: 30px;
-        }
-
-        .success {
-            text-align: center;
-            margin: 10px;
-            margin-top: 30px;
-        }
-
-        .panel {
-            margin: 10px;
-            margin-top: 20px;
-        }
-
-        .form-horizontal {
-            margin: 10px;
-            margin-top: 20px;
-        }
-
-        .btn-default {
-            background-color: #4D478F;
         }
 
         /*转圈圈*/
@@ -138,50 +95,88 @@
             font-size:11pt;
             display:none;
         }
+
+        .btn-success {
+            background-color: #4EB7CD;
+            width: 80%;
+            height:30px;
+            margin-left: 0px;
+        }
+
+        .phone{
+            color: black;
+            height: 40px;
+            width:80%;
+            margin-top: 40px;
+            padding-left: 40px;
+            background-color: white;
+            BACKGROUND-IMAGE: url(./img/img_login_person.png);
+            BACKGROUND-REPEAT: no-repeat;
+            border: 0;
+        }
+
+         .pwd{
+             color: black;
+             height: 40px;
+             width:80%;
+             margin-top: 30px;
+             padding-left: 40px;
+             BACKGROUND-IMAGE: url(img/img_login_lock.png);
+             BACKGROUND-REPEAT: no-repeat;
+             border: 0;
+         }
+
+
     </style>
 </head>
 
 <body>
 <div class="box">
     <div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 40px;">
-        <table width="100% " height="50px " border="0" cellpadding="0 " cellspacing="0 "
-               style="background-color: #4D478F; ">
+        <table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
             <tr>
-                <td width=" " align="left " style="padding: 5px;">
+                <td width="40%" align="left">
                 </td>
-                <td width="100% " align="center" style="padding-right: 10px; "><span style="color: white; ">登录</span>
+                <td width="60% " align="right" style="padding-right: 10px; ">
+                    <img src="./img/img_logo.png " width="120px " height="35px" style="margin-right: 20px; margin-top: 10px"></img>
                 </td>
             </tr>
         </table>
     </div>
 
+    <div class="text" style="margin-top: 50px">
+        <table width="100% " height="100px" border="0" cellpadding="0 " cellspacing="0 ">
+            <tr>
+                <td width="90%" align="center">
+                    <input type="text" class="phone" id="phone" placeholder="手机号码">
+                </td>
+            </tr>
+            <tr>
+                <td  width="90% " align="center" style="">
+                    <input type="password" class="pwd" id="password" placeholder="密码">
+                </td>
+            </tr>
+        </table>
+    </div>
 
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <label for="phone" class="col-sm-2 control-label">手机号码</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="phone" placeholder="请输入手机号码">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-2 control-label">密码</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" placeholder="请输入密码">
-            </div>
-        </div>
-
-        <div class="form-group" style="margin-top: -20px;">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-default" style="color: white;" onclick="login()">登录</button>
-            </div>
-        </div>
-    </form>
+    <div class="foot">
+        <table width="100% " height="100px" border="0" cellpadding="0 " cellspacing="0 ">
+            <tr>
+                <td width="90%" align="center">
+                    <button type="button" class="btn btn-success" onclick="login()" style="margin-top: 30px">登录</button>
+                </td>
+            </tr>
+            <tr>
+                <td  width="90% " align="center" style="">
+                    <button type="button" class="btn btn-success" onclick="regist()" style="margin-top: 20px">注册</button>
+                </td>
+            </tr>
+        </table>
+    </div>
     ​
 </div>
 
-<script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
 <script type="text/javascript ">
-
       function login() {
           var phone=document.getElementById("phone").value;
           var password=document.getElementById("password").value;
@@ -207,10 +202,13 @@
                   }
               },
               error:function (XMLHttpRequest, textStatus, errorThrown) {
-/*                  alert("error");
-                  alert("textSTATUS="+textStatus +errorThrown+" "+XMLHttpRequest.LOADING);*/
+                    alert("error");
               }
           });
+      }
+
+      function regist() {
+          window.location.href="regist.html"
       }
 
 </script>
