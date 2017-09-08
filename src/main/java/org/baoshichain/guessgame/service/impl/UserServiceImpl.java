@@ -91,6 +91,7 @@ public class UserServiceImpl implements UserService{
     newuser.setPhone(user.getPhone());
     newuser.setQq(user.getQq());
     newuser.setPortrait("");
+    newuser.setHabit(user.getHabit());
     return userDao.insert(user);
   }
 

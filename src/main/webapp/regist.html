@@ -1,114 +1,161 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <title>卡游宝--注册</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <!--<link rel="stylesheet" type="text/css" href="css/common.css"/>-->
     <style type="text/css">
-        .input_tip{
-            font-size:16px;
-            height:18px;
-            padding:4px;
-            padding-left:22px;
-            transition: all 0.3s ease 0s;
-            -webkit-transition: all 0.5s ease-in-out 0s;
+        /* 适配全屏幕高度*/
+        html {
+            height: 100%;
+            width: 100%;
+            background: #5A6378;
         }
-        .focus_tip{color:#FF6600;background:url(./img/tipv1.png) no-repeat 0 5px;}
-        .right_tip{color:#009828;background:url(./img/tipv1.png) no-repeat 0 -20px;}
-        .error_tip{color:red;background:url(./img/tipv1.png) no-repeat 0 -47px;}
-        .ajax_checking_tip{color:#009828;}
-        dt{margin:5px 0}
+
+        /* padding-top 控制距离标题距离*/
+        .box {
+            width: 100%;
+            height: 100%;
+            background: #5A6378;
+            margin: auto;
+            padding-top: 46px;
+        }
+
+        .title{
+            font-size: 15pt;
+            color: #9FA7B7;
+            margin-left: 40px;
+            font-family: "Calibri Light";
+        }
+
+        ::-webkit-input-placeholder {
+            color: #949CAC;
+        }
+        /* Mozilla Firefox 4 to 18 */
+
+        :-moz-placeholder {
+            color: #949CAC;
+            opacity: 1;
+        }
+        /* Mozilla Firefox 19+ */
+
+        ::-moz-placeholder {
+            color:#949CAC;
+            opacity: 1;
+        }
+        /* Internet Explorer 10+ */
+
+        :-ms-input-placeholder {
+            color: #949CAC;
+        }
+
+        .input{
+            background-color: #393F4F;
+            margin-top: 10px;
+            width: 80%;
+            height: 40px;
+            padding-left: 20px;
+            border: 0;
+            color: white;
+        }
+
+        .foot{
+            background-color:#393F4F ;
+            bottom: 0;
+            position:absolute;
+            left: 0;
+            width: 100%;
+            height: 90px;
+        }
+
+        .btn-success {
+            background-color: #4EB7CD;
+            width: 80%;
+            height:30px;
+            margin-left: 40px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="demo">
-        <h2 class="title">卡游宝--注册</h2>
-        <form id="ajax" action="#">
-            <dl>
-                <dt>用户名：</dt><dd><input type="text" name="name" class='input' id="username"/></dd>
-                <dt>密码：</dt><dd><input type="text" name="pwd" class='input' id="pwd"/></dd>
-                <dt>确认密码：</dt><dd><input type="text" name="pwd1" class='input' id="pwd1"/></dd>
-                <dt>手机号码：</dt><dd><input type="text" name="phone" class='input'id="phone"/></dd>
-                <dt>积分：</dt><dd><input type="text" name="token" class='input'id="token"/></dd>
-                <dt>城市：</dt><dd><input type="text" name="city" class='input' id="city"/></dd>
-                <dt>押金：</dt><dd><input type="text" name="city" class='input' id="bond"/></dd>
-                <dt>QQ/微信：</dt><dd><input type="text" name="qq" class='input' id="qq"/></dd>
-                <dt> </dt>
-                <dd><button type="button" class='btn' onclick="check()">提交</button>
-                    <button type="button" class='btn' onclick="login()" style="margin-left: 20px">登录</button></dd>
-            </dl>
-        </form>
+<div class="box">
+    <div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 40px;">
+        <table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
+            <tr>
+                <td width="40%" align="left">
+                </td>
+                <td width="60% " align="right" style="padding-right: 10px; ">
+                    <img src="./img/img_logo.png " width="120px " height="35px" style="margin-right: 20px; margin-top: 10px"></img>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h2 class="title">注册</h2>
+
+    <div class="content">
+        <table width="100% " height="100%" border="0" cellpadding="" cellspacing="0 ">
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="name" class='input' id="username" placeholder="用户名"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="password" name="pwd" class='input' id="pwd" placeholder="密码"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="password" name="pwd1" class='input' id="pwd1" placeholder="确认密码"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="phone" class='input' id="phone" placeholder="手机"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="city" class='input' id="city" placeholder="城市"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="qq" class='input' id="qq" placeholder="QQ"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="card" class='input' id="card" placeholder="主玩卡牌(选填)"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="foot">
+        <button type="button" class="btn btn-success" onclick="check()">注册</button></td>
+        <button type="button" class="btn btn-success" onclick="login()">登录</button></td>
     </div>
 </div>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/checkInput.js"></script>
+
 <script type="text/javascript">
-    dbg = function(text) {
-        $("#debug").html(text + "");
-    }
-    var inputs = [{
-        name: "name",
-        type: "",
-        focusMsg: '20字符以内',
-        errorMsg: "您的大名",
-        rightMsg: "填写正确",
-       /* ajax: {
-            url: "/home/ajax",
-            errorMsg: "用户已存在",
-            successMsg: "用户名可以注册！"
-        }*/
-    }, {
-        name: "pwd",
-        type: '',
-        focusMsg: '',
-        rightMsg: "填写正确",
-    }, {
-        name: "pwd1",
-        type: '',
-        errorMsg: "不匹配",
-        eqto: 'pwd'
-    }, {
-        name: "email",
-        type: "email",
-        focusMsg: '常用邮箱',
-        rightMsg: "填写正确"
-    }, {
-        name: "age",
-        between: [18, 78],
-        focusMsg: '18< >78'
-    }
-    ];
-
-    var regulars = {
-       /* "email": [/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/, "邮箱格式不对"],
-        "username": [/^[#]/, "不能这样写"],
-        "password": [/(lw)$/, "我要发火了"],
-        "eng": [/^[A-Za-z]+$/, "只能输入英文"],
-        "chn": [/^[\u0391-\uFFE5]+$/, "只能输入汉字"]*/
-    }
-
-    $("#ajax").checkInput({
-        inputs: inputs,
-        beforeSubmit: function() {
-        }
-    });
-
     function check() {
-        var username=$("#username").val();
-        var pwd=$("#pwd").val();
-        var pwd1=$("#pwd1").val();
-        var token=$("#token").val();
-        var city=$("#city").val();
-        var qq=$("#qq").val();
-        var bond=$("#bond").val();
-        var phone=document.getElementById("phone").value;
-        if(phone==""|| pwd==""|| pwd1==""|| username==""|| token==""|| city==""|| qq=="" ||bond==""){
+        var username = $("#username").val();
+        var pwd = $("#pwd").val();
+        var pwd1 = $("#pwd1").val();
+        var city = $("#city").val();
+        var qq = $("#qq").val();
+        var card = $("#card").val();
+        var phone = document.getElementById("phone").value;
+        if (phone == "" || pwd == "" || pwd1 == "" || username == "" || card == "" || city == "" || qq == "" ) {
             alert("请确认是否有空缺项！");
             return false;
         }
-        if(pwd!=pwd1){
+        if (pwd != pwd1) {
             alert("两次密码输入不同");
             return false;
         }
@@ -116,40 +163,38 @@
             type: 'POST',
             url: "/user/regist",
             data: {
-                "phone":phone,
-                "password":pwd,
-                "name":username,
-                "loginname":username,
-                "token":token,
-                "ethaddress":city,
-                "qq":qq,
-                "bond":bond,
-                "wechat":qq,
-                "flag":0,
-                "portrait":""
+                "phone": phone,
+                "password": pwd,
+                "name": username,
+                "loginname": username,
+                "token": 0,
+                "ethaddress": city,
+                "qq": qq,
+                "bond": "",
+                "wechat": qq,
+                "flag": 0,
+                "portrait": "",
+                "habit":card
             },
             success: function (data) {
-                if(data.code == 200){
+                if (data.code == 200) {
                     alert("注册成功");
-                    //window.location.href="main.html"
+                    window.location.href="login.html"
                 }
-                if(data.code == 201){
+                if (data.code == 201) {
                     alert("注册失败");
                 }
             },
-            error:function (XMLHttpRequest, textStatus, errorThrown) {
-                                alert("error");
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("error");
             }
         });
     }
 
     function login() {
-        window.location.href="login.html";
+        window.location.href = "login.html";
     }
 </script>
-<div style="text-align:center;">
-    <p><a href="login.html" target="_blank">卡游宝</a></p>
-</div>
 </body>
 </html>
 

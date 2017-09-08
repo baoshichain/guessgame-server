@@ -148,8 +148,6 @@ public class UserController {
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject regist(User user) {
-        logger.info("user="+user.getEthaddress());
-        logger.info("user="+user.getPhone());
         int flag = userService.insertUser(user);
         logger.info("flag="+flag);
         if (flag > 0) return CommonUtil.constructHtmlResponse(200, "成功", "ok");

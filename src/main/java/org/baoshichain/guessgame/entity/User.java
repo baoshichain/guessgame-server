@@ -25,6 +25,16 @@ public class User {
 
     private Integer flag;
 
+    private String habit;
+
+    public String getHabit() {
+        return habit;
+    }
+
+    public void setHabit(String habit) {
+        this.habit = habit;
+    }
+
     public Integer getId() {
         return id;
     }
