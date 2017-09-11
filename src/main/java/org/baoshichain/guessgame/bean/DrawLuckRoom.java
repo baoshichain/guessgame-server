@@ -11,6 +11,8 @@ public class DrawLuckRoom {
 
     private int token;
 
+    private String username;
+
     List<LuckRoom> list;
 
     public static class LuckRoom{
@@ -83,5 +85,13 @@ public class DrawLuckRoom {
 
     public void setList(List<LuckRoom> list) {
         this.list = list;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

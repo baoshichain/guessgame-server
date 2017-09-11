@@ -85,6 +85,8 @@ public class ActivityController {
                 luckroom.setRoomname(activity.getActivityname());
                 luckroom.setNum(Integer.parseInt(activity.getNum()));
                 luckroom.setWinrate(activity.getWinrate());
+                double price=activityService.getList(activityId);
+                logger.info("price="+price);
                 luckroom.setPrice(activityService.getList(activityId));
                 lucklist.add(luckroom);
             }
@@ -92,6 +94,7 @@ public class ActivityController {
             User newuser = userService.selectByPrimaryKey(user.getId());
             room.setToken(newuser.getToken());
             room.setUserId(user.getId());
+            room.setUsername(user.getLoginname());
             logger.info("room=" + room);
             return CommonUtil.constructHtmlResponse(200, "查询列表成功", room);
         }

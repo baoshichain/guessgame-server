@@ -11,15 +11,13 @@
     <style>
         @font-face {
             font-family: custom;       /*这里是说明调用来的字体名字*/
-            src: url('./css/first.ttf');   /*这里是字体文件路径*/
+            src: url('./css/first.TTF');   /*这里是字体文件路径*/
         }
-
         html {
             height: 100%;
             width: 100%;
             background: #393F4F;
         }
-
         /* padding-top 控制距离标题距离*/
         .box {
             width: 100%;
@@ -28,18 +26,15 @@
             margin: auto;
             padding-top: 80px;
         }
-
         .user {
             background-color: #393F4F;
             height: 50px;
             margin-top: 10px;
         }
-
         .account {
             height: 140px;
             margin-top: 10px;
         }
-
         .join {
             margin-top: 30px;
             height: 60px;
@@ -48,13 +43,11 @@
             margin-left: 30px;
             margin-right: 30px;
         }
-
         .publish {
             margin-top: 20px;
             height: 40px;
             text-align: center;
         }
-
         .room {
             margin: 10px;
             margin-top: 10px;
@@ -62,24 +55,20 @@
             background-color: green;
             text-align: center;
         }
-
         a {
             text-decoration: none;
             color: #333;
         }
-
         .box_163css {
             width: 100%;
             position:fixed;
             background-color:#5A6378 ;
         }
-
         .nav {
             width: 100%;
             float: left;
             height: 34px;
         }
-
         .nav li {
             font-size: 14px;
             float: left;
@@ -92,11 +81,9 @@
             list-style-type: none;
             color: white;
         }
-
         .nav li.on {
             color: #4EB7CD;
         }
-
         .line {
             width: 100%;
             float: left;
@@ -106,7 +93,6 @@
             height: 2px;
             background: #5A6378;
         }
-
         .s_line {
             position: absolute;
             display: block;
@@ -119,11 +105,9 @@
             overflow: hidden;
             text-align: center;
         }
-
         .nav {
             background: #5A6378;
         }
-
         .s_line b {
             display: inline-block;
             margin-top: -8px;
@@ -136,17 +120,19 @@
             zoom: 1;
             font-size: 0;
         }
-
         .zlbox_content {
             width: 100%;
             margin: 0px auto;
         }
-
         .item_tab {
-            min-height: 300px;
-            border: 1px solid #dadada;
+            min-height: 100%;
             border-top: 0px;
             text-align: center;
+        }
+
+        .list_item {
+            background-color: white;
+            border-bottom: 1px solid gray;
         }
     </style>
 </head>
@@ -186,12 +172,108 @@
 
         <!-- 抽奖房间-->
         <div class="item_tab" style="display: block;">
-            <br/>这里是首页哦！
+            <div class="user" onclick="showuser()">
+                <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
+                    <tr>
+                        <td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
+                        </td>
+                        <td width="70% " align="left" style="padding-right: 10px; "><span
+                                style="color: #5DABB8; margin-left: 0px;" id="username1"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="30% " align="center" style="padding: 5px;color: #5DABB8; ">账户积分:</img>
+                        </td>
+                        <td width="70% " align="left" style="padding-right: 10px; "><span style="color: #5DABB8; "
+                                                                                          id="token1"></span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="list" id="luckRoom" style="margin-top: 20px">
+                 <a href="#" class="">
+                     <table width="100% " height="90px " border="0" cellpadding=" " cellspacing="0 " class="list_item">
+                         <tr>
+                             <td colspan="2" width="100% " align="left" style="padding-left: 15px; color: #FF6B6B;font-family: custom">房间名称</img>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td width="50% " align="left" style="padding-left: 15px;color: gray; ">参与人数:50/100</img>
+                             </td>
+                             <td width="50% " align="right" style="padding-right: 10px "><span style="color: #5DABB8; "
+                                                                                               id="num">价值:1299</span></td>
+                         </tr>
+                         <tr>
+                             <td width="50% " align="left" style="padding-left: 15px;color: gray ">房间时间:18:00</img>
+                             </td>
+                             <td width="50% " align="left" style=""><span style="color: #5DABB8; "
+                                                                                               id="time"></span></td>
+                         </tr>
+                     </table>
+                 </a>
+                 <a href="#" class="">
+                     <table width="100% " height="90px " border="0" cellpadding=" " cellspacing="0 " class="list_item">
+                         <tr>
+                             <td colspan="2" width="100% " align="left" style="padding-left: 15px; color: #FF6B6B;font-family: custom">房间名称</img>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td width="50% " align="left" style="padding-left: 15px;color: gray; ">参与人数:50/100</img>
+                             </td>
+                             <td width="50% " align="right" style="padding-right: 10px "><span style="color: #5DABB8; "
+                                                                                               id="num">价值:1299</span></td>
+                         </tr>
+                         <tr>
+                             <td width="50% " align="left" style="padding-left: 15px;color: gray ">房间时间:18:00</img>
+                             </td>
+                             <td width="50% " align="left" style=""><span style="color: #5DABB8; "
+                                                                          id="time"></span></td>
+                         </tr>
+                     </table>
+                 </a>
+            </div>
         </div>
 
         <!-- 开奖房间 -->
         <div class="item_tab" style="display: none;">
-            <br/>这里是jquery特效!
+            <div class="user" onclick="showuser()">
+                <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
+                    <tr>
+                        <td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
+                        </td>
+                        <td width="70% " align="left" style="padding-right: 10px; "><span
+                                style="color: #5DABB8; margin-left: 0px;" id="username2"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="30% " align="center" style="padding: 5px;color: #5DABB8; ">账户积分:</img>
+                        </td>
+                        <td width="70% " align="left" style="padding-right: 10px; "><span style="color: #5DABB8; "
+                                                                                          id="token2"></span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="list" id="" style="margin-top: 20px">
+                <a href="#" class="">
+                    <table width="100% " height="90px " border="0" cellpadding=" " cellspacing="0 " class="list_item">
+                        <tr>
+                            <td colspan="2" width="100% " align="left" style="padding-left: 15px; color: #FF6B6B;font-family: custom">房间名称</img>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="50% " align="left" style="padding-left: 15px;color: gray; ">参与人数:50/100</img>
+                            </td>
+                            <td width="50% " align="right" style="padding-right: 10px "><span style="color: #5DABB8; "
+                                                                                              id=".">价值:1299</span></td>
+                        </tr>
+                        <tr>
+                            <td width="50% " align="left" style="padding-left: 15px;color: gray ">房间时间:18:00</img>
+                            </td>
+                            <td width="50% " align="left" style=""><span style="color: #5DABB8; "
+                                                                         id=""></span></td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
         </div>
 
 
@@ -277,7 +359,7 @@
                     <tr>
                         <td style="color: white; "><span style="font-family: custom; font-size: 20px;" onclick="enterLotterRoom()">开奖房间</span></td>
                         <td style="background-color: #5A6378; width: 10px;"></td>
-                        <td style="color: white;" onclick="showluckRoom()"><span style="font-family: custom; font-size: 20px;">抽奖房间</span></td>
+                        <td style="color: white;" onclick="enterDrawluck()"><span style="font-family: custom; font-size: 20px;">抽奖房间</span></td><!--showluckRoom()-->
                     </tr>
                 </table>
             </div>
@@ -296,34 +378,36 @@
             </div>
         </div>
 
-        </div>
+    </div>
 
 </div>
 
 <script type="text/javascript ">
+    $(document).ready(function () {
+        getLuckRoom();
+    });
 
     function showPublishRoom() {
         window.location.href = "publishroom.html"
     }
-
     function showluckRoom() {
         window.location.href = "roomlist.html"
     }
-
     function controll() {
         window.location.href = "roomcontroll.html"
     }
-
     function showuser() {
         window.location.href = "userinfo.html"
     }
-
     function enterLotterRoom() {
         location.href = "rooms.html"
     }
-
     function enterEthLotterDeploy() {
         location.href = "ethlottery.html"
+    }
+
+    function enterDrawluck() {
+        window.location.href = "luckroom.html"
     }
 
     var l = 0;
@@ -339,9 +423,8 @@
         $(".item_tab").eq(index).show();
         console.log("i="+i);
         if(index==0){
-
+            getLuckRoom();
         }else if(index==1){
-
         }else if(index==2){
             $(document).ready(function () {
                 $.ajax({
@@ -370,6 +453,47 @@
             });
         }
     });
+
+    function  getLuckRoom() {
+        $.ajax({
+            type: 'POST',
+            url: "/activity/roominfo2",
+            success: function (data) {
+                if (data.code == 200) {
+                    dataStr = JSON.stringify(data.data);
+                    var data = JSON.parse(dataStr);
+                    console.log("data=" + data.token);
+                    $("#token1").html(data.token);
+                    $("#username1").html(data.username);
+                    var str = "";
+                    $.each(data.list, function (i, a) {
+                        str += "<a href='#'>"+
+                            "<table width='100%' height='90px' border='0' cellspacing='0' class='list_item'>"+
+                            "<tr>"+
+                            "<td colspan='2' width='100%' align='left' style='padding-left: 15px; color: #FF6B6B;font-family: custom'>" + a.roomname + "</img>"+
+                            "</td>"+
+                            "</tr>"+
+                            "<tr>"+
+                            "<td width='50%'  align='left' style='padding-left: 15px;color: gray; '>"+"房间中奖几率:" + a.winrate + "</img>"+
+                        "</td>"+
+                        "<td width='50%' align='right' style='padding-right: 10px'><span style='color: #5DABB8;id='num'>"+"价值:" + a.price + "</span></td></tr>"+
+                        "<tr><td width='50%' align='left' style='padding-left: 15px;color: gray'>"+"房间卡牌剩余数量:" + a.num + "</img> </td>"+
+                        "<td width='50%' align='left'><span style='color: #5DABB8;' id='time'></span></td></tr></table></a>";
+                        //alert(str);
+                    })
+                    $("#luckRoom").html(str);
+                }
+                if (data.code == 201) {
+                    alert(data.msg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("error="+errorThrown);
+            }
+        });
+    }
+
+
 </script>
 </body>
 

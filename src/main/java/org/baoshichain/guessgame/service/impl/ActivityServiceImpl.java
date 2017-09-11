@@ -149,6 +149,8 @@ public class ActivityServiceImpl implements ActivityService {
         String endTimes = dateFormater.format(new Date(date.getTime() + limitTime*60*60*1000));
         activity.setEndblock(endTimes);  //限时
         activityDao.insert(activity);
+        int activityId=activity.getId();
+        logger.info("activityId="+activityId);
 
         //插入卡牌 tb_card
         List<String> name=new ArrayList<>();
@@ -173,7 +175,8 @@ public class ActivityServiceImpl implements ActivityService {
             cardDao.insert(card);
             //插入活动对应的card
             ActivityOfCard activityOfCard=new ActivityOfCard();
-            activityOfCard.setActivityid(activity.getId());
+            logger.info("activityId="+activityId);
+            activityOfCard.setActivityid(activityId);
             activityOfCard.setCardid(card.getId());
             activityOfCard.setFlag(0); //卡牌未发出
             activityOfCardDao.insert(activityOfCard);

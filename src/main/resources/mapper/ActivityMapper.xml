@@ -31,19 +31,21 @@
     delete from tb_activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="org.baoshichain.guessgame.entity.Activity" useGeneratedKeys="true" >
-
- insert into tb_activity (id, userid, activityname,
-    `describe`, `type`, flag,
-    startBlock, endBlock, token,
-    limitMax, limitMin, winrate,
-    numMax, num)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityname,jdbcType=VARCHAR}, 
-      #{describe,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER},
-      #{startblock,jdbcType=VARCHAR}, #{endblock,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR},
-      #{limitmax,jdbcType=VARCHAR}, #{limitmin,jdbcType=VARCHAR}, #{winrate,jdbcType=VARCHAR}, 
-      #{nummax,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR})
-  </insert>
+    <insert id="insert" parameterType="org.baoshichain.guessgame.entity.Activity"  useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+        insert into tb_activity (id, userid, activityname,
+        `describe`, `type`, flag,
+        startBlock, endBlock, token,
+        limitMax, limitMin, winrate,
+        numMax, num)
+        values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityname,jdbcType=VARCHAR},
+        #{describe,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER},
+        #{startblock,jdbcType=VARCHAR}, #{endblock,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR},
+        #{limitmax,jdbcType=VARCHAR}, #{limitmin,jdbcType=VARCHAR}, #{winrate,jdbcType=VARCHAR},
+        #{nummax,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.Activity">
         insert into tb_activity
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -57,10 +59,10 @@
                 activityname,
             </if>
             <if test="describe != null">
-               `describe`,
+                `describe`,
             </if>
             <if test="type != null">
-                 `type`,
+                `type`,
             </if>
             <if test="flag != null">
                 flag,
@@ -245,18 +247,18 @@
        select DISTINCT a.userid,b.id,b.activityname,b.endBlock,b.startBlock
           from tb_userofactivity a, tb_activity b where a.activityid=b.id AND a.userid=#{userid,jdbcType=INTEGER}
     </select>
-    
-      <!--查询所有的开奖房间-->
-  <select id="selectAllLotteryActivity" resultMap="BaseResultMap" >
-    select
-    <include refid="Base_Column_List" />
-    from tb_activity
-    where `type` = 1
-  </select>
 
-  <!--selectAllLotteryActivityInfo-->
-  <!--查询所有开奖房间的信息，包括卡片信息，参与人数-->
-  <select id="selectAllLotteryActivityInfo" resultType="java.util.HashMap" >
+    <!--查询所有的开奖房间-->
+    <select id="selectAllLotteryActivity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_activity
+        where `type` = 1
+    </select>
+
+    <!--selectAllLotteryActivityInfo-->
+    <!--查询所有开奖房间的信息，包括卡片信息，参与人数-->
+    <select id="selectAllLotteryActivityInfo" resultType="java.util.HashMap">
     SELECT tb_activity.id,tb_activity.activityname,tb_activity.startBlock,tb_activity.`describe`,tb_activity.endBlock,tb_card.price,count(tb_userofactivity.userid) as membernum
     FROM tb_activity LEFT JOIN tb_userofactivity
     ON tb_activity.id = tb_userofactivity.activityid
@@ -267,9 +269,9 @@
     GROUP BY tb_activity.id
   </select>
 
-  <!--selectLotteryActivityInfoByActivityId-->
-  <!--查询单个房间的详细信息-->
-  <select id="selectLotteryActivityDetailByActivityId" resultType="java.util.HashMap" parameterType="java.lang.String">
+    <!--selectLotteryActivityInfoByActivityId-->
+    <!--查询单个房间的详细信息-->
+    <select id="selectLotteryActivityDetailByActivityId" resultType="java.util.HashMap" parameterType="java.lang.String">
     SELECT tb_activity.id,tb_activity.activityname,tb_activity.startBlock,tb_activity.`describe`,tb_activity.endBlock,tb_card.price,count(tb_userofactivity.userid) as membernum
     FROM tb_activity LEFT JOIN tb_userofactivity
     ON tb_activity.id = tb_userofactivity.activityid
