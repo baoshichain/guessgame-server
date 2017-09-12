@@ -116,6 +116,7 @@ public class ActivityController {
             LuckRoomInfo luckRoomInfo = new LuckRoomInfo();
             luckRoomInfo.setToken(newuser.getToken());
             luckRoomInfo.setUserId(user.getId());
+            luckRoomInfo.setUsername(user.getLoginname());
 
             int price = activityService.getList(Integer.parseInt(activityid));
             luckRoomInfo.setRoomprice(String.valueOf(price));

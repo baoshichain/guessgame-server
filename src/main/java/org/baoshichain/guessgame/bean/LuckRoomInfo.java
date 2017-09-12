@@ -6,12 +6,21 @@ package org.baoshichain.guessgame.bean;
 public class LuckRoomInfo {
     private int userId;
     private int token;
+    private String username;
 
     private String roomname;
     private String roomprice;
     private String rate;
     private int num;
     private String des;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public int getUserId() {
         return userId;
