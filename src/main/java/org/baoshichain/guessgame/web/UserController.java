@@ -76,7 +76,7 @@ public class UserController {
             gameMaker.setPublishCount(num);
             gameMaker.setAmount(user.getBond());
             gameMaker.setJoinCount(joinNum);
-
+            gameMaker.setPhone(user.getPhone());
             return CommonUtil.constructHtmlResponse(200, "成功", gameMaker);
         }
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
@@ -148,10 +148,17 @@ public class UserController {
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject regist(User user) {
-        int flag = userService.insertUser(user);
-        logger.info("flag="+flag);
-        if (flag > 0) return CommonUtil.constructHtmlResponse(200, "成功", "ok");
-        return CommonUtil.constructHtmlResponse(201, "查询失败", null);
+        String phone=user.getPhone();
+        int index=userService.checkPhone(phone);
+        logger.info("index="+index);
+        if(index>0){
+            return CommonUtil.constructHtmlResponse(201, "当前号码已注册", null);
+        }else{
+            int flag = userService.insertUser(user);
+            logger.info("flag="+flag);
+            if (flag > 0) return CommonUtil.constructHtmlResponse(200, "注册成功", "ok");
+            return CommonUtil.constructHtmlResponse(201, "注册失败", null);
+        }
     }
 }
 

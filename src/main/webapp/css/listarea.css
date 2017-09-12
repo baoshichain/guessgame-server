@@ -18,7 +18,7 @@ div.addListItem > .addButton{
 	width:50px; height:23px;
 	cursor: pointer;
 	background: url('../img/plus.png') no-repeat center;
-	float: right;
+	float: left;
 }
 
 div.listItemWrap > .deleteButton{

@@ -22,4 +22,6 @@ public interface UserService {
     int getCountofJoinActivity(int userId);
 
     int insertUser(User user);
+
+    int checkPhone(String phone);
 }

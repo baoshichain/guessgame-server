@@ -8,7 +8,7 @@
 (function($, window, undefined) {
     $.fn.listarea = function(params) {
         params = $.extend( {delimiter: ',', effect: null, placeholder: "输入"}, params);
-        var textareaInput = $(this).hide().after('<div class="addListItem"><input class="input1" type="text" placeholder="'+params.placeholder+'卡牌名称"/><input class="input2" type="text" placeholder="'+params.placeholder+'卡牌成色"/><input class="input3" type="text" placeholder="'+params.placeholder+'卡牌价值"/><div class="addButton"></div></div>');
+        var textareaInput = $(this).hide().after('<div class="addListItem"><input class="input1" type="text" placeholder="'+params.placeholder+'卡牌名称"/><input class="input2" type="text" placeholder="'+params.placeholder+'卡牌成色"/><input class="input3" type="text" placeholder="'+params.placeholder+'卡牌价值"/><br><div class="addButton"></div></div>');
         var listareaWrap = $('div.addListItem');
         $('div.addListItem > .addButton').on('click', function(){
             lbAddListItem(textareaInput, listareaWrap, params);

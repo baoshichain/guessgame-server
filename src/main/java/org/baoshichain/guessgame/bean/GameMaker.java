@@ -18,6 +18,16 @@ public class GameMaker {
 
     private int joinCount;
 
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public int getJoinCount() {
         return joinCount;
     }

@@ -218,4 +218,11 @@
     values (#{id,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},)
   </insert>
 
+  <!-- 注册检查-->
+  <select id="checkPhone" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(*)
+    from tb_user
+    where phone = #{phone,jdbcType=VARCHAR}
+  </select>
 </mapper>
