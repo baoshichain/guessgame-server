@@ -42,6 +42,7 @@ public class UserController {
     @Autowired
     private UserOfActivityService userOfActivityService;
 
+    //登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject login(User user, HttpSession session) {
@@ -57,7 +58,7 @@ public class UserController {
         return CommonUtil.constructHtmlResponse(200, "成功", user);
     }
 
-
+    //用户信息
     @RequestMapping(value = "/main", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject showMain(HttpSession session) {
@@ -77,6 +78,7 @@ public class UserController {
             gameMaker.setAmount(user.getBond());
             gameMaker.setJoinCount(joinNum);
             gameMaker.setPhone(user.getPhone());
+            gameMaker.setFlag(user.getFlag());
             return CommonUtil.constructHtmlResponse(200, "成功", gameMaker);
         }
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
@@ -145,6 +147,7 @@ public class UserController {
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
     }
 
+    //普通用户注册
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject regist(User user) {
@@ -155,6 +158,23 @@ public class UserController {
             return CommonUtil.constructHtmlResponse(201, "当前号码已注册", null);
         }else{
             int flag = userService.insertUser(user);
+            logger.info("flag="+flag);
+            if (flag > 0) return CommonUtil.constructHtmlResponse(200, "注册成功", "ok");
+            return CommonUtil.constructHtmlResponse(201, "注册失败", null);
+        }
+    }
+
+    //庄家注册
+    @RequestMapping(value = "/regist/admin", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject registAdmin(User user) {
+        String phone=user.getPhone();
+        int index=userService.checkPhone(phone);
+        logger.info("index="+index);
+        if(index>0){
+            return CommonUtil.constructHtmlResponse(201, "当前号码已注册", null);
+        }else{
+            int flag = userService.insertAdmin(user);
             logger.info("flag="+flag);
             if (flag > 0) return CommonUtil.constructHtmlResponse(200, "注册成功", "ok");
             return CommonUtil.constructHtmlResponse(201, "注册失败", null);

@@ -20,6 +20,16 @@ public class GameMaker {
 
     private String phone;
 
+    private int flag;
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
     public String getPhone() {
         return phone;
     }

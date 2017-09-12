@@ -129,11 +129,6 @@
                     <input type="text" name="qq" class='input' id="qq" placeholder="QQ"/>
                 </td>
             </tr>
-            <tr>
-                <td width="10% " align="center">
-                    <input type="text" name="card" class='input' id="card" placeholder="主玩卡牌(选填)"/>
-                </td>
-            </tr>
         </table>
     </div>
 
@@ -161,9 +156,8 @@
         var pwd1 = $("#pwd1").val();
         var city = $("#city").val();
         var qq = $("#qq").val();
-        var card = $("#card").val();
         var phone = document.getElementById("phone").value;
-        if (phone == "" || pwd == "" || pwd1 == "" || username == "" || card == "" || city == "" || qq == "" ) {
+        if (phone == "" || pwd == "" || pwd1 == "" || username == "" || city == "" || qq == "" ) {
             alert("请确认是否有空缺项！");
             return false;
         }
@@ -173,7 +167,7 @@
         }
         $.ajax({
             type: 'POST',
-            url: "/user/ regist",
+            url: "/user/regist/admin",
             data: {
                 "phone": phone,
                 "password": pwd,
@@ -184,9 +178,8 @@
                 "qq": qq,
                 "bond": "",
                 "wechat": qq,
-                "flag": 0,
+                "flag": 1,
                 "portrait": "",
-                "habit":card
             },
             success: function (data) {
                 if (data.code == 200) {

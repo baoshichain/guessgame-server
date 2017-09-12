@@ -23,7 +23,7 @@ public class User {
 
     private String bond;
 
-    private Integer flag;
+    private Integer flag; //区分庄家，普通用户
 
     private String habit;
 

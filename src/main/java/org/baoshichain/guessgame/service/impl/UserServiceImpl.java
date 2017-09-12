@@ -96,6 +96,22 @@ public class UserServiceImpl implements UserService{
   }
 
   @Override
+  public int insertAdmin(User user) {
+    User newuser=new User();
+    newuser.setPassword(user.getPassword());
+    newuser.setBond("");
+    newuser.setEthaddress(user.getEthaddress());
+    newuser.setFlag(1);
+    newuser.setLoginname(user.getLoginname());
+    newuser.setName(user.getName());
+    newuser.setPhone(user.getPhone());
+    newuser.setQq(user.getQq());
+    newuser.setPortrait("");
+    newuser.setHabit(user.getHabit());
+    return userDao.insert(user);
+  }
+
+  @Override
   public int checkPhone(String phone) {
     return userDao.checkPhone(phone);
   }

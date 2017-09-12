@@ -23,5 +23,7 @@ public interface UserService {
 
     int insertUser(User user);
 
+    int insertAdmin(User user);
+
     int checkPhone(String phone);
 }
