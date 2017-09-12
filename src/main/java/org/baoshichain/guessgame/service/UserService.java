@@ -26,4 +26,6 @@ public interface UserService {
     int insertAdmin(User user);
 
     int checkPhone(String phone);
+
+    int updateBond(User user);
 }

@@ -6,6 +6,7 @@ public class RoomControll {
 
     private int userid;
     private int token;
+    private String username;
 
     private int publishnum;
 
@@ -80,5 +81,13 @@ public class RoomControll {
 
     public void setList(List<Wininfo> list) {
         this.list = list;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

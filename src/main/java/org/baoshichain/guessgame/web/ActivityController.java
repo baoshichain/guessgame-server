@@ -251,6 +251,7 @@ public class ActivityController {
             List<RoomControll.Wininfo> wininfoList=new ArrayList<>();
             roomControll.setUserid(newuser.getId());
             roomControll.setToken(newuser.getToken());
+            roomControll.setUsername(newuser.getLoginname());
             int  size = activityService.getActivityNum(newuser.getId());
             logger.info("size="+size);
             roomControll.setPublishnum(size);

@@ -225,4 +225,12 @@
     from tb_user
     where phone = #{phone,jdbcType=VARCHAR}
   </select>
+
+
+  <update id="updateBond"  parameterType="org.baoshichain.guessgame.entity.User" >
+    update tb_user
+    set token = #{token,jdbcType=INTEGER},
+    bond = #{bond,jdbcType=VARCHAR}
+    where phone = #{phone}
+  </update>
 </mapper>

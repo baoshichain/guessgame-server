@@ -24,4 +24,6 @@ public interface UserDao {
     int insertUser(User user);
 
     int checkPhone(String phone);
+
+    int updateBond(User user);
 }

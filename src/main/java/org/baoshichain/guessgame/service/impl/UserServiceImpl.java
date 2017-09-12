@@ -116,4 +116,9 @@ public class UserServiceImpl implements UserService{
     return userDao.checkPhone(phone);
   }
 
+  @Override
+  public int updateBond(User user) {
+    return userDao.updateBond(user);
+  }
+
 }

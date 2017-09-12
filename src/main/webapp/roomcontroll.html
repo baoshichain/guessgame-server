@@ -10,7 +10,18 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>卡游宝--活动后台</title>
     <style>
-			.box {
+        @font-face {
+            font-family: custom;       /*这里是说明调用来的字体名字*/
+            src: url('./css/first.TTF');   /*这里是字体文件路径*/
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            background: #393F4F;
+        }
+
+        .box {
 				width: 100%;
 				height: auto!important;
 				min-height: 600px;
@@ -21,23 +32,20 @@
 			}
 
 
-			.user {
-				background-color: bisque;
-				height: 50px;
-				margin: 10px;
-			}
+            .user {
+                background-color: #393F4F;
+                height: 70px;
+                padding-top: 10px;
+            }
 
 			.account {
-				margin: 10px;
 				height: 60px;
-				margin-top: 10px;
+                background-color: #393F4F;
 			}
 
 			.join {
-				margin: 10px;
-				margin-top: 20px;
-				height: 40px;
-				background-color: deepskyblue;
+				height: 50px;
+				background-color: #393F4F;
 				text-align: center;
 			}
 
@@ -69,108 +77,72 @@
 			.list-group{
 				margin: 10px;
 			}
+
+        .list_item {
+            background-color: white;
+            border-bottom: 1px solid gray;
+        }
 		</style>
 </head>
 
 <body>
 <div class="box">
-    <div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 40px;">
-        <table width="100% " height="50px " border="0 " cellpadding="0 " cellspacing="0 " style="background-color: #4D478F; ">
+    <div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 50px; background-color: #5A6378">
+        <table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
             <tr>
-                <td width="50% " align="left " style="padding: 5px; "><img src="./img/back.png " width="15px " height="20px" style="margin-left: 10px;" onclick="back()"></img>
+                <td width="40% " align="left " style="padding: 5px;">
+                    <img src="./img/back.png " width="15px " height="20px" style="margin-left: 10px;" onclick="back()"></img>
                 </td>
-                <td width="50% " align="right " style="padding-right: 10px; "><span style="color: white; "></span></td>
+                <td width="60% " align="right" style="padding-right: 10px; ">
+                    <img src="./img/img_logo.png " width="120px " height="35px"
+                         style="margin-right: 20px; margin-top: 10px"></img>
+                </td>
             </tr>
         </table>
     </div>
 
-    <div class="user">
-        <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 " style="background-color: deepskyblue; ">
+    <div class="user" onclick="showuser()">
+        <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
             <tr>
-                <td width="30% " align="center" style="padding: 5px; color: white;">ID:</img>
+                <td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
                 </td>
-                <td width="70% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="userid"></span></td>
+                <td width="70% " align="left" style="padding-right: 10px; "><span
+                        style="color: #5DABB8; margin-left: 0px;" id="username"></span></td>
             </tr>
             <tr>
-                <td width="30% " align="center" style="padding: 5px;color: white; ">账户积分:</img>
+                <td width="30% " align="center" style="padding: 5px;color: #5DABB8; ">账户积分:</img>
                 </td>
-                <td width="70% " align="left" style="padding-right: 10px; "><span style="color: white; " id="token"></span></td>
+                <td width="70% " align="left" style="padding-right: 10px; "><span style="color: #5DABB8; "
+                                                                                  id="token"></span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="width: 100%;height: 3px;background-color: #4B5265;">
+    </div>
+
+    <div class="account">
+        <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 " >
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                </td>
+                <td width="30% " align="left" style="padding: 5px; color: white; ">发布活动数量：</img>
+                </td>
+                <td width="60% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="publishnum"></span></td>
             </tr>
         </table>
     </div>
 
     <div class="join">
         <table class="table">
-            <tbody>
             <tr>
-                <td style="color: white;" onclick="">活动后台</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="account">
-        <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 " style="background-color: deepskyblue; ">
-
-            <tr>
-                <td width="10% " align="center" style="padding: 5px; color: white; ">.</img>
-                </td>
-                <td width="30% " align="left" style="padding: 5px; color: white; ">发布活动数量：</img>
-                </td>
-                <td width="60% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;" id="publishnum"></span></td>
-            </tr>
-            <!--<tr>
-                <td width="10% " align="center" style="padding: 5px; color: white; ">.</img>
-                </td>
-                <td width="40% " align="left" style="padding: 5px; color: white; ">剩余活动数量：</img>
-                </td>
-                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: white; margin-left: 0px;">****</span></td>
-            </tr>-->
-        </table>
-    </div>
-
-    <div class="activity">
-        <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 ">
-            <tr>
-                <td style="color: white;" onclick="">中奖玩家列表</td>
+                <td style="color: white;font-size: 18px;font-family: custom" onclick="">中奖玩家列表</td>
             </tr>
         </table>
     </div>
 
     <div class="list-group" id="winner_group">
-        <!--<a href="#" class="list-group-item">
-            <p class="list-group-item-text">
-                房间名称: <span>123</span>
-            </p>
-            <p class="list-group-item-text">
-                中奖玩家ID: <span>3456</span>
-            </p>
-            <p class="list-group-item-text">
-                中奖玩家地址: <span>上海</span>
-            </p>
-        </a>
-        <a href="#" class="list-group-item">
-            <p class="list-group-item-text">
-                房间名称: <span>123</span>
-            </p>
-            <p class="list-group-item-text">
-                中奖玩家ID: <span>3456</span>
-            </p>
-            <p class="list-group-item-text">
-                中奖玩家地址: <span>上海</span>
-            </p>
-        </a>-->
     </div>
-
-    <!--<div class="bottom">
-        <table width="100% " height="40px " border="0" cellpadding="10" cellspacing="10 ">
-            <tr>
-                <td style="color: white; background-color: goldenrod;width: 40px;"><span style="font-size: 15px;">充值</span></td>
-                <td style="background-color: white; width: 10px;"></td>
-                <td style="color: white;background-color: green;width: 40px;"><span style="font-size: 15px;">提现</span></td>
-            </tr>
-        </table>
-    </div>-->
 
 </div>
 
@@ -190,18 +162,32 @@
                     var data=JSON.parse(dataStr);
                     console.log("data="+data.list);
                     $("#token").html(data.token);
-                    $("#userid").html(data.userid);
+                    $("#username").html(data.username);
                     $("#publishnum").html(data.publishnum);
                     var str ="";
                     $.each(data.list,function (i,a) {
-                        str += "<a href='#' class='list-group-item'>"+
+                      /*  str += "<a href='#' class='list-group-item'>"+
                             "<p class='list-group-item-text'>"+
                             "房间名称: <span>"+a.activityname+"</span>"+
                             "</p>"+
                             "<p class='list-group-item-text'>"+
                             "中奖玩家: <span>"+mask(a.phone,3,6,'*')+"</span>"+
                             "</p>"+
-                            "</a>";
+                            "</a>";*/
+                        //alert(str);
+
+                        str +=
+                            "<table width='100%' height='60px' border='0' cellspacing='0' class='list_item' onclick=''>"+
+                            "<tr>"+
+                            "<td colspan='2' width='100%' align='left' style='padding-left: 15px; color: #FF6B6B;font-family: custom'>" + a.activityname +
+                            "</td>"+
+                            "</tr>"+
+                            "<tr>"+
+                            "<td width='50%'  align='left' style='padding-left: 15px;color: gray; '>"+"中奖玩家:" +mask(a.phone,3,6,'*') +
+                            "</td>"+
+                            "<td width='50%' align='right' style='padding-right: 10px'><span style='color: #5DABB8;id='num'>"+ "</span></td></tr>"+
+                            "<tr><td width='50%' align='left' style='padding-left: 15px;color: gray'>"+""+ "</td>"+
+                            "<td width='50%' align='left'><span style='color: #5DABB8;' id='time'></span></td></tr></table>";
                         //alert(str);
                     })
                     $("#winner_group").html(str);

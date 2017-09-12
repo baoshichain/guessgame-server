@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <title>卡游宝--庄家更改</title>
+    <!--<link rel="stylesheet" type="text/css" href="css/common.css"/>-->
+    <style type="text/css">
+        /* 适配全屏幕高度*/
+        html {
+            height: 100%;
+            width: 100%;
+            background: #5A6378;
+        }
+
+        /* padding-top 控制距离标题距离*/
+        .box {
+            width: 100%;
+            height: 100%;
+            background: #5A6378;
+            margin: auto;
+            padding-top: 46px;
+        }
+
+        .title{
+            font-size: 15pt;
+            color: #9FA7B7;
+            margin-left: 40px;
+            font-family: "Calibri Light";
+        }
+
+        ::-webkit-input-placeholder {
+            color: #949CAC;
+        }
+        /* Mozilla Firefox 4 to 18 */
+
+        :-moz-placeholder {
+            color: #949CAC;
+            opacity: 1;
+        }
+        /* Mozilla Firefox 19+ */
+
+        ::-moz-placeholder {
+            color:#949CAC;
+            opacity: 1;
+        }
+        /* Internet Explorer 10+ */
+
+        :-ms-input-placeholder {
+            color: #949CAC;
+        }
+
+        .input{
+            background-color: #393F4F;
+            margin-top: 10px;
+            width: 80%;
+            height: 40px;
+            padding-left: 20px;
+            border: 0;
+            color: white;
+        }
+
+        .foot{
+/*            background-color:#393F4F ;
+            bottom: 0;
+            position:absolute;
+            left: 0;*/
+            width: 100%;
+            height: 90px;
+            margin-top: 20px;
+        }
+
+        .btn-success {
+            background-color: #4EB7CD;
+            width: 80%;
+            height:40px;
+            margin-left: 0px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 40px;">
+        <table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
+            <tr>
+                <td width="40%" align="left">
+                </td>
+                <td width="60% " align="right" style="padding-right: 10px; ">
+                    <img src="./img/img_logo.png " width="120px " height="35px" style="margin-right: 20px; margin-top: 10px"></img>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h2 class="title">积分更改</h2>
+
+    <div class="content">
+        <table width="100% " height="100%" border="0" cellpadding="" cellspacing="0 ">
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="phone" class='input' id="phone" placeholder="手机"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="city" class='input' id="token" placeholder="积分"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="qq" class='input' id="bond" placeholder="保证金"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="foot">
+        <table width="100% " height="100px" border="0" cellpadding="0 " cellspacing="0 ">
+            <tr>
+                <td width="90%" align="center">
+                    <button type="button" class="btn btn-success" onclick="sure()">确定</button></td>
+                </td>
+            </tr>
+            <tr>
+                <td  width="90% " align="center" style="">
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    function sure() {
+        var bond = $("#bond").val();
+        var token = $("#token").val();
+        var phone = document.getElementById("phone").value;
+        if (phone == "" || bond == "" || token == "") {
+            alert("请确认是否有空缺项！");
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: "/user/admin/update",
+            data: {
+                "phone": phone,
+                "bond": bond,
+                "token": token,
+            },
+            success: function (data) {
+                if (data.code == 200) {
+                    alert("更改成功");
+                }
+                if (data.code == 201) {
+                    alert(data.msg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("error");
+            }
+        });
+    }
+</script>
+</body>
+</html>
+

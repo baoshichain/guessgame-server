@@ -95,6 +95,7 @@ public class UserController {
             userinfo.setUserid(user.getId());
             userinfo.setToken(user.getToken());
             userinfo.setJoinnum(joinNum); //参与活动数目
+            userinfo.setUsername(user.getLoginname());
             List<Userinfo.ActivityofJoin> userinfolist = new ArrayList<>();
 
             List<Map> list = activityService.getUserOfActivity(user.getId());
@@ -178,6 +179,19 @@ public class UserController {
             logger.info("flag="+flag);
             if (flag > 0) return CommonUtil.constructHtmlResponse(200, "注册成功", "ok");
             return CommonUtil.constructHtmlResponse(201, "注册失败", null);
+        }
+    }
+
+    //更改保证金
+    @RequestMapping(value = "/admin/update", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject updateBond(User user) {
+        int index=userService.updateBond(user);
+        logger.info("index="+index);
+       if(index>0){
+            return CommonUtil.constructHtmlResponse(201, "更改成功", null);
+        }else{
+            return CommonUtil.constructHtmlResponse(201, "更改失败", null);
         }
     }
 }
