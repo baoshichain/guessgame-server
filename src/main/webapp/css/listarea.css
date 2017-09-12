@@ -15,9 +15,9 @@ div.addListItem > input{
 }
 
 div.addListItem > .addButton{
-	width:50px; height:23px;
+	width:100px; height:40px;
 	cursor: pointer;
-	background: url('../img/plus.png') no-repeat center;
+	background: url('../img/img_add.png') no-repeat center;
 	float: left;
 }
 
@@ -30,4 +30,8 @@ div.listItemWrap > .deleteButton{
 
 div.listItemWrap{
 	margin-bottom:3px;
+}
+
+div.listItem{
+	color:white;
 }

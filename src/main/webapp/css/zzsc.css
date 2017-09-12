@@ -36,11 +36,12 @@ html, body{
 	color:#444444;font-size:1.2em;
 }
 .formWrap{
-	margin-top:30px;
-	background-color: deepskyblue;
-	padding: 20px 6px;
+	margin-top:0px;
+	margin-left: 20px;
+	margin-right: 20px;
+	background-color: #5A6378;
+	padding: 18px 4px;
 	color: black;
-	border-bottom: 1px solid black;
 }
 input[type="submit"]{
 	padding: 8px 10px;
