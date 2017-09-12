@@ -4,7 +4,7 @@ public class Winner {
 
     private Integer id;
 
-    private Integer userid;
+    private Integer userid; //用户id
 
     private Integer cardid; //中奖卡牌id
 

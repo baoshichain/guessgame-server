@@ -92,13 +92,13 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
     <insert id="insertWinner" parameterType="org.baoshichain.guessgame.entity.Winner">
-    insert into tb_winner (userId, activityId,cardid, flag)
-    values ( #{userId,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER},#{cardid,jdbcType=INTEGER},#{flag,jdbcType=INTEGER})
+    insert into tb_winner (userId, activityId,cardId, flag)
+    values ( #{userid,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER},#{cardid,jdbcType=INTEGER},#{flag,jdbcType=INTEGER})
   </insert>
 
     <select id="getWinnerList" resultType="java.util.Map">
-select a.flag, a.userId,b.activityname,c.phone from tb_winner a LEFT JOIN tb_activity b ON a.activityId=b.id
-LEFT JOIN tb_user c ON a.userId=c.id;
+select a.flag, a.userid,b.activityname,c.phone from tb_winner a LEFT JOIN tb_activity b ON a.activityid=b.id
+LEFT JOIN tb_user c ON a.userid=c.id;
   </select>
 
 </mapper>

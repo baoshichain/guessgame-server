@@ -149,6 +149,7 @@ public class ActivityController {
             DrawluckResult drawluckResult = new DrawluckResult();
             drawluckResult.setToken(newuser.getToken()); //用户积分
             drawluckResult.setUserId(user.getId()); //用户id
+            drawluckResult.setUsername(user.getLoginname());
             //创建随机数
             Random rand = new Random();
             int result = rand.nextInt(100);
