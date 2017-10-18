@@ -249,23 +249,26 @@
     </select>
 
     <!--查询所有的开奖房间-->
-    <select id="selectAllLotteryActivity" resultMap="BaseResultMap">
+    <select id="selectAllLotteryActivity" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from tb_activity
-        where `type` = 1
+        <where>
+            `type`=#{type}
+        </where>
     </select>
 
     <!--selectAllLotteryActivityInfo-->
     <!--查询所有开奖房间的信息，包括卡片信息，参与人数-->
     <select id="selectAllLotteryActivityInfo" resultType="java.util.HashMap">
-    SELECT tb_activity.id,tb_activity.activityname,tb_activity.startBlock,tb_activity.`describe`,tb_activity.endBlock,tb_card.price,count(tb_userofactivity.userid) as membernum
+    SELECT tb_activity.id,tb_activity.activityname,tb_activity.endBlock,`token`,tb_card.price,`num`,`limitMax`,count(tb_userofactivity.userid) as membernum
     FROM tb_activity LEFT JOIN tb_userofactivity
     ON tb_activity.id = tb_userofactivity.activityid
     LEFT JOIN tb_activityofcard
     ON tb_activity.id = tb_activityofcard.activityid
     LEFT JOIN tb_card
     ON tb_activityofcard.cardid = tb_card.id
+        WHERE tb_activity.type='1'
     GROUP BY tb_activity.id
   </select>
 

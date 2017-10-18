@@ -32,6 +32,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -49,15 +50,15 @@ public class GameController {
 
     @RequestMapping("/ethlottery/add")
     @ResponseBody
-    private JSONObject addActivity(EthActivity ethActivity, HttpSession session){
+    private JSONObject addActivity(EthActivity ethActivity, HttpSession session) throws InterruptedException, ExecutionException, CipherException, IOException {
         User user = (User)session.getAttribute("user");
-        System.out.println(user.toString());
-        //���ж��û��Ƿ��Ѿ����ɱ�֤��
+        //先判断用户是否已经缴纳保证金
+        System.out.println("bond:"+user.getBond());
         if(Integer.parseInt(user.getBond()) < 100){
-            return CommonUtil.constructHtmlResponse(301,"���ɽ���",null);
+            return CommonUtil.constructHtmlResponse(301,"缴纳金不足",null);
         }
-        //�����û��ύ�Ŀ�������ύ���룩
-        //����activity
+        //处理用户提交的开房（活动提交申请）
+        //构造activity
         Activity activity = new Activity();
         activity.setActivityname(ethActivity.getActivityName());
         activity.setToken(ethActivity.getToken());
@@ -66,139 +67,64 @@ public class GameController {
         activity.setDescribe(ethActivity.getActivityDescribe());
         activity.setEndblock(ethActivity.getBlockTime());
         activity.setUserid(((User) session.getAttribute("user")).getId());
-        //����card
+        //构造card
         Card card = new Card();
         card.setName(ethActivity.getCardName());
         card.setPrice(ethActivity.getCardPrice());
         card.setDiscribe(ethActivity.getCardDescribe());
-        //�ύ
+        activity.setFlag(0);
+        activity.setType("1");
+        activity.setNum(activity.getLimitmax());
+        //提交
         int activityId = activityService.addEthActivityInfo(activity,card);
         if(activityId < 1){
-            return CommonUtil.constructHtmlResponse(301,"����ʧ��",null);
+            return CommonUtil.constructHtmlResponse(301,"操作失败",null);
         }
-        return CommonUtil.constructHtmlResponse(200,"��Ϣ�Ѿ��ύ�����Ժ�鿴",null);
+        return CommonUtil.constructHtmlResponse(200,"信息已经提交，请稍后查看",null);
     }
 
 
 
     @RequestMapping("/ethlottery/list")
     @ResponseBody
-    private JSONObject ethActivityList(){
-        List<EthRoom> ethRooms = activityService.selectAllLotteryActivityInfo();
+    private JSONObject ethActivityList() throws IOException {
+        List<Map> ethRooms = activityService.selectAllLotteryActivityInfo();
         return CommonUtil.constructHtmlResponse(200,"ok",ethRooms);
     }
 
     @RequestMapping(value = "/ethlottery/detail")
     @ResponseBody
-    public JSONObject ethActivityDetail(String id,HttpSession session){
+    public JSONObject ethActivityDetail(String id,HttpSession session) throws CipherException {
 
-        //��ѯ������ϸ��Ϣ
+        //查询房间详细信息
         EthRoom ethRoom = activityService.selectLotteryActivityInfoByActivityId(id);
-        //��鷿���״̬
+        //检查房间的状态
         int status = activityService.checkActivityStatus(id);
-        //������Ѿ������ķ���
-        if(status == -1) return CommonUtil.constructHtmlResponse(300,"-1",ethRoom);//�÷����Ѿ�������
-        if(status == 1)  return CommonUtil.constructHtmlResponse(200,"1",ethRoom);//����״̬���û����������һ�л
-        if(status == 2) return CommonUtil.constructHtmlResponse(301,"2",ethRoom);//������״̬���Ҹ÷��䱻�����ˣ��û�Ҳ���������������
-        if(status == 3) return CommonUtil.constructHtmlResponse(301,"3",ethRoom);//������״̬���Ҹ÷�����Ϊ�������������������˿�û�Ҳ���������������
-        if(status == -2) return CommonUtil.constructHtmlResponse(301,"-2",ethRoom);//������״̬����������
+        //如果是已经结束的房间
+        if(status == -1) return CommonUtil.constructHtmlResponse(300,"-1",ethRoom);//该房间已经被开奖
+        if(status == 1)  return CommonUtil.constructHtmlResponse(200,"1",ethRoom);//正常状态，用户将允许进行一切活动
+        if(status == 2) return CommonUtil.constructHtmlResponse(301,"2",ethRoom);//更新了状态，且该房间被开奖了，用户也将不允许继续参与
+        if(status == 3) return CommonUtil.constructHtmlResponse(301,"3",ethRoom);//更新了状态，且该房间因为参与人数不够，所以退款，用户也将不允许继续参与
+        if(status == -2) return CommonUtil.constructHtmlResponse(301,"-2",ethRoom);//非正常状态，发生错误
         return CommonUtil.constructHtmlResponse(301,"err",null);
     }
 
     @RequestMapping("/ethlottery/join")
     @ResponseBody
-    private JSONObject joinActivity(String id, String value, HttpSession session){
+    private JSONObject joinActivity(String id, String value, HttpSession session) throws Exception {
         System.out.println("control value:"+value);
         /*String id,String value,String phone, String userId*/
         User user = (User) session.getAttribute("user");
         int result = activityService.joinLotteryActivity(id, value, user.getPhone(), user.getId().toString());
         if(result == -1){
-            return CommonUtil.constructHtmlResponse(301,"����",null);
+            return CommonUtil.constructHtmlResponse(301,"余额不足",null);
         }
         if (result == 1){
-            return CommonUtil.constructHtmlResponse(200,"�ɹ�",null);
+            return CommonUtil.constructHtmlResponse(200,"成功",null);
         }
-        return CommonUtil.constructHtmlResponse(302,"����",null);
+        return CommonUtil.constructHtmlResponse(302,"错误",null);
     }
 
 
 
-    @RequestMapping("/lottery/finish")
-    private String finishActivity(){
-      /*  //test
-        Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.getResult(new Uint256(2));
-        try {
-            System.out.println(transactionReceiptFuture.get().getTransactionHash());
-            return transactionReceiptFuture.get().getTransactionHash();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }*/
-        return null;
-    }
-
-
-
-    @RequestMapping("/lottery/address")
-    private String getGameAddress(){
-        //test
-/*        Future<Address> transactionReceiptFuture = guessGameContract.gameMap(new Uint256(2));
-        String address = null;
-        try {
-            address = Numeric.toHexString(transactionReceiptFuture.get().getValue().toByteArray());
-            System.out.println("address:"+address);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }*/
-        return null;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-/*  @Autowired
-  private BookService bookService;*/
-
-/*  @RequestMapping(value = "/list", method = RequestMethod.GET)
-  private String list(Model model) {
-    List<Book> list = bookService.getList(0, 1000);
-    model.addAttribute("list", list);
-    return "list";// WEB-INF/jsp/"list".jsp
-  }
-
-  @RequestMapping(value = "/detail/{bookId}", method = RequestMethod.GET)
-  private String detail(@PathVariable("bookId") Long bookId, Model model) {
-    Book book = bookService.getById(bookId);
-    model.addAttribute("book", book);
-    return "detail";
-  }
-
-  @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-  @ResponseBody
-  private String add(Book book) {
-    Book hasBook = bookService.getById(book.getBookId());
-    int i = -2;
-    if (hasBook == null) {
-      i = bookService.addBook(book);
-    }
-    return i > 0 ? "success" : "error";
-  }
-
-  @RequestMapping(value = "/del/{bookId}", method = RequestMethod.GET)
-  @ResponseBody
-  private String deleteBookById(@PathVariable("bookId") Long id) {
-    int i = bookService.deleteBookById(id);
-    return i > 0 ? "success" : "error";
-  }*/
 }

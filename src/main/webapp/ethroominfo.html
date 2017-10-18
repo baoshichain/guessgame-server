@@ -162,7 +162,7 @@
     <div>
         <table width="100% " height="100%" border="0" cellspacing="0 " style="background-color: white;height: 40px;margin-top: 10px">
             <tr>
-                <td width="100% " align="center"><span style="color: #FF6B6B; font-family: custom;font-size: 18px" id="roomname">房间名称3</span>
+                <td width="100% " align="center"><span style="color: #FF6B6B; font-family: custom;font-size: 18px" id="room_name">房间名称3</span>
                 </td>
             </tr>
         </table>
@@ -175,16 +175,16 @@
             <tr>
                 <td width="10% " align="center" style="padding: 5px; color: white; "></img>
                 </td>
-                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">房间中奖几率:</img>
+                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom " id="">房间价值:</img>
                 </td>
-                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="rate"></span></td>
+                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="room_price"></span></td>
             </tr>
             <tr>
                 <td width="10% " align="center" style="padding: 5px; color: white; "></img>
                 </td>
-                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">房间剩余卡牌：</img>
+                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">剩余时间（块）：</img>
                 </td>
-                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="num"></span></td>
+                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="room_block"></span></td>
             </tr>
             <tr>
                 <td width="10% " align="center" style="padding: 5px; color: white; "></img>
@@ -202,7 +202,7 @@
                 <td width="10% " align="center" style="padding: 5px; color: white; ">
                 </td>
                 <td width="90% " align="" style="padding: 5px;color: #818794; ">
-                    <span style="color: #818794;width: 100%;height: 100%;font-family: custom" id="des"></span>
+                    <span style="color: #818794;width: 100%;height: 100%;font-family: custom" id="room_des"></span>
                 </td>
                 <td></td>
             </tr>
@@ -211,14 +211,14 @@
 
     <div style="height: 2px;width: 100%;background-color: #F2F4F8"></div>
 
-    <div class="join">
+    <div class="join" id="join">
         <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 ">
             <tr>
                 <td width="35% " align="center" style="padding: 5px; color: white; ">
-                    <span style="color: #4EB7CD;font-family: custom" id="price"></span>
+                    <input type="text" class="form-control" id="inputvalue" placeholder="请输入投入数量">
                 </td>
                 <td width="65% " align="" style="padding: 5px;color: #818794; ">
-                    <button type="button" class="btn" onclick="join()">点击抽奖</button>
+                    <button type="button" class="btn" onclick="joinGame()">点击抽奖</button>
                 </td>
             </tr>
         </table>
@@ -230,10 +230,12 @@
 
 <script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
 <script type="text/javascript ">
+
+
     var rate = null;
-    var activityid = null;
+   // var activityid = null;
     $(document).ready(function () {
-        var url = location.search; //获取url中"?"符后的字串
+        var url = location.search;
         var theRequest = new Object();
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
@@ -241,31 +243,31 @@
             for (var i = 0; i < strs.length; i++) {
                 theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
             }
-
-        //alert(theRequest.activityid);
-        activityid = theRequest.activityid;
+        }
+        activityid = theRequest.id;
         $.ajax({
             type: 'POST',
-            url: "/activity/roominfo/drawluck",
+            url: "/activity/ethlottery/detail",
             data: {
-                "activityid": theRequest.activityid
+                "id": activityid
             },
-            success: function (data) {
-                if (data.code == 200) {
-                    dataStr = JSON.stringify(data.data);
-                    var data = JSON.parse(dataStr);
-                    console.log("data=" + data.userId);
-                    $("#token").html(data.token);
-                    $("#username").html(data.username);
-                    $("#roomname").html(data.roomname);
-                    $("#price").html("价值:"+data.roomprice);
-                    $("#rate").html(data.rate + "%");
-                    $("#num").html(data.num);
-                    $("#des").html(data.des);
-                    rate = data.rate;
-                }
-                if (data.code == 201) {
-                    alert(data.msg);
+            success: function (rs) {
+                //if (rs.code == 200) {
+                    //alert("ok");
+                    dataStr = JSON.stringify(rs.data);
+                    dataArr = JSON.parse(dataStr);
+                    $("#room_name").html(dataArr["activityName"]);
+                    $("#room_block").html(dataArr["endBlock"]-dataArr["nowBlock"]);
+                    //$("#room_price").html(dataArr["cardPrice"]);
+                    $("#room_price").html(dataArr["cardPrice"]);
+                    $("#room_des").html(dataArr["describe"]);
+               // }
+                if (rs.code == 200) {
+                    //alert(rs.msg);
+                }else{
+                    $("#join").hide();
+                    alert("活动已经结束");
+                    alert(rs.msg);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -273,41 +275,44 @@
         });
     });
 
-    function back() {
-        window.history.go(-1);
-    }
-
-    function join() {
-        //alert("activityid="+activityid);
-        //查询当前房间卡牌剩余数量，是否已经停止活动了
+    function joinGame(){
+        inputvalue = $("#inputvalue").val();
         $.ajax({
             type: 'POST',
-            url: "/activity/roominfo/cardnum",
+            url: "/activity/ethlottery/join",
             data: {
-                "activityid": activityid
+                "id":activityid,
+                "value":$("#inputvalue").val()
             },
-            success: function (data) {
-                if (data.code == 200) {
-                    //alert(data.msg);
-                    //dataStr=JSON.stringify(data.data);
-                    //var data=JSON.parse(dataStr);
-                    //console.log("data="+data.userId);
-                    window.location.href = "right.html?rate=" + rate + "&activityid=" + activityid;
-                }
-                if (data.code == 201) {
-                    alert(data.msg);
-                    return false;
+            beforeSend: function () {
+                $("#btn_submit").attr("disabled", true);
+            },
+            complete: function () {
+                $("#btn_submit").attr("disabled", false);
+                //HiddenDiv();
+            },
+            success: function (rs) {
+                if (rs.code == 200) {
+                    alert(rs.msg);
+                    location.href="ethroominfo.html?id="+activityid;
+                }else{
+                    alert(rs.msg);
                 }
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error:function (XMLHttpRequest, textStatus, errorThrown) {
+
             }
         });
+    }
+
+
+    function back() {
+        window.history.go(-1);
     }
 
     function showuser() {
         window.location.href = "userinfo.html"
     }
-
 </script>
 </body>
 

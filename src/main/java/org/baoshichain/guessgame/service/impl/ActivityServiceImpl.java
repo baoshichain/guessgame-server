@@ -11,6 +11,9 @@ import org.baoshichain.guessgame.entity.Card;
 import org.baoshichain.guessgame.entity.User;
 import org.baoshichain.guessgame.service.ActivityService;
 import org.baoshichain.guessgame.util.TimerUtil;
+import org.baoshichain.guessgame.util.WalletUtil;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.baoshichain.guessgame.service.UserService;
 import org.slf4j.Logger;
@@ -18,11 +21,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.web3j.abi.FunctionEncoder;
+import org.web3j.abi.TypeReference;
+import org.web3j.abi.datatypes.Address;
+import org.web3j.abi.datatypes.Function;
+import org.web3j.abi.datatypes.Type;
+import org.web3j.abi.datatypes.Uint;
 import org.web3j.abi.datatypes.generated.Uint256;
-import org.web3j.crypto.CipherException;
-import org.web3j.crypto.Credentials;
-import org.web3j.crypto.WalletUtils;
+import org.web3j.crypto.*;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.methods.request.RawTransaction;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 
@@ -34,15 +42,13 @@ import org.baoshichain.guessgame.bean.EthRoom;
 import org.baoshichain.guessgame.contract.Game;
 import org.baoshichain.guessgame.dao.*;
 import org.baoshichain.guessgame.entity.*;
+import org.web3j.utils.Numeric;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.HashMap;
+
 @Service
 public class ActivityServiceImpl implements ActivityService {
 
@@ -66,10 +72,11 @@ public class ActivityServiceImpl implements ActivityService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     //ResourceBundle resource = null;
-    String ethUrl = "http://192.168.132.133:8545";
-    String gameAddress = "0x83f50B60Cf76BDe819e4cc1dF6b5d4f16D55CAf8";
+    String ethUrl = "http://https://ropsten.infura.io:8545";
+    String gameAddress = "0xe3b7c9d2dc7819b73bf64a982e3d0d8afdb2390d";
     String adminPassword = "123";
-    String keystorePath = "D:/workspace/baoshichain/src/main/resources/UTC--2017-07-26T10-38-48.569288272Z--e559eddf4367634912316d71d4f0b52766c64a79";
+    String keystorePath = "C:/Users/think/Desktop/key";
+    String adminAddress = "0xe559eddf4367634912316d71d4f0b52766c64a79";
     BigInteger GAS_PRICE = BigInteger.valueOf(20_000_000_000L);
     BigInteger GAS_LIMIT = BigInteger.valueOf(4_700_000);
     Web3j web3 = null;
@@ -219,16 +226,10 @@ public class ActivityServiceImpl implements ActivityService {
         return activityDao.getUserOfActivity(userid);
     }
 
-  /*  @Override
-    public List<Activity> selectByUserId(int userId) {
-        return null;//activityDao.selectByUserId(userId);
-    }*/
 	
-	 @Override
+    @Override
     @Transactional
-    public int addEthActivityInfo(Activity activity, Card card) {
-        activity.setFlag(0);
-        activity.setNum(activity.getLimitmax());
+    public int addEthActivityInfo(Activity activity, Card card) throws ExecutionException, InterruptedException, IOException, CipherException {
         int activityResult = activityDao.insert(activity);
         int cardResult = cardDao.insert(card);
         int activityId = activity.getId();
@@ -236,54 +237,37 @@ public class ActivityServiceImpl implements ActivityService {
         ActivityOfCard aoc = new ActivityOfCard();
         aoc.setCardid(cardId);
         aoc.setActivityid(activityId);
-        activityOfCardDao.insert(aoc);
-
-
+        activityOfCardDao.insert(aoc);//至此，所有插入已经完成
+        String txHash = "";
         //写入区块链
-        //1.新建一个合约，返回合约地址
-        Future<TransactionReceipt> newGameReceipt = guessGameContract.newGame(new Uint256(activityId), new Uint256(Integer.parseInt(activity.getLimitmax())), new Uint256(Integer.parseInt(activity.getLimitmin())));
-        try {
-            String transactionHash = newGameReceipt.get().getTransactionHash();
-            System.out.println(transactionHash);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        //1.新建一个游戏，返回合约地址
+        BigInteger nonce = WalletUtil.getNonce(WalletUtil.getWeb3jInstance(),adminAddress);
+        Function function = new Function("newGame",
+                Arrays.<Type>asList(new Uint256(activityId),new Uint256(new BigInteger(activity.getLimitmax())),new Uint256(new BigInteger(activity.getLimitmin())),new Uint256(new BigInteger(activity.getEndblock()))),
+                Collections.<TypeReference<?>>emptyList()
+                );
+        String encodedFunction = FunctionEncoder.encode(function);
+        RawTransaction rawTransaction = RawTransaction.createTransaction(nonce,GAS_PRICE,GAS_LIMIT,gameAddress,encodedFunction);
+        credentials = WalletUtils.loadCredentials(adminPassword,keystorePath);
+        byte[] signed = TransactionEncoder.signMessage(rawTransaction,credentials);
+        String hexValue = Numeric.toHexString(signed);
+        String resultStr = WalletUtil.eth_sendRawTransaction(hexValue);
+         ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readTree(resultStr);
+        if(jsonNode.has("error")){
             return 0;
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-            return 0;
-        }
-        //2.开始游戏
-        Future<TransactionReceipt> startGameReceipt = guessGameContract.startGame(new Uint256(activityId), new Uint256(new BigInteger(activity.getEndblock())));
-        try {
-            String transactionHash2 = startGameReceipt.get().getTransactionHash();
-            System.out.println(transactionHash2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return 0;
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-            return 0;
+
+        }else{
+            txHash = jsonNode.get("result").asText();
         }
         //3.再写数据库
-        try {
-            String nowBlock = web3.ethBlockNumber().send().getBlockNumber().toString();
-            int startBlock = Integer.parseInt(startGameReceipt.get().getBlockNumber().toString());
-            int endBlock = startBlock +  Integer.parseInt(activity.getEndblock());
-            Activity act = new Activity();
-            act.setId(activityId);
-            act.setStartblock(String.valueOf(startBlock));
-            act.setEndblock(String.valueOf(endBlock));
-            //act.setNum(String.valueOf(endBlock));
-            activityDao.updateByPrimaryKeySelective(act);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-
+        int startBlock = Integer.parseInt(WalletUtil.getLocalBlockNumber());
+        int endBlock = startBlock +  Integer.parseInt(activity.getEndblock());
+        Activity act = new Activity();
+        act.setId(activityId);
+        act.setStartblock(String.valueOf(startBlock));
+        act.setEndblock(String.valueOf(endBlock));
+        activityDao.updateByPrimaryKeySelective(act);
         return activityId;
     }
 
@@ -293,27 +277,10 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<EthRoom> selectAllLotteryActivityInfo() {
+    public List<Map> selectAllLotteryActivityInfo() throws IOException {
         List<Map> dataMaps = activityDao.selectAllLotteryActivityInfo();
-        List<EthRoom> dataList = new ArrayList<EthRoom>();
-        for (int i = 0; i < dataMaps.size(); i++) {
-            EthRoom er = new EthRoom();
-            er.setActivityId(String.valueOf(dataMaps.get(i).get("id")));
-            er.setActivityName((String) dataMaps.get(i).get("activityname"));
-            er.setCardPrice((String) dataMaps.get(i).get("price"));
-            er.setActivityMembersNum(String.valueOf(dataMaps.get(i).get("membernum")));
-            er.setStartBlock((String) dataMaps.get(i).get("startBlock"));
-            er.setEndBlock((String) dataMaps.get(i).get("endBlock"));
-            try {
-                er.setNowBlock(web3.ethBlockNumber().send().getBlockNumber().toString());
-            } catch (IOException e) {
-                e.printStackTrace();
-                er.setNowBlock("0");
-                return null;
-            }
-            dataList.add(er);
-        }
-        return dataList;
+        String nowBlock = WalletUtil.getLocalBlockNumber();
+        return dataMaps;
     }
 
     @Override
@@ -328,7 +295,7 @@ public class ActivityServiceImpl implements ActivityService {
         er.setEndBlock((String) dataMap.get("endBlock"));
         er.setDescribe((String) dataMap.get("describe"));
         try {
-            er.setNowBlock(web3.ethBlockNumber().send().getBlockNumber().toString());
+            er.setNowBlock(WalletUtil.getLocalBlockNumber());
         } catch (IOException e) {
             e.printStackTrace();
             er.setNowBlock("0");
@@ -340,7 +307,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     @Transactional
-    public int joinLotteryActivity(String id, String value, String phone, String userId) {
+    public int joinLotteryActivity(String id, String value, String phone, String userId) throws Exception {
         int result = 0;
         try {
             //1.先判断钱够不够
@@ -351,7 +318,7 @@ public class ActivityServiceImpl implements ActivityService {
                 return -1;
             }
             //2.先判断时间有没有过
-            int nowBlock = Integer.parseInt(web3.ethBlockNumber().send().getBlockNumber().toString());
+            int nowBlock = Integer.parseInt(WalletUtil.getLocalBlockNumber());
             int endBlock = Integer.parseInt(activityDao.selectByPrimaryKey(Integer.parseInt(id)).getEndblock()) ;
             if (nowBlock > endBlock) {
                 System.out.println("时间已经过了");
@@ -364,6 +331,28 @@ public class ActivityServiceImpl implements ActivityService {
                 System.out.println("无票可投");
                 return 0;
             }
+
+            //先写入区块链
+            BigInteger nonce = WalletUtil.getNonce(WalletUtil.getWeb3jInstance(),adminAddress);
+            Function function = new Function("joinGame",
+                    Arrays.<Type>asList(new Uint(new BigInteger(id)),new Uint256(new BigInteger(phone)),new Uint256(new BigInteger(value))),
+                    Collections.<TypeReference<?>>emptyList()
+            );
+            String encodedFunction = FunctionEncoder.encode(function);
+            RawTransaction rawTransaction = RawTransaction.createTransaction(nonce,GAS_PRICE,GAS_LIMIT,gameAddress,encodedFunction);
+            credentials = WalletUtils.loadCredentials(adminPassword,keystorePath);
+            byte[] signed = TransactionEncoder.signMessage(rawTransaction,credentials);
+            String hexValue = Numeric.toHexString(signed);
+            String resultStr = WalletUtil.eth_sendRawTransaction(hexValue);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonNode = mapper.readTree(resultStr);
+            String txHash = "";
+            if(jsonNode.has("error")){
+                throw new Exception("could not get new blocknum");
+            }else{
+                txHash = jsonNode.get("result").asText();
+            }
+            System.out.println(txHash);
             //4.写入数据库
             int spend = Integer.parseInt(value) * Integer.parseInt(activity.getToken());
             int balance = user.getToken() - spend;
@@ -381,10 +370,7 @@ public class ActivityServiceImpl implements ActivityService {
             activity.setNum(String.valueOf(balanceticket));
             System.out.println(activity.toString());
             activityDao.updateByPrimaryKeySelective(activity);
-            //5.再写入区块链
-            Future<TransactionReceipt> transactionReceiptFuture = guessGameContract.joinGame(new Uint256(new BigInteger(id)), new Uint256(new BigInteger(phone)), new Uint256(new BigInteger(value)));
-            String transactionHash = transactionReceiptFuture.get().getTransactionHash();
-            System.out.println(transactionHash);
+
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("err");
@@ -403,14 +389,14 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     @Transactional
-    public int checkActivityStatus(String id) {
+    public int checkActivityStatus(String id) throws CipherException {
         try {
             //1.检查房间状态，如果flag=1，表示该房间已经处理，直接放回
             Activity activity = activityDao.selectByPrimaryKey(Integer.parseInt(id));
             int flag = activity.getFlag();
             if (flag == 1) return -1;//房间已经处理
             //2.房间没有处理，检查房间是否已经过期
-            int nowBlock = Integer.parseInt(web3.ethBlockNumber().send().getBlockNumber().toString());
+            int nowBlock = Integer.parseInt(WalletUtil.getLocalBlockNumber());
             int endblock = Integer.parseInt(activity.getEndblock());
             //3.如果房间没过，则返回1，让用户继续参与抽奖
             System.out.println("endBlock:"+endblock);
@@ -420,21 +406,51 @@ public class ActivityServiceImpl implements ActivityService {
                 //4，如果房间过了，判断是否满足开奖的条件，如果满足，则开奖，区块链跑出结果，将其写入数据库，并修改数据库中activity表的flag状态
                 int sellNum = Integer.parseInt(activity.getLimitmax()) - Integer.parseInt(activity.getNum());
                 //满足开奖
-                if (sellNum > Integer.parseInt(activity.getLimitmin())) {
-                    //5.首先把区块链进行开奖
-                    TransactionReceipt transactionReceipt = guessGameContract.getResult(new Uint256(new BigInteger(id))).get();
-                    String result = guessGameContract.gameRewards(new Uint256(new BigInteger(id))).get().getValue().toString();
-                    System.out.println("开奖结果:" + result);
-                    //6.将结果写入到区块链中
-                    User user = userDao.selectByPhone(result);
+                //首先尝试读取，看是否已经运行result方法
+                Function function = new Function("gameRewards",
+                        Arrays.<Type>asList(new Uint256(new BigInteger(id))),
+                        Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {})
+                );
+                String encodedFunction = FunctionEncoder.encode(function);
+                String rewardPhone = WalletUtil.getReward(encodedFunction);
+                System.out.println("rewardPhone:"+rewardPhone);
+                if(Long.parseLong(rewardPhone)>0){
+                    User user = userDao.selectByPhone(rewardPhone);
                     int rewardId = user.getId();
                     Winner winner = new Winner();
                     winner.setActivityid(Integer.parseInt(id));
                     winner.setUserid(rewardId);
+
                     winnerDao.insert(winner);
                     activity.setFlag(1);
                     activityDao.updateByPrimaryKeySelective(activity);
                     return 2;//新做出了修改，用户可以看到开奖信息了，同时不允许参加
+                }
+                System.out.println(rewardPhone);
+                if (sellNum > Integer.parseInt(activity.getLimitmin())) {
+                    //5.首先把区块链进行开奖
+                    Function function2 = new Function("getResult",
+                            Arrays.<Type>asList(new Uint256(new BigInteger(id))),
+                            Collections.<TypeReference<?>>emptyList()
+                    );
+                    String encodedFunction2 = FunctionEncoder.encode(function);
+                    BigInteger nonce = WalletUtil.getNonce(WalletUtil.getWeb3jInstance(),adminAddress);
+                    RawTransaction rawTransaction = RawTransaction.createTransaction(nonce,GAS_PRICE,GAS_LIMIT,gameAddress,encodedFunction);
+                    credentials = WalletUtils.loadCredentials(adminPassword,keystorePath);
+                    byte[] signed = TransactionEncoder.signMessage(rawTransaction,credentials);
+                    String hexValue = Numeric.toHexString(signed);
+                    String resultStr = WalletUtil.eth_sendRawTransaction(hexValue);
+                    ObjectMapper mapper = new ObjectMapper();
+                    JsonNode jsonNode = mapper.readTree(resultStr);
+                    String txHash = "";
+                    if(jsonNode.has("error")){
+                        return 0;
+                    }else{
+                        txHash = jsonNode.get("result").asText();
+                    }
+                    System.out.println("开奖Hash:" + txHash);
+                    //6.将结果写入到区块链中
+
                 } else {
                     //不满足就退钱
                     //循环查询
@@ -445,6 +461,7 @@ public class ActivityServiceImpl implements ActivityService {
                         int finalToken = Integer.parseInt(uoa.getFlag())*Integer.parseInt(activity.getToken())+user.getToken();
                         user.setToken(finalToken);
                         userDao.updateByPrimaryKey(user);
+                        System.out.println("退钱成功");
                     }
                     //设置activityflag
                     activity.setFlag(1);

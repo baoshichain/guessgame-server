@@ -5,9 +5,13 @@ import org.baoshichain.guessgame.entity.Activity;
 import org.baoshichain.guessgame.entity.User;
 import org.baoshichain.guessgame.entity.Card;
 import org.baoshichain.guessgame.bean.EthRoom;
+import org.web3j.crypto.CipherException;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public interface ActivityService {
     int deleteByPrimaryKey(Integer id);
@@ -38,15 +42,15 @@ public interface ActivityService {
 
     List<Map> getUserOfActivity(int userid);
 	
-	 int addEthActivityInfo(Activity activity, Card card);
+	 int addEthActivityInfo(Activity activity, Card card) throws ExecutionException, InterruptedException, IOException, CipherException;
 
     List<Activity> selectAlllotteryActivity();
 
-    List<EthRoom> selectAllLotteryActivityInfo();
+    public List<Map> selectAllLotteryActivityInfo() throws IOException;
 
     EthRoom selectLotteryActivityInfoByActivityId(String id);
 
-    int joinLotteryActivity(String id,String value,String phone, String userId);
+    int joinLotteryActivity(String id,String value,String phone, String userId) throws Exception;
 
-    int checkActivityStatus(String id);
+    int checkActivityStatus(String id) throws CipherException;
 }
