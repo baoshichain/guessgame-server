@@ -7,28 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32287dc9-4c36-4d7c-bda0-c3c345f9f563" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/contract/DeployContract.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/util/WalletUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ethroominfo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/kjroom.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/guessgame-server.iml" afterPath="$PROJECT_DIR$/guessgame-server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/main.html" afterPath="$PROJECT_DIR$/src/main/webapp/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/roominfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/roominfo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/org/baoshichain/guessgame/test/CommonTest.java" afterPath="$PROJECT_DIR$/src/test/org/baoshichain/guessgame/test/CommonTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,8 +36,8 @@
       <file leaf-file-name="ActivityServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4864">
-              <caret line="327" column="41" lean-forward="false" selection-start-line="327" selection-start-column="41" selection-end-line="327" selection-end-column="41" />
+            <state relative-caret-position="423">
+              <caret line="281" column="10" lean-forward="false" selection-start-line="281" selection-start-column="10" selection-end-line="281" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -135,25 +116,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9842">
-              <caret line="518" column="35" lean-forward="false" selection-start-line="518" selection-start-column="35" selection-end-line="518" selection-end-column="35" />
+            <state relative-caret-position="3831">
+              <caret line="418" column="21" lean-forward="false" selection-start-line="418" selection-start-column="12" selection-end-line="418" selection-end-column="21" />
               <folding>
-                <marker date="1508329926367" expanded="true" signature="18072:18126" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="18331:18363" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="18496:18515" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="18530:18548" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="18660:18690" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="18799:18814" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="22244:22298" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="22578:22610" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="22815:22835" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="22852:22868" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="23284:23315" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="23492:23496" ph="..." />
-                <marker date="1508329926367" expanded="true" signature="23511:23527" ph="..." />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1508382994709" expanded="true" signature="18101:18155" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="18360:18392" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="18525:18544" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="18559:18577" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="18689:18719" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="18828:18843" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="20568:20622" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="20918:20950" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="21163:21183" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="21200:21216" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="21652:21683" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="21868:21872" ph="..." />
+                <marker date="1508382994709" expanded="true" signature="21887:21903" ph="..." />
               </folding>
             </state>
           </provider>
@@ -179,11 +173,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kjroom.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="kjroom.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/kjroom.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="278" column="24" lean-forward="false" selection-start-line="278" selection-start-column="24" selection-end-line="278" selection-end-column="24" />
+            <state relative-caret-position="4313">
+              <caret line="287" column="14" lean-forward="true" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#7;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#1;n#tr#7;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -215,10 +209,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>kj</find>
-      <find>ks</find>
-      <find>data</find>
-      <find>addEthActivityInfo</find>
       <find>room_spend</find>
       <find>selectLotteryActivityInfoByActivityId</find>
       <find>room_price</find>
@@ -245,6 +235,10 @@
       <find>activityDescribe</find>
       <find>activityName</find>
       <find>blockTime</find>
+      <find>credentials</find>
+      <find>用户</find>
+      <find>账户积分</find>
+      <find>getkjRoom</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -268,10 +262,10 @@
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/util/WalletUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/main.html" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/GameController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/kjroom.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/main.html" />
       </list>
     </option>
   </component>
@@ -289,9 +283,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="605" />
-    <option name="y" value="76" />
-    <option name="width" value="1932" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -333,8 +327,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1371,15 +1365,16 @@
       <workItem from="1508137436186" duration="19088000" />
       <workItem from="1508228911283" duration="2928000" />
       <workItem from="1508304736316" duration="13243000" />
-      <workItem from="1508333471864" duration="81000" />
+      <workItem from="1508333471864" duration="486000" />
+      <workItem from="1508381481972" duration="1881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56156000" />
+    <option name="totallyTimeSpent" value="58442000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="605" y="76" width="1932" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1396,15 +1391,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31019524" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31019524" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27457264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2771855" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1412,7 +1408,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1614,7 +1609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4864">
           <caret line="256" column="38" lean-forward="false" selection-start-line="256" selection-start-column="38" selection-end-line="256" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1657,7 +1651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
           <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1700,7 +1693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-779">
           <caret line="145" column="47" lean-forward="false" selection-start-line="145" selection-start-column="47" selection-end-line="145" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1788,36 +1780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9842">
-          <caret line="518" column="35" lean-forward="false" selection-start-line="518" selection-start-column="35" selection-end-line="518" selection-end-column="35" />
-          <folding>
-            <marker date="1508329926367" expanded="true" signature="18072:18126" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="18331:18363" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="18496:18515" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="18530:18548" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="18660:18690" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="18799:18814" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="22244:22298" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="22578:22610" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="22815:22835" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="22852:22868" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="23284:23315" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="23492:23496" ph="..." />
-            <marker date="1508329926367" expanded="true" signature="23511:23527" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4864">
-          <caret line="327" column="41" lean-forward="false" selection-start-line="327" selection-start-column="41" selection-end-line="327" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1558">
@@ -1842,13 +1804,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/kjroom.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="278" column="24" lean-forward="false" selection-start-line="278" selection-start-column="24" selection-end-line="278" selection-end-column="24" />
+        <state relative-caret-position="4313">
+          <caret line="287" column="14" lean-forward="true" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#7;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#7;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="281" column="10" lean-forward="false" selection-start-line="281" selection-start-column="10" selection-end-line="281" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3831">
+          <caret line="418" column="21" lean-forward="false" selection-start-line="418" selection-start-column="12" selection-end-line="418" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1508382994709" expanded="true" signature="18101:18155" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="18360:18392" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="18525:18544" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="18559:18577" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="18689:18719" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="18828:18843" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="20568:20622" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="20918:20950" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="21163:21183" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="21200:21216" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="21652:21683" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="21868:21872" ph="..." />
+            <marker date="1508382994709" expanded="true" signature="21887:21903" ph="..." />
           </folding>
         </state>
       </provider>

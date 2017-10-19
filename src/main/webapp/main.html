@@ -416,6 +416,7 @@
         if(index==0){
             getLuckRoom();
         }else if(index==1){
+            getkjRoom();
         }else if(index==2){
             getUserinfo();
         }
@@ -431,9 +432,9 @@
                     var data = JSON.parse(dataStr);
                     console.log("data=" + data.token);
                     $("#token1").html(data.token);
-                    $("#token2").html(data.token);
+                   // $("#token2").html(data.token);
                     $("#username1").html(data.username);
-                    $("#username2").html(data.username);
+                    //$("#username2").html(data.username);
                     var str = "";
                     $.each(data.list, function (i, a) {
                         str +=
@@ -461,6 +462,64 @@
             }
         });
     }
+
+    function  getkjRoom() {
+        $.ajax({
+            type: 'POST',
+            url: "https://ropsten.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=YourApiKeyToken",
+            async:false,
+            success: function (rs) {
+                nowBLock = parseInt(rs['result'],16);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("加载错误");
+            }
+        });
+
+        //开奖房间
+        $.ajax({
+            type: 'POST',
+            url: "/activity/ethlottery/list",
+            success: function (rs) {
+                if (rs.code == 200) {
+                    dataStr = JSON.stringify(rs.data);
+                    dataArrs = JSON.parse(dataStr);
+                    for(i=0;i<dataArrs.length;i++){
+                        //插入
+                        dataArr = dataArrs[i];
+                        dataHtml= "<a href=\"/ethroominfo.html?id="+dataArr['id']+"\" class=\"\">"+
+                            "                    <table width=\"100% \" height=\"90px \" border=\"0\" cellpadding=\" \" cellspacing=\"0 \" class=\"list_item\">\n" +
+                            "                        <tr>\n" +
+                            "                            <td colspan=\"2\" width=\"100% \" align=\"left\" style=\"padding-left: 15px; color: #FF6B6B;font-family: custom\">"+dataArr['activityname']+
+                            "</td>\n" +
+                            "                        </tr>\n" +
+                            "                        <tr>\n" +
+                            "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray; \">参与人数:"+(dataArr['limitMax']-dataArr['num'])+"/"+dataArr['limitMax']+
+                            " </td>\n" +
+                            "                            <td width=\"50% \" align=\"right\" style=\"padding-right: 10px \"><span style=\"color: #5DABB8; \"\n" +
+                            "                                                                                              id=\".\">价值:"+dataArr['token']+
+                            "</span></td>\n" +
+                            "                        </tr>\n" +
+                            "                        <tr>\n" +
+                            "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray \">房间剩余时间(块):"+(dataArr['endBlock']-nowBLock)+
+                            " </td>\n" +
+                            "                            <td width=\"50% \" align=\"left\" style=\"\"><span style=\"color: #5DABB8; \"\n" +
+                            "                                                                         id=\"\"></span></td>\n" +
+                            "                        </tr>\n" +
+                            "                    </table>\n" +
+                            "                </a>";
+                        $("#kjlist").append(dataHtml);
+                    }
+                }
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+            }
+        });
+    }
+
 
     /* 个人信息 */
     var flag=0;
@@ -509,60 +568,6 @@
         window.location.href="roominfo.html?activityid="+activityId;
     }
 
-    $.ajax({
-        type: 'POST',
-        url: "https://ropsten.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=YourApiKeyToken",
-        async:false,
-        success: function (rs) {
-            nowBLock = parseInt(rs['result'],16);
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("加载错误");
-        }
-    });
-
-    //开奖房间
-    $.ajax({
-        type: 'POST',
-        url: "/activity/ethlottery/list",
-        success: function (rs) {
-            if (rs.code == 200) {
-                dataStr = JSON.stringify(rs.data);
-                dataArrs = JSON.parse(dataStr);
-                for(i=0;i<dataArrs.length;i++){
-                    //插入
-                    dataArr = dataArrs[i];
-                    dataHtml= "<a href=\"/ethroominfo.html?id="+dataArr['id']+"\" class=\"\">"+
-                        "                    <table width=\"100% \" height=\"90px \" border=\"0\" cellpadding=\" \" cellspacing=\"0 \" class=\"list_item\">\n" +
-                        "                        <tr>\n" +
-                        "                            <td colspan=\"2\" width=\"100% \" align=\"left\" style=\"padding-left: 15px; color: #FF6B6B;font-family: custom\">"+dataArr['activityname']+
-                        "</td>\n" +
-                        "                        </tr>\n" +
-                        "                        <tr>\n" +
-                        "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray; \">参与人数:"+(dataArr['limitMax']-dataArr['num'])+"/"+dataArr['limitMax']+
-                        " </td>\n" +
-                        "                            <td width=\"50% \" align=\"right\" style=\"padding-right: 10px \"><span style=\"color: #5DABB8; \"\n" +
-                        "                                                                                              id=\".\">价值:"+dataArr['token']+
-                        "</span></td>\n" +
-                        "                        </tr>\n" +
-                        "                        <tr>\n" +
-                        "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray \">房间剩余时间(块):"+(dataArr['endBlock']-nowBLock)+
-                        " </td>\n" +
-                        "                            <td width=\"50% \" align=\"left\" style=\"\"><span style=\"color: #5DABB8; \"\n" +
-                        "                                                                         id=\"\"></span></td>\n" +
-                        "                        </tr>\n" +
-                        "                    </table>\n" +
-                        "                </a>";
-                    $("#kjlist").append(dataHtml);
-                }
-            }
-
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-
-        }
-    });
 
 
 </script>

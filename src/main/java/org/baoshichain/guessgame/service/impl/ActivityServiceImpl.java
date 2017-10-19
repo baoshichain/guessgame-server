@@ -85,7 +85,7 @@ public class ActivityServiceImpl implements ActivityService {
 
 
 
-    @PostConstruct
+/*    @PostConstruct
     public void initWeb3() {
         web3 = Web3j.build(new HttpService(ethUrl));
         try {
@@ -96,7 +96,7 @@ public class ActivityServiceImpl implements ActivityService {
         } catch (CipherException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 
     @Override
@@ -279,7 +279,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<Map> selectAllLotteryActivityInfo() throws IOException {
         List<Map> dataMaps = activityDao.selectAllLotteryActivityInfo();
-        String nowBlock = WalletUtil.getLocalBlockNumber();
+        //String nowBlock = WalletUtil.getLocalBlockNumber();
         return dataMaps;
     }
 
