@@ -233,4 +233,11 @@
     bond = #{bond,jdbcType=VARCHAR}
     where phone = #{phone}
   </update>
+
+  <!-- 减少用户积分 -->
+  <update id="updateToken"  parameterType="org.baoshichain.guessgame.entity.User">
+    update tb_user
+    set token =token-#{token,jdbcType=INTEGER}
+    where id = #{id}
+  </update>
 </mapper>

@@ -9,5 +9,7 @@ public interface UserOfActivityService {
 
     int insertUser(UserOfActivity record);
 
-    List<UserOfActivity> getJoinNum(int activityid);
+    List<UserOfActivity> getJoinNum(int activityid,int userid);
+
+    List<UserOfActivity> getJoinUserNum(int activityid);
 }

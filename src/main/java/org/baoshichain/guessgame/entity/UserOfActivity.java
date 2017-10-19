@@ -9,6 +9,17 @@ public class UserOfActivity {
 
     private String flag;
 
+
+    private String time;  //用户参与抽奖对应房间，当前时间
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public Integer getId() {
         return id;
     }

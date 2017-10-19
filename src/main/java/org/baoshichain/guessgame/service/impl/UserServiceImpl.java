@@ -121,4 +121,10 @@ public class UserServiceImpl implements UserService{
     return userDao.updateBond(user);
   }
 
+  @Override
+  public int updateToken(User user) { //int userId, int token
+    return userDao.updateToken(user);
+  }
+
+
 }

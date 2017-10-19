@@ -128,6 +128,7 @@ public class ActivityController {
             luckRoomInfo.setRoomname(activity.getActivityname());
             luckRoomInfo.setRate(activity.getWinrate());
             luckRoomInfo.setNum(Integer.parseInt(activity.getNum()));
+            luckRoomInfo.setEvertoken(activity.getToken());
             return CommonUtil.constructHtmlResponse(200, "查询列表成功", luckRoomInfo);
         }
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
@@ -142,18 +143,31 @@ public class ActivityController {
     @RequestMapping(value = "/win", method = RequestMethod.POST)
     @ResponseBody
     @Transactional
-    public JSONObject win(String rate, String activityid, HttpSession session) {
+    public JSONObject win(String rate, String activityid,String needtoken, HttpSession session) {
+        logger.info("needtoken="+needtoken);
         User user = (User) session.getAttribute("user");
         if (user != null) {
-            User newuser = userService.selectByPrimaryKey(user.getId());
+
             DrawluckResult drawluckResult = new DrawluckResult();
-            drawluckResult.setToken(newuser.getToken()); //用户积分
             drawluckResult.setUserId(user.getId()); //用户id
             drawluckResult.setUsername(user.getLoginname());
             //创建随机数
             Random rand = new Random();
-            int result = rand.nextInt(100);
-            if (result < Integer.parseInt(rate)) { //未中奖
+            int random = rand.nextInt(100);
+            logger.info("系统random="+random);
+            logger.info("房间概率rate="+rate);
+
+            //参与抽奖，减少用户参与积分
+            user.setToken(Integer.parseInt(needtoken));
+            int tokenResult=userService.updateToken(user);
+            User newuser = userService.selectByPrimaryKey(user.getId());
+            if(tokenResult>0){
+                drawluckResult.setToken(newuser.getToken()); //用户积分
+            }
+            logger.info("用户积分减少结果="+tokenResult);
+
+
+            if (random >Integer.parseInt(rate)) { //未中奖
                 drawluckResult.setResult("0"); //抽奖结果
             } else {
                 drawluckResult.setResult("1"); //中奖
@@ -182,6 +196,7 @@ public class ActivityController {
             userOfActivity.setActivityid(Integer.parseInt(activityid));
             userOfActivity.setUserid(user.getId());
             userOfActivity.setFlag("2"); //1 开奖 2 抽奖
+            userOfActivity.setTime(TimerUtil.getCurrentTimes());
             int flag = userOfActivityService.insertUser(userOfActivity);
             logger.info("flag=" + flag);
             return CommonUtil.constructHtmlResponse(200, "查询列表成功", drawluckResult);
@@ -205,13 +220,11 @@ public class ActivityController {
             User newuser = userService.selectByPrimaryKey(user.getId());
             Activity activity = activityService.getActivityinfo(Integer.parseInt(activityid));
 
-            //同一用户无法再次参加
-            List<UserOfActivity> list= userOfActivityService.getJoinNum(activity.getId());
-            for(int i=0;i<list.size();i++){
-                UserOfActivity userOfActivity=list.get(i);
-                if(userOfActivity.getUserid().equals(user.getId())){
-                    return CommonUtil.constructHtmlResponse(201, "同一玩家无法再次参与抽奖", null);
-                }
+            //同一用户10次参加
+            List<UserOfActivity> list= userOfActivityService.getJoinNum(activity.getId(),user.getId());
+            logger.info("list.size="+list.size());
+            if(list.size()>10){
+                return CommonUtil.constructHtmlResponse(201, "同一玩家最多参与10次抽奖", null);
             }
             if ((newuser.getToken() < Integer.parseInt(activity.getToken()) || newuser.getToken() <= 0)) {
                 return CommonUtil.constructHtmlResponse(201, "积分不足", null);

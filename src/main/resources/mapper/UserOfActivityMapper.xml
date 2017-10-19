@@ -6,9 +6,10 @@
     <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="activityid" property="activityid" jdbcType="INTEGER" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, userid, activityid, flag
+    id, userid, activityid, flag,`time`
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="INTEGER" >
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="org.baoshichain.guessgame.entity.UserOfActivity" >
     insert into tb_userofactivity (id, userid, activityid, 
-      flag)
+      flag,`time`)
     values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER}, 
-      #{flag,jdbcType=VARCHAR})
+      #{flag,jdbcType=VARCHAR},#{time,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.UserOfActivity" >
     insert into tb_userofactivity
@@ -41,6 +42,9 @@
       <if test="flag != null" >
         flag,
       </if>
+      <if test="time != null" >
+        `time`,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -54,6 +58,9 @@
       </if>
       <if test="flag != null" >
         #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -69,6 +76,9 @@
       <if test="flag != null" >
         flag = #{flag,jdbcType=VARCHAR},
       </if>
+      <if test="time != null" >
+        `time`= #{time,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -76,19 +86,26 @@
     update tb_userofactivity
     set userid = #{userid,jdbcType=INTEGER},
       activityid = #{activityid,jdbcType=INTEGER},
-      flag = #{flag,jdbcType=VARCHAR}
+      flag = #{flag,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
   <insert id="insertUser" parameterType="org.baoshichain.guessgame.entity.UserOfActivity" >
-     insert into tb_userofactivity (id, userid, activityid,flag)values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER},
-      #{flag,jdbcType=VARCHAR})
+     insert into tb_userofactivity (id, userid, activityid,flag,`time`)values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER},
+      #{flag,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR})
   </insert>
 
-  <!-- 查询当前房间参与人-->
-  <select id="getJoinNum" parameterType="INTEGER" resultMap="BaseResultMap">
-          select DISTINCT userid,activityid from tb_userofactivity where activityid = #{activityid,jdbcType=INTEGER}
+  <!-- 查询当前房间参与人,参与次数-->
+  <select id="getJoinNum"  resultMap="BaseResultMap">
+          select userid,activityid,`time` from tb_userofactivity where activityid = #{0} AND userid = #{1}
   </select>
+
+  <!-- 查询当前房间参与人-->
+  <select id="getJoinUserNum"  resultMap="BaseResultMap">
+      select DISTINCT userid,activityid from tb_userofactivity where activityid = #{0}
+  </select>
+
   <!--通过activity查询信息-->
   <select id="selectByActivityId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select

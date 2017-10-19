@@ -181,14 +181,15 @@
                 theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
             }
         }
-        //alert(theRequest.rate+ " ****** "+ theRequest.activityid);
+        //alert(theRequest.needtoken+ " ****** "+ theRequest.activityid);
 
         $.ajax({
             type: 'POST',
             url: "/activity/win",
 			data:{
                 "rate":theRequest.rate,
-				"activityid":theRequest.activityid
+				"activityid":theRequest.activityid,
+				"needtoken":theRequest.needtoken,
 			},
             success: function (data) {
                 if(data.code == 200){

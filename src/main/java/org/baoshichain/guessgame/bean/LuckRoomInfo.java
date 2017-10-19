@@ -13,6 +13,16 @@ public class LuckRoomInfo {
     private String rate;
     private int num;
     private String des;
+    private String evertoken;
+
+
+    public String getEvertoken() {
+        return evertoken;
+    }
+
+    public void setEvertoken(String evertoken) {
+        this.evertoken = evertoken;
+    }
 
     public String getUsername() {
         return username;

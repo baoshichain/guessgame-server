@@ -132,9 +132,9 @@ public class UserController {
                 //房间id
                 info.setActivityid(activityId);
                 //参加人数
-                logger.info("activityId=" + activityId);
-                List<UserOfActivity> userlist = userOfActivityService.getJoinNum(activityId);
-                logger.info("userlist.size=" + userlist.size());
+                //logger.info("activityId=" + activityId);
+                 List<UserOfActivity> userlist = userOfActivityService.getJoinUserNum(activityId);
+                //logger.info("userlist.size=" + userlist.size());
                 info.setJoinnum(userlist.size());
                 //房间价值
                 int price = activityService.getList(activityId);

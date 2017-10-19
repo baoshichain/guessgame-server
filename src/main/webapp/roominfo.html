@@ -49,6 +49,7 @@
             min-height: 60px;
             height: auto;
             background-color: white;
+            margin-top: 30px;
         }
 
         .join {
@@ -189,9 +190,17 @@
             <tr>
                 <td width="10% " align="center" style="padding: 5px; color: white; "></img>
                 </td>
+                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">房间价值：</img>
+                </td>
+                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="price"></span></td>
+            </tr>
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                </td>
                 <td width="40% " align="left" style="padding: 5px; color: #818794; font-family: custom">房间介绍：</img>
                 </td>
-                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom;font-size: 10px" ></span></td>
+                <td width="50% " align="left" style="padding-right: 10px; ">
+                    <span style="color: #818794; margin-left: 0px;font-family: custom;font-size: 10px" ></span></td>
             </tr>
         </table>
     </div>
@@ -215,7 +224,7 @@
         <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 ">
             <tr>
                 <td width="35% " align="center" style="padding: 5px; color: white; ">
-                    <span style="color: #4EB7CD;font-family: custom" id="price"></span>
+                    <span style="color: #4EB7CD;font-family: custom" id="needtoken"></span>
                 </td>
                 <td width="65% " align="" style="padding: 5px;color: #818794; ">
                     <button type="button" class="btn" onclick="join()">点击抽奖</button>
@@ -228,10 +237,10 @@
 
 </div>
 
-<script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
 <script type="text/javascript ">
     var rate = null;
     var activityid = null;
+    var needtoken=null;
     $(document).ready(function () {
         var url = location.search; //获取url中"?"符后的字串
         var theRequest = new Object();
@@ -258,11 +267,13 @@
                     $("#token").html(data.token);
                     $("#username").html(data.username);
                     $("#roomname").html(data.roomname);
-                    $("#price").html("价值:"+data.roomprice);
+                    $("#price").html(data.roomprice);
                     $("#rate").html(data.rate + "%");
                     $("#num").html(data.num);
                     $("#des").html(data.des);
+                    $("#needtoken").html("参与积分:"+data.evertoken);
                     rate = data.rate;
+                    needtoken=data.evertoken;
                 }
                 if (data.code == 201) {
                     alert(data.msg);
@@ -292,7 +303,7 @@
                     //dataStr=JSON.stringify(data.data);
                     //var data=JSON.parse(dataStr);
                     //console.log("data="+data.userId);
-                    window.location.href = "right.html?rate=" + rate + "&activityid=" + activityid;
+                    window.location.href = "right.html?rate=" + rate + "&activityid=" + activityid+"&needtoken="+needtoken;
                 }
                 if (data.code == 201) {
                     alert(data.msg);

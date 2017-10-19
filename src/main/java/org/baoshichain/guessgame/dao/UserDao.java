@@ -26,4 +26,6 @@ public interface UserDao {
     int checkPhone(String phone);
 
     int updateBond(User user);
+
+    int updateToken(User user);
 }

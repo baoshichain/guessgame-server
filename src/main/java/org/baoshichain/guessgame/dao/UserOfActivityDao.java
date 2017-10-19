@@ -19,7 +19,10 @@ public interface UserOfActivityDao {
 
     int insertUser(UserOfActivity userOfActivity);
 
-    List<UserOfActivity> getJoinNum(int activityid);
+    List<UserOfActivity> getJoinNum(int activityid,int userid);
+
+    List<UserOfActivity> getJoinUserNum(int activityid);
+
 	
 	 List<UserOfActivity> selectByActivityId(Integer activityId);
 }

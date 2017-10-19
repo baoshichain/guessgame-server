@@ -21,7 +21,14 @@ public class UserOfActivityServiceImpl implements UserOfActivityService {
     }
 
     @Override
-    public List<UserOfActivity> getJoinNum(int activityid) {
-        return userOfActivityDao.getJoinNum(activityid);
+    public List<UserOfActivity> getJoinNum(int activityid,int userid) {
+        return userOfActivityDao.getJoinNum(activityid,userid);
     }
+
+    @Override
+    public List<UserOfActivity> getJoinUserNum(int activityid) {
+        return userOfActivityDao.getJoinUserNum(activityid);
+    }
+
+
 }

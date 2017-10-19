@@ -28,4 +28,6 @@ public interface UserService {
     int checkPhone(String phone);
 
     int updateBond(User user);
+
+    int updateToken(User user);
 }
