@@ -163,15 +163,19 @@ public class ActivityServiceImpl implements ActivityService {
         List<String> name=new ArrayList<>();
         List<String> des=new ArrayList<>();
         List<String> price=new ArrayList<>();
+        List<String> num=new ArrayList<>();
         for(int i=0;i<str.length;i++){
-            if(i%3==0){
+            if(i%4==0){
                name.add(str[i]);
             }
-            if(i%3==1){
+            if(i%4==1){
                des.add(str[i]);
             }
-            if(i%3==2){
+            if(i%4==2){
                price.add(str[i]);
+            }
+            if(i%4==3){
+                num.add(str[i]);
             }
         }
         for(int i=0;i<name.size();i++){
@@ -180,6 +184,7 @@ public class ActivityServiceImpl implements ActivityService {
             card.setDiscribe(des.get(i));
             card.setPrice(price.get(i));
             cardDao.insert(card);
+
             //插入活动对应的card
             ActivityOfCard activityOfCard=new ActivityOfCard();
             logger.info("activityId="+activityId);
