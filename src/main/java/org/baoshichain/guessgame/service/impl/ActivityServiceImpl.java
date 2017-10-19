@@ -238,6 +238,7 @@ public class ActivityServiceImpl implements ActivityService {
         aoc.setCardid(cardId);
         aoc.setActivityid(activityId);
         activityOfCardDao.insert(aoc);//至此，所有插入已经完成
+        int result = 0;
         String txHash = "";
         //写入区块链
         //1.新建一个游戏，返回合约地址
@@ -256,7 +257,6 @@ public class ActivityServiceImpl implements ActivityService {
         JsonNode jsonNode = mapper.readTree(resultStr);
         if(jsonNode.has("error")){
             return 0;
-
         }else{
             txHash = jsonNode.get("result").asText();
         }

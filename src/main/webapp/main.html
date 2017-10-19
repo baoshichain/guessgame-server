@@ -154,7 +154,7 @@
         <div class="box_163css">
             <ul class="nav">
                 <li class="navs_li on">抽奖房间</li>
-                <li class="navs_li on">开奖房间</li>
+                <li class="navs_li">开奖房间</li>
                 <li class="navs_li">个人信息</li>
             </ul>
 
@@ -190,7 +190,7 @@
             </div>
 
             <div class="list" id="luckRoom" style="margin-top: 20px">
-                 <a href="#" class="">
+               <!--  <a href="#" class="">
                      <table width="100% " height="90px " border="0" cellpadding=" " cellspacing="0 " class="list_item">
                          <tr>
                              <td colspan="2" width="100% " align="left" style="padding-left: 15px; color: #FF6B6B;font-family: custom">房间名称</img>
@@ -229,12 +229,12 @@
                                                                           id="time"></span></td>
                          </tr>
                      </table>
-                 </a>
+                 </a>-->
             </div>
         </div>
 
         <!-- 开奖房间 -->
-        <div class="item_tab" style="display: block;">
+        <div class="item_tab" style="display: none;">
             <div class="user" onclick="showuser()">
                 <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
                     <tr>
@@ -252,8 +252,27 @@
                 </table>
             </div>
 
-            <div class="list" id="kjlist" style="margin-top: 20px">
-
+            <div class="list" id="kjRoom" style="margin-top: 20px">
+                <a href="#" class="">
+                    <table width="100% " height="90px " border="0" cellpadding=" " cellspacing="0 " class="list_item">
+                        <tr>
+                            <td colspan="2" width="100% " align="left" style="padding-left: 15px; color: #FF6B6B;font-family: custom">房间名称</img>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="50% " align="left" style="padding-left: 15px;color: gray; ">参与人数:50/100</img>
+                            </td>
+                            <td width="50% " align="right" style="padding-right: 10px "><span style="color: #5DABB8; "
+                                                                                              id=".">价值:1299</span></td>
+                        </tr>
+                        <tr>
+                            <td width="50% " align="left" style="padding-left: 15px;color: gray ">房间时间:18:00</img>
+                            </td>
+                            <td width="50% " align="left" style=""><span style="color: #5DABB8; "
+                                                                         id=""></span></td>
+                        </tr>
+                    </table>
+                </a>
             </div>
         </div>
 
@@ -372,8 +391,6 @@
 </div>
 
 <script type="text/javascript ">
-    var nowBLock = "";
-
     $(document).ready(function () {
         getLuckRoom();
     });
@@ -391,7 +408,7 @@
         window.location.href = "userinfo.html"
     }
     function enterLotterRoom() {
-        location.href = "kjroom.html"
+        location.href = "rooms.html"
     }
     function enterEthLotterDeploy() {
         location.href = "ethlottery.html"
@@ -432,9 +449,10 @@
                     var data = JSON.parse(dataStr);
                     console.log("data=" + data.token);
                     $("#token1").html(data.token);
-                   // $("#token2").html(data.token);
                     $("#username1").html(data.username);
-                    //$("#username2").html(data.username);
+                    $("#token2").html(data.token);
+                    $("#username2").html(data.username);
+                    console.log("list.size="+data.list.size);
                     var str = "";
                     $.each(data.list, function (i, a) {
                         str +=
@@ -458,7 +476,7 @@
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("error="+errorThrown);
+                //alert("error="+errorThrown);
             }
         });
     }
@@ -484,6 +502,7 @@
                 if (rs.code == 200) {
                     dataStr = JSON.stringify(rs.data);
                     dataArrs = JSON.parse(dataStr);
+                    var kjstr = "";
                     for(i=0;i<dataArrs.length;i++){
                         //插入
                         dataArr = dataArrs[i];
@@ -508,8 +527,9 @@
                             "                        </tr>\n" +
                             "                    </table>\n" +
                             "                </a>";
-                        $("#kjlist").append(dataHtml);
+                        kjstr = kjstr+dataHtml;
                     }
+                    $("#kjRoom").html(kjstr);
                 }
 
             },
@@ -564,10 +584,52 @@
         });
     }
 
+    /* 个人信息 */
+    var flag=0;
+    function getUserinfo() {
+        $(document).ready(function () {
+            $.ajax({
+                type: 'POST',
+                url: "/user/main",
+                success: function (data) {
+                    if (data.code == 200) {
+                        dataStr = JSON.stringify(data.data);
+                        var data = JSON.parse(dataStr);
+                        console.log("data=" + data.id + " " + data.contact);
+                        $("#userId").html(data.userId);
+                        $("#token").html(data.token);
+                        $("#ethAddress").html(data.ethAddress);
+                        $("#contact").html(data.phone);
+                        $("#publishCount").html(data.publishCount);
+                        $("#amount").html(data.amount);
+                        $("#joinCount").html(data.joinCount);
+                        $("#qq").html(data.contact);
+                        flag=data.flag;
+                        if(flag==0){
+                            $(".publish").hide();
+                            $(".room").hide();
+                            $(".join").hide();
+                            $(".line").hide();
+                        }else{
+                            $(".publish").show();
+                            $(".room").show();
+                            $(".join").show();
+                            $(".line").show();
+                        }
+                    }
+                    if (data.code == 201) {
+                        alert(data.msg);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+        });
+    }
+
     function goto(activityId) {
         window.location.href="roominfo.html?activityid="+activityId;
     }
-
 
 
 </script>
