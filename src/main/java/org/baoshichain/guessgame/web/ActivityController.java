@@ -40,6 +40,10 @@ public class ActivityController {
     @Autowired
     private WinnerService winnerService;
 
+
+    @Autowired
+    private CardService cardService;
+
     /**
      * 创建抽奖房间
      *
@@ -80,6 +84,9 @@ public class ActivityController {
             List<DrawLuckRoom.LuckRoom> lucklist = new ArrayList<>();
             for (Activity activity : alist) {
                 int activityId = activity.getId();
+                if(Integer.parseInt(activity.getNum())==0){
+                    continue;
+                }
                 DrawLuckRoom.LuckRoom luckroom = new DrawLuckRoom.LuckRoom();
                 luckroom.setActivityid(activity.getId());
                 luckroom.setRoomname(activity.getActivityname());
@@ -129,6 +136,11 @@ public class ActivityController {
             luckRoomInfo.setRate(activity.getWinrate());
             luckRoomInfo.setNum(Integer.parseInt(activity.getNum()));
             luckRoomInfo.setEvertoken(activity.getToken());
+
+            //同一用户10次参加
+            List<UserOfActivity> list= userOfActivityService.getJoinNum(activity.getId(),user.getId());
+            logger.info("list.size="+list.size());
+            luckRoomInfo.setJoinnum(String.valueOf(10-list.size()));
             return CommonUtil.constructHtmlResponse(200, "查询列表成功", luckRoomInfo);
         }
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
@@ -147,7 +159,6 @@ public class ActivityController {
         logger.info("needtoken="+needtoken);
         User user = (User) session.getAttribute("user");
         if (user != null) {
-
             DrawluckResult drawluckResult = new DrawluckResult();
             drawluckResult.setUserId(user.getId()); //用户id
             drawluckResult.setUsername(user.getLoginname());
@@ -166,7 +177,7 @@ public class ActivityController {
             }
             logger.info("用户积分减少结果="+tokenResult);
 
-
+            //生成随机数
             if (random >Integer.parseInt(rate)) { //未中奖
                 drawluckResult.setResult("0"); //抽奖结果
             } else {
@@ -174,21 +185,30 @@ public class ActivityController {
                 //中奖后减少user 表中剩余卡牌数目，同时更改activityofcard 中flag 为1，标识当前card 抽走
                 activityService.updateCardNum(Integer.parseInt(activityid));
                 //更新acitivityofcard 某一卡牌的flag 值
+                //查询acitivityofcard中所有flag=0,未抽走的卡牌列表
                 List<ActivityOfCard> activityOfCard = activityOfCardService.selectActivityOfCardList(Integer.parseInt(activityid));
                 logger.info("activityofcard=" + activityOfCard.size());
                 for(int i=0;i<activityOfCard.size();i++){
-                    int cardid=activityOfCard.get(i).getCardid();
-                    int flag=activityOfCardService.updateActivityOfcard(cardid,Integer.parseInt(activityid)); //更改当前cardid
-                    logger.info("更改成功");
-                    //同时向tb_winner 插入中奖的cardid
-                    Winner winner=new Winner();
-                    winner.setActivityid(Integer.parseInt(activityid));
-                    winner.setUserid(user.getId());
-                    winner.setCardid(cardid);
-                    winner.setFlag(2); //1 开奖  2 抽奖
-                    int results=winnerService.insertWinner(winner);
-                    logger.info("results="+results);
-                    break;
+                    int cardid=activityOfCard.get(i).getCardid(); //挑选任意一个卡牌
+                    int flag=activityOfCardService.updateActivityOfcard(cardid,Integer.parseInt(activityid)); //更改当前卡牌的flag=1,标识抽中
+                    if(flag>0){
+                        logger.info("更改成功");
+                        //同时向tb_winner 插入中奖的cardid
+                        Winner winner=new Winner();
+                        winner.setActivityid(Integer.parseInt(activityid));
+                        winner.setUserid(user.getId());
+                        winner.setCardid(cardid);
+                        winner.setFlag(2); //1 开奖  2 抽奖
+                        int results=winnerService.insertWinner(winner);
+                        logger.info("results="+results);
+
+                        //查询对应卡牌
+                        Card card=cardService.selectByPrimaryKey(cardid);
+                        drawluckResult.setCardname(card.getName());
+                        drawluckResult.setCarddes(card.getDiscribe());
+                        drawluckResult.setCardprice(card.getPrice());
+                        break;
+                    }
                 }
             }
             //向数据库中插入用户参与的房间
@@ -223,7 +243,7 @@ public class ActivityController {
             //同一用户10次参加
             List<UserOfActivity> list= userOfActivityService.getJoinNum(activity.getId(),user.getId());
             logger.info("list.size="+list.size());
-            if(list.size()>10){
+            if(list.size()>9){
                 return CommonUtil.constructHtmlResponse(201, "同一玩家最多参与10次抽奖", null);
             }
             if ((newuser.getToken() < Integer.parseInt(activity.getToken()) || newuser.getToken() <= 0)) {
@@ -288,6 +308,12 @@ public class ActivityController {
                     }
                     if(entry.getKey().equals("activityname")){
                         wininfo.setActivityname((String)entry.getValue());
+                    }
+                    if(entry.getKey().equals("name")){
+                        wininfo.setCardname((String)entry.getValue());
+                    }
+                    if(entry.getKey().equals("price")){
+                        wininfo.setCardprice((String)entry.getValue());
                     }
                 }
                 wininfoList.add(wininfo);

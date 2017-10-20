@@ -139,42 +139,42 @@
                 <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">房间名称：</img>
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="(16字以内)" id="roomname"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="(16字以内,例如:大力神)" id="roomname"></td>
             </tr>
 
             <tr>
                 <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">每次参与积分：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="参与所需积分" id="token"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="例如:10" id="token"></td>
             </tr>
 
             <tr>
                 <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">中奖百分比：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="例如:15%" id="probability"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="例如:15" id="probability"></td>
             </tr>
 
-            <tr>
+           <!-- <tr>
                 <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">房间卡牌数量：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
                     <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="" id="cardnum"></td>
             </tr>
-
+-->
             <tr>
                 <td width="30% " align="left" style="padding: 5px; color: #A5ADBE; ">房间限时：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="(单位:时)" id="limittime"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="(单位:时 ,例如:2)" id="limittime"></td>
             </tr>
 
             <tr>
                 <td width="30% " align="left" style="padding: 5px; color: #A5ADBE; ">房间介绍：</img>
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="" id="roomdes"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="例如:卡牌很有价值" id="roomdes"></td>
             </tr>
         </table>
 
@@ -208,19 +208,19 @@
         var cardname = $('#listarea').val();  //卡牌名称
         var token = document.getElementById("token").value;
         var probability = document.getElementById("probability").value;
-        var cardnum = document.getElementById("cardnum").value;
+        //var cardnum = document.getElementById("cardnum").value;
         var limittime = document.getElementById("limittime").value;
         var roomdes = document.getElementById("roomdes").value;
-        if (roomname == "" || token == "" || probability == "" || cardnum == "" || limittime == "" || roomdes == "") {
+        if (roomname == "" || token == "" || probability == "" || limittime == "" || roomdes == "") {
             alert("请确认是否有空缺项！");
             return false;
         }
-        if (probability.indexOf("%") == -1) {//等于-1表示这个字符串中没有o这个字符
+       /* if (probability.indexOf("%") == -1) {//等于-1表示这个字符串中没有o这个字符
             alert("房间中奖概率带上%");
             return false;
-        }
+        }*/
         if (cardname == "") {
-            alert("请确认是否输入卡牌信息，点击添加！");
+            alert("请点击确认卡牌按钮");
             return false;
         }
         /* var attr_cardname=cardname.split(",");
@@ -240,7 +240,6 @@
                 "cardname": cardname,
                 "token": token,
                 "probability": probability,
-                "cardnum": cardnum,
                 "limittime": limittime,
                 "roomdes": roomdes
             },

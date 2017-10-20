@@ -9,81 +9,81 @@
         <result column="flag" property="flag" jdbcType="INTEGER"/>
     </resultMap>
 
-<sql id="Base_Column_List" >
-    id, userId, cardId, activityId, flag
+    <sql id="Base_Column_List">
+         id, userId, cardid, activityId, flag
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from tb_winner
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_winner
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_winner
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.baoshichain.guessgame.entity.Winner" >
-    insert into tb_winner (id, userId, cardId, 
+    <insert id="insert" parameterType="org.baoshichain.guessgame.entity.Winner">
+    insert into tb_winner (id, userId, cardid,
       activityId, flag)
     values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{cardid,jdbcType=INTEGER}, 
       #{activityid,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.Winner" >
-    insert into tb_winner
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userid != null" >
-        userId,
-      </if>
-      <if test="cardid != null" >
-        cardId,
-      </if>
-      <if test="activityid != null" >
-        activityId,
-      </if>
-      <if test="flag != null" >
-        flag,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="cardid != null" >
-        #{cardid,jdbcType=INTEGER},
-      </if>
-      <if test="activityid != null" >
-        #{activityid,jdbcType=INTEGER},
-      </if>
-      <if test="flag != null" >
-        #{flag,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.baoshichain.guessgame.entity.Winner" >
-    update tb_winner
-    <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="cardid != null" >
-        cardId = #{cardid,jdbcType=INTEGER},
-      </if>
-      <if test="activityid != null" >
-        activityId = #{activityid,jdbcType=INTEGER},
-      </if>
-      <if test="flag != null" >
-        flag = #{flag,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="org.baoshichain.guessgame.entity.Winner" >
+    <insert id="insertSelective" parameterType="org.baoshichain.guessgame.entity.Winner">
+        insert into tb_winner
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="cardid != null">
+                cardId,
+            </if>
+            <if test="activityid != null">
+                activityId,
+            </if>
+            <if test="flag != null">
+                flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="cardid != null">
+                #{cardid,jdbcType=INTEGER},
+            </if>
+            <if test="activityid != null">
+                #{activityid,jdbcType=INTEGER},
+            </if>
+            <if test="flag != null">
+                #{flag,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.baoshichain.guessgame.entity.Winner">
+        update tb_winner
+        <set>
+            <if test="userid != null">
+                userId = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="cardid != null">
+                cardId = #{cardid,jdbcType=INTEGER},
+            </if>
+            <if test="activityid != null">
+                activityId = #{activityid,jdbcType=INTEGER},
+            </if>
+            <if test="flag != null">
+                flag = #{flag,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.baoshichain.guessgame.entity.Winner">
     update tb_winner
     set userId = #{userid,jdbcType=INTEGER},
       cardId = #{cardid,jdbcType=INTEGER},
@@ -91,14 +91,19 @@
       flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
     <insert id="insertWinner" parameterType="org.baoshichain.guessgame.entity.Winner">
-    insert into tb_winner (userId, activityId,cardId, flag)
+    insert into tb_winner (userId, activityId,cardid, flag)
     values ( #{userid,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER},#{cardid,jdbcType=INTEGER},#{flag,jdbcType=INTEGER})
   </insert>
 
+    <!-- 查询中奖详情 -->
     <select id="getWinnerList" resultType="java.util.Map">
-select a.flag, a.userid,b.activityname,c.phone from tb_winner a LEFT JOIN tb_activity b ON a.activityid=b.id
-LEFT JOIN tb_user c ON a.userid=c.id;
+select a.flag, a.userId,b.activityname,c.phone,d.name,d.price from tb_winner a LEFT JOIN tb_activity b ON a.activityId=b.id
+LEFT JOIN tb_user c ON a.userId=c.id LEFT JOIN tb_card d ON a.cardid=d.id;
   </select>
+
+    <!--select a.flag, a.userid,b.activityname,c.phone,d.name,d.price from tb_winner a LEFT JOIN tb_activity b ON a.activityid=b.id
+LEFT JOIN tb_user c ON a.userid=c.id LEFT JOIN tb_card d ON a.cardId=d.id;-->
 
 </mapper>

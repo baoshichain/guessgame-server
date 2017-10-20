@@ -190,6 +190,13 @@
             <tr>
                 <td width="10% " align="center" style="padding: 5px; color: white; "></img>
                 </td>
+                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">剩余抽奖次数：</img>
+                </td>
+                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="joinnum"></span></td>
+            </tr>
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                </td>
                 <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">房间价值：</img>
                 </td>
                 <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="price"></span></td>
@@ -272,6 +279,7 @@
                     $("#num").html(data.num);
                     $("#des").html(data.des);
                     $("#needtoken").html("参与积分:"+data.evertoken);
+                    $("#joinnum").html(data.joinnum);
                     rate = data.rate;
                     needtoken=data.evertoken;
                 }
@@ -285,7 +293,8 @@
     });
 
     function back() {
-        window.history.go(-1);
+        //window.history.go(-1);
+        window.location.href="main.html";
     }
 
     function join() {

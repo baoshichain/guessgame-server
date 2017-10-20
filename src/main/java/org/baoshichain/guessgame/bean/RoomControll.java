@@ -17,6 +17,24 @@ public class RoomControll {
          private int userid;
          private String phone;
          private int flag;
+         private String cardname;
+         private String cardprice;
+
+        public String getCardname() {
+            return cardname;
+        }
+
+        public void setCardname(String cardname) {
+            this.cardname = cardname;
+        }
+
+        public String getCardprice() {
+            return cardprice;
+        }
+
+        public void setCardprice(String cardprice) {
+            this.cardprice = cardprice;
+        }
 
         public String getPhone() {
             return phone;

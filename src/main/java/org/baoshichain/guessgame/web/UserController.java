@@ -69,11 +69,12 @@ public class UserController {
             //查询参与活动数量
             int joinNum = userService.getCountofJoinActivity(user.getId());
             logger.info("joinNum=" + joinNum);
+            User newuser=userService.selectByPrimaryKey(user.getId());
             GameMaker gameMaker = new GameMaker();
             gameMaker.setUserId(user.getId());
             gameMaker.setContact(user.getQq());
             gameMaker.setEthAddress(user.getEthaddress());
-            gameMaker.setToken(user.getToken());
+            gameMaker.setToken(newuser.getToken());
             gameMaker.setPublishCount(num);
             gameMaker.setAmount(user.getBond());
             gameMaker.setJoinCount(joinNum);
@@ -84,6 +85,7 @@ public class UserController {
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
     }
 
+    //用户信息
     @RequestMapping(value = "/info", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject showUserinfo(HttpSession session) {
@@ -91,9 +93,10 @@ public class UserController {
         if (user != null) {
             //查询参与活动数量
             int joinNum = userService.getCountofJoinActivity(user.getId());
+            User newuser=userService.selectByPrimaryKey(user.getId());
             Userinfo userinfo = new Userinfo();
             userinfo.setUserid(user.getId());
-            userinfo.setToken(user.getToken());
+            userinfo.setToken(newuser.getToken());
             userinfo.setJoinnum(joinNum); //参与活动数目
             userinfo.setUsername(user.getLoginname());
             List<Userinfo.ActivityofJoin> userinfolist = new ArrayList<>();

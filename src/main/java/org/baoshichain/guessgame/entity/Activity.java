@@ -27,7 +27,7 @@ public class Activity {
 
     private String nummax; // 房间卡牌数目上限
 
-    private String num; //房间 剩余卡牌数目
+    private String num; //房间中奖后，减少剩余卡牌数目
 
 
     public Integer getId() {

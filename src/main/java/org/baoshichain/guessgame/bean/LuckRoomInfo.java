@@ -13,8 +13,16 @@ public class LuckRoomInfo {
     private String rate;
     private int num;
     private String des;
-    private String evertoken;
+    private String evertoken; //每次抽奖积分
+    private String joinnum; //剩余抽奖次数
 
+    public String getJoinnum() {
+        return joinnum;
+    }
+
+    public void setJoinnum(String joinnum) {
+        this.joinnum = joinnum;
+    }
 
     public String getEvertoken() {
         return evertoken;

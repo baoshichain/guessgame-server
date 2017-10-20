@@ -166,16 +166,6 @@
                     $("#publishnum").html(data.publishnum);
                     var str ="";
                     $.each(data.list,function (i,a) {
-                      /*  str += "<a href='#' class='list-group-item'>"+
-                            "<p class='list-group-item-text'>"+
-                            "房间名称: <span>"+a.activityname+"</span>"+
-                            "</p>"+
-                            "<p class='list-group-item-text'>"+
-                            "中奖玩家: <span>"+mask(a.phone,3,6,'*')+"</span>"+
-                            "</p>"+
-                            "</a>";*/
-                        //alert(str);
-
                         str +=
                             "<table width='100%' height='60px' border='0' cellspacing='0' class='list_item' onclick=''>"+
                             "<tr>"+
@@ -183,12 +173,12 @@
                             "</td>"+
                             "</tr>"+
                             "<tr>"+
-                            "<td width='50%'  align='left' style='padding-left: 15px;color: gray; '>"+"中奖玩家:" +mask(a.phone,3,6,'*') +
+                            "<td width='50%'  align='left' style='padding-left: 15px;color: gray; '>"+"中奖玩家:  " +a.phone +
                             "</td>"+
-                            "<td width='50%' align='right' style='padding-right: 10px'><span style='color: #5DABB8;id='num'>"+ "</span></td></tr>"+
-                            "<tr><td width='50%' align='left' style='padding-left: 15px;color: gray'>"+""+ "</td>"+
-                            "<td width='50%' align='left'><span style='color: #5DABB8;' id='time'></span></td></tr></table>";
-                        //alert(str);
+                            "<td width='50%' align='right' style='padding-right: 10px'><span style='color: #5DABB8;id='num'></span></td></tr>"+
+                            "<tr><td  colspan='2' width='100%' align='left' style='padding-left: 15px;color: gray'>"+"中奖卡牌:  "+ a.cardname+"  价值:"+a.cardprice+"</td>"+
+                            "</tr></table>";
+                        //alert(str);  mask(a.phone,3,6,'*')
                     })
                     $("#winner_group").html(str);
                 }

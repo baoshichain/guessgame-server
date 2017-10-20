@@ -8,9 +8,9 @@ public class Winner {
 
     private Integer cardid; //中奖卡牌id
 
-    private int flag;
+    private int flag; //房间类型 //1 开奖  2 抽奖
 
-    private int activityid;
+    private int activityid; //房间id
 
 
     public Integer getId() {

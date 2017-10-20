@@ -124,7 +124,8 @@
 	<div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 50px; background-color: #5A6378">
 		<table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
 			<tr>
-				<td width="40% " align="left " style="padding: 5px;"></img>
+				<td width="40% " align="left " style="padding: 5px;" onclick="home()"><img src="./img/home.png " width="26px " height="26px"
+																		  style="margin-right: 20px; margin-top: 10px"></img>
 				</td>
 				<td width="60% " align="right" style="padding-right: 10px; ">
 					<img src="./img/img_logo.png " width="120px " height="35px"
@@ -157,7 +158,10 @@
 				<td><img src="" id="img"></td>
 			</tr>
 			<tr>
-				<td ><span style="color: red; font-size: 40px; font-family:  " id="result"></span></td>
+				<td ><span style="color: red; font-size: 40px; font-family:custom " id="result"></span></td>
+			</tr>
+			<tr>
+				<td ><span style="color: black; font-size: 20px; font-family:custom " id="card"></span></td>
 			</tr>
 		</table>
 	</div>
@@ -197,13 +201,17 @@
                     var data=JSON.parse(dataStr);
                     $("#token").html(data.token);
                     $("#username").html(data.username);
+
                     //alert(data.result);
                     if(data.result==0){ //未中奖
                         $("#img").attr("src", "./img/wrong.jpg");
                         $("#result").html("未中奖");
+                        $("#card").hide();
                     }else{
                         $("#img").attr("src", "./img/right.jpg");
                         $("#result").html("中奖啦");
+                        $("#card").show();
+                        $("#card").html("卡牌:"+data.cardname+"\n "+"价值:"+data.cardprice);
                     }
                 }
                 if(data.code == 201){
@@ -216,7 +224,12 @@
     });
 
     function again() {
-        window.history.go(-1);
+        //window.history.go(-1);
+        window.location.href=document.referrer;
+    }
+
+    function home() {
+        window.location.href="main.html"
     }
 
     function showuser() {
