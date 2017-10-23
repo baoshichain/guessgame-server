@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>卡游宝--开奖房间详情</title>
+    <style>
+        @font-face {
+            font-family: custom;       /*这里是说明调用来的字体名字*/
+            src: url('./css/first.TTF');   /*这里是字体文件路径*/
+        }
+        html {
+            height: 100%;
+            width: 100%;
+            background: #393F4F;
+        }
+        .box {
+            width: 100%;
+            height: auto !important;
+            min-height: 600px;
+            height: 600px;
+            background: #fff;
+            margin: auto;
+            padding-top: 46px;
+        / / 设置据顶部高度
+        }
+        .user {
+            background-color: #393F4F;
+            height: 70px;
+            margin-top: 0px;
+            padding-top: 10px;
+        }
+        .account {
+            height: 90px;
+            margin-top: 20px;
+            background-color: white;
+        }
+        .des {
+            min-height: 60px;
+            height: auto;
+            background-color: white;
+            margin-top: 30px;
+        }
+        .join {
+            margin: 10px;
+            margin-top: 10px;
+        }
+        .activity {
+            margin: 10px;
+            margin-top: 10px;
+            height: 40px;
+            background-color: deepskyblue;
+            text-align: center;
+        }
+        .choose {
+            margin-top: 20px;
+            height: 100%;
+            text-align: center;
+        }
+        .nav {
+            margin-left: 10px;
+            margin-right: 10px;
+            border-top: dotted;
+            border-color: deepskyblue;
+        }
+        .bottom {
+            margin: 10px;
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            height: 40px;
+            text-align: center;
+        }
+        .list-group {
+            margin: 10px;
+        }
+        /* WebKit browsers */
+        ::-webkit-input-placeholder {
+            color: white;
+        }
+        /* Mozilla Firefox 4 to 18 */
+        :-moz-placeholder {
+            color: white;
+            opacity: 1;
+        }
+        /* Mozilla Firefox 19+ */
+        ::-moz-placeholder {
+            color: white;
+            opacity: 1;
+        }
+        /* Internet Explorer 10+ */
+        :-ms-input-placeholder {
+            color: white;
+        }
+        .btn {
+            width: 80%;
+            height: 40px;
+            background-color: #4EB7CD;
+            color: white;
+            font-family: custom;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 50px; background-color: #5A6378">
+        <table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
+            <tr>
+                <td width="40% " align="left " style="padding: 5px;"><img src="./img/back.png " width="15px " height="20px" style="margin-left: 10px;" onclick="back()"></img>
+                </td>
+                <td width="60% " align="right" style="padding-right: 10px; ">
+                    <img src="./img/img_logo.png " width="120px " height="35px"
+                         style="margin-right: 20px; margin-top: 10px"></img>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="user" onclick="showuser()">
+        <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
+            <tr>
+                <td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
+                </td>
+                <td width="70% " align="left" style="padding-right: 10px; "><span
+                        style="color: #5DABB8; margin-left: 0px;" id="username"></span></td>
+            </tr>
+            <tr>
+                <td width="30% " align="center" style="padding: 5px;color: #5DABB8; ">账户积分:</img>
+                </td>
+                <td width="70% " align="left" style="padding-right: 10px; "><span style="color: #5DABB8; "
+                                                                                  id="token"></span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table width="100% " height="100%" border="0" cellspacing="0 " style="background-color: white;height: 40px;margin-top: 10px">
+            <tr>
+                <td width="100% " align="center"><span style="color: #FF6B6B; font-family: custom;font-size: 18px" id="roomname">房间名称3</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="height: 2px;width: 100%;background-color: #F2F4F8"></div>
+
+    <div class="account">
+        <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 ">
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                </td>
+                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">房间参与人数:</img>
+                </td>
+                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="people"></span></td>
+            </tr>
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                </td>
+                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">房间结束时间：</img>
+                </td>
+                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="endTime"></span></td>
+            </tr>
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                </td>
+                <td width="40% " align="left" style="padding: 5px; color: #818794;font-family: custom ">房间价值：</img>
+                </td>
+                <td width="50% " align="left" style="padding-right: 10px; "><span style="color: #818794; margin-left: 0px;font-family: custom" id="allprice"></span></td>
+            </tr>
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                </td>
+                <td width="40% " align="left" style="padding: 5px; color: #818794; font-family: custom">房间介绍：</img>
+                </td>
+                <td width="50% " align="left" style="padding-right: 10px; ">
+                    <span style="color: #818794; margin-left: 0px;font-family: custom;font-size: 10px" ></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="des">
+        <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 ">
+            <tr>
+                <td width="10% " align="center" style="padding: 5px; color: white; ">
+                </td>
+                <td width="90% " align="" style="padding: 5px;color: #818794; ">
+                    <span style="color: #818794;width: 100%;height: 100%;font-family: custom" id="des"></span>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="height: 2px;width: 100%;background-color: #F2F4F8"></div>
+
+    <div class="join">
+        <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 ">
+            <tr>
+                <td width="35% " align="center" style="padding: 5px; color: white; ">
+                    <span style="color: #4EB7CD;font-family: custom" id="needtoken"></span>
+                </td>
+                <td width="65% " align="" style="padding: 5px;color: #818794; ">
+                    <button type="button" class="btn" onclick="join()">点击参与开奖</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="height: 2px;width: 100%;background-color: #F2F4F8"></div>
+
+</div>
+
+<script type="text/javascript ">
+    var rate = null;
+    var activityid = null;
+    var needtoken=null;
+    $(document).ready(function () {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        activityid = theRequest.activityid;
+        $.ajax({
+            type: 'POST',
+            url: "/activity/kjroom/detail",
+            data: {
+                "roomId": activityid
+            },
+            success: function (data) {
+                if (data.code == 200) {
+                    var dataArr = data.data;
+                    $("#token").html(dataArr.token);
+                    $("#endTime").html(dataArr.endBlock);
+                    $("#username").html(dataArr.name);
+                    $("#roomname").html(dataArr.activityname);
+                    $("#people").html(dataArr.num+"/"+dataArr.limitMax);
+                    $("#des").html(dataArr.describe);
+                    $("#needtoken").html(dataArr.needtoken);
+                    $("#allprice").html(dataArr.allprice);
+                }else{
+                    alert("错误");
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    });
+    function back() {
+        window.history.go(-1);
+    }
+    function join() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        $.ajax({
+            type: 'POST',
+            url: "/activity/kjroom/join",
+            data: {
+                "roomId": theRequest.activityid
+            },
+            success: function (data) {
+                if (data.code == 200) {
+                    alert("参加成功");
+                    window.location.reload();
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    }
+    function showuser() {
+        window.location.href = "userinfo.html"
+    }
+</script>
+</body>
+
+</html>

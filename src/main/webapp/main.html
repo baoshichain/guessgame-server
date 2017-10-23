@@ -294,7 +294,6 @@
             </div>
         </div>
 
-
         <!-- 个人信息-->
         <div class="item_tab" style="display: none;">
             <div class="user" onclick="showuser()">
@@ -429,7 +428,7 @@
     }
 
     function enterLotterRoom() {
-        location.href = "rooms.html"
+        location.href = "kjroom.html"
     }
 
     function enterEthLotterDeploy() {
@@ -503,53 +502,42 @@
         });
     }
 
-    function getkjRoom() {
-        $.ajax({
-            type: 'POST',
-            url: "https://ropsten.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=YourApiKeyToken",
-            async: false,
-            success: function (rs) {
-                nowBLock = parseInt(rs['result'], 16);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("加载错误");
-            }
-        });
+    function  getkjRoom() {
 
         //开奖房间
         $.ajax({
             type: 'POST',
-            url: "/activity/ethlottery/list",
+            url: "/activity/kjroom/list",
             success: function (rs) {
                 if (rs.code == 200) {
                     dataStr = JSON.stringify(rs.data);
                     dataArrs = JSON.parse(dataStr);
                     var kjstr = "";
-                    for (i = 0; i < dataArrs.length; i++) {
+                    for(i=0;i<dataArrs.length;i++){
                         //插入
                         dataArr = dataArrs[i];
-                        dataHtml = "<a href=\"/ethroominfo.html?id=" + dataArr['id'] + "\" class=\"\">" +
+                        dataHtml= "<a href="+"\"kjroominfo.html?activityid="+dataArr['id']+"\""+" class=\"\">"+
                             "                    <table width=\"100% \" height=\"90px \" border=\"0\" cellpadding=\" \" cellspacing=\"0 \" class=\"list_item\">\n" +
                             "                        <tr>\n" +
-                            "                            <td colspan=\"2\" width=\"100% \" align=\"left\" style=\"padding-left: 15px; color: #FF6B6B;font-family: custom\">" + dataArr['activityname'] +
+                            "                            <td colspan=\"2\" width=\"100% \" align=\"left\" style=\"padding-left: 15px; color: #FF6B6B;font-family: custom\">"+dataArr['activityname']+
                             "</td>\n" +
                             "                        </tr>\n" +
                             "                        <tr>\n" +
-                            "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray; \">参与人数:" + (dataArr['limitMax'] - dataArr['num']) + "/" + dataArr['limitMax'] +
+                            "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray; \">参与人数:"+(dataArr['num'])+"/"+dataArr['limitMax']+
                             " </td>\n" +
                             "                            <td width=\"50% \" align=\"right\" style=\"padding-right: 10px \"><span style=\"color: #5DABB8; \"\n" +
-                            "                                                                                              id=\".\">价值:" + dataArr['token'] +
+                            "                                                                                              id=\".\">价值:"+dataArr['allprice']+
                             "</span></td>\n" +
                             "                        </tr>\n" +
                             "                        <tr>\n" +
-                            "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray \">房间剩余时间(块):" + (dataArr['endBlock'] - nowBLock) +
+                            "                            <td width=\"50% \" align=\"left\" style=\"padding-left: 15px;color: gray \">结束时间:"+(dataArr['endBlock'])+
                             " </td>\n" +
                             "                            <td width=\"50% \" align=\"left\" style=\"\"><span style=\"color: #5DABB8; \"\n" +
                             "                                                                         id=\"\"></span></td>\n" +
                             "                        </tr>\n" +
                             "                    </table>\n" +
                             "                </a>";
-                        kjstr = kjstr + dataHtml;
+                        kjstr = kjstr+dataHtml;
                     }
                     $("#kjRoom").html(kjstr);
                 }
@@ -561,7 +549,6 @@
             }
         });
     }
-
 
     /* 个人信息 */
     var flag = 0;

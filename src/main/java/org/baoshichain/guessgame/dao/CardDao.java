@@ -14,4 +14,7 @@ public interface CardDao {
     int updateByPrimaryKeySelective(Card record);
 
     int updateByPrimaryKey(Card record);
+
+
+
 }

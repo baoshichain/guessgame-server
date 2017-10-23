@@ -113,4 +113,24 @@
     from tb_userofactivity
     where activityId = #{id,jdbcType=INTEGER}
   </select>
+
+
+  <!--查询这个人是否已经参加过活动-->
+  <select id="selectUserActivityCountByActivityIdAndUserId" resultType="java.lang.Integer">
+    select count(*) from tb_userofactivity where userid=#{0} and activityid=#{1}
+  </select>
+
+  <select id="selectUserActivityCountByActivityId" resultType="java.lang.Integer">
+    select count(*) from tb_userofactivity where activityid=#{0}
+  </select>
+
+  <select id="getRewardUserId" resultType="java.lang.Integer">
+    select userid from tb_userofactivity where activityid=#{0} limit #{1},1
+  </select>
+
+
+
+
+
+
 </mapper>

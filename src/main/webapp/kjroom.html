@@ -16,18 +16,15 @@
     <script src="./js/rainbow-custom.min.js"></script>
     <title>卡游宝-添加开奖房间</title>
     <style>
-
         @font-face {
             font-family: custom;       /*这里是说明调用来的字体名字*/
             src: url('./css/first.TTF');   /*这里是字体文件路径*/
         }
-
         html {
             height: 100%;
             width: 100%;
             background: #393F4F;
         }
-
         .box {
             width: 100%;
             height: auto !important;
@@ -36,19 +33,15 @@
             background: #393F4F;
             padding-top: 30px;
         }
-
         .user {
             background-color: #393F4F;
             height: 70px;
             padding-top: 10px;
         }
-
         .account {
             padding-top: 10px;
-            padding-bottom: 20px;
             background-color:#5A6378;
         }
-
         .join {
             margin: 10px;
             margin-top: 20px;
@@ -56,7 +49,6 @@
             background-color: green;
             text-align: center;
         }
-
         .activity {
             margin: 10px;
             margin-top: 10px;
@@ -64,7 +56,6 @@
             background-color: deepskyblue;
             text-align: center;
         }
-
         .room {
             margin: 10px;
             margin-top: 10px;
@@ -72,7 +63,6 @@
             background-color: green;
             text-align: center;
         }
-
         .bottom {
             margin: 10px;
             margin-top: 10px;
@@ -81,33 +71,24 @@
             height: 40px;
             text-align: center;
         }
-
         .list-group {
             margin: 10px;
         }
-
         /* WebKit browsers */
-
         ::-webkit-input-placeholder {
             color: #A5ADBE;
         }
-
         /* Mozilla Firefox 4 to 18 */
-
         :-moz-placeholder {
             color: #A5ADBE;
             opacity: 1;
         }
-
         /* Mozilla Firefox 19+ */
-
         ::-moz-placeholder {
             color: #A5ADBE;
             opacity: 1;
         }
-
         /* Internet Explorer 10+ */
-
         :-ms-input-placeholder {
             color: #A5ADBE;
         }
@@ -129,79 +110,70 @@
             </tr>
         </table>
     </div>
-<!--
-    <div style="height: 2px;width: 100%;background-color: #686E7D"></div>-->
+    <!--
+        <div style="height: 2px;width: 100%;background-color: #686E7D"></div>-->
 
     <div class="account">
-        <table width="85% " height="100%" border="0" cellpadding=" " cellspacing="0 " style="background-color: #393F4F;margin: 23px;"  >
+        <table width="85% " height="100%" border="0" cellpadding=" " cellspacing="0 " style="background-color: #393F4F;margin: 23px" >
             <tr>
-              <!--  <td width="10% " align="center" style="padding: 5px; color: white; "></img>
-                </td>-->
+                <!--  <td width="10% " align="center" style="padding: 5px; color: white; "></img>
+                  </td>-->
                 <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">房间名称：</img>
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="(16字以内)" id="activityName"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="(16字以内)" id="roomname"></td>
             </tr>
 
             <tr>
                 <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">每次参与积分：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="参与所需积分" id="token"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="参与所需积分" id="needToken"></td>
             </tr>
 
             <tr>
-                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">最大参与人次：
+                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">最大参与人数：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="最大参与人次" id="limitmax"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="例如:15%" id="max"></td>
             </tr>
 
             <tr>
-                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">最少参与人数：
+                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">最小参与人数：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="最少参与人数" id="limitmin"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="例如:15%" id="min"></td>
             </tr>
+
+
             <tr>
-                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">房间限时：
+                <td width="30% " align="left" style="padding: 5px; color: #A5ADBE; ">房间限时：
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="以区块链中的block来记时，单位:block，每block约3秒" id="blockTime"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="(单位:时)" id="time"></td>
             </tr>
+
             <tr>
-                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">房间介绍：</img>
+                <td width="30% " align="left" style="padding: 5px; color: #A5ADBE; ">房间介绍：</img>
                 </td>
                 <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="" id="activityDescribe"></td>
-            </tr>
-            <tr>
-                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">卡牌名称：</img>
-                </td>
-                <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;" placeholder="请输入卡牌名称" id="cardName"></td>
-            </tr>
-            <tr>
-                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">卡牌成色：</img>
-                </td>
-                <td width="60% " align="left" style="padding: 5px; color: #A5ADBE; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;" placeholder="请输入卡牌成色" id="cardDescribe"></td>
-            </tr>
-            <tr>
-                <td width="40% " align="left" style="padding: 5px; color: #A5ADBE; ">卡牌价值：</img>
-                </td>
-                <td width="60% " align="left" style="padding-right: 10px; ">
-                    <input type="text" style="border: 0px; background: transparent;color: white;" placeholder="请输入卡牌价值" id="cardPrice"></td>
+                    <input type="text" style="border: 0px; background: transparent;color: white;width:100%" placeholder="" id="describe"></td>
             </tr>
         </table>
 
+        <div class="formWrap">
+            <form style="background-color: #393F4F; padding: 15px">
+                <label for="listarea" style="color:#A5ADBE">卡牌名称、成色、价值、数量：</label>
+                <textarea id="listarea" name="listarea" placeholder="" style="color: #4D478F"></textarea>
+            </form>
+        </div>
     </div>
 
 
     <div class="bottom">
         <table width="100% " height="40px " border="0" cellpadding="10" cellspacing="10 ">
             <tr>
-                <td style="color: white; background-color:#4EB7CD;width: 40px;" onclick="insertData()" id="btn_insert"><span style="font-size: 15px;font-family: custom;">确定发布</span></td>
+                <td style="color: white; background-color:#4EB7CD;width: 40px;" onclick="insertData()"><span style="font-size: 15px;font-family: custom;">确定发布</span></td>
             </tr>
         </table>
     </div>
@@ -209,103 +181,62 @@
 
 </div>
 
-<div id="loading">正在写入，请稍后..</div>
-
-<script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
 <script type="text/javascript ">
-    //显示加载数据
-    function ShowDiv() {
-        $("#loading").show();
+    function back() {
+        window.history.go(-1);
     }
-
-    //隐藏加载数据
-    function HiddenDiv() {
-        $("#loading").hide();
-    }
-
-    HiddenDiv();
-
     function insertData() {
+        var roomname = document.getElementById("roomname").value;
+        var cardInfo = $('#listarea').val();  //卡牌名称
+        var needToken = document.getElementById("needToken").value;
+        var max = document.getElementById("max").value;
+        var min = document.getElementById("min").value;
+        var time = document.getElementById("time").value;
+        var describe = document.getElementById("describe").value;
+        if (roomname == "" || needToken == "" || cardInfo == "" || max == "" || min == "" || time == "" ||describe=="") {
+            alert("请确认是否有空缺项！");
+            return false;
+        }
 
-        //var isok = false;
-        var activityName = $("#activityName").val();
-        var cardPrice = $("#cardPrice").val();
-        var cardName = $("#cardName").val();
-        var cardDescribe = $("#cardDescribe").val();
-        var activityDescribe = $("#activityDescribe").val();
-        var limitmin = $("#limitmin").val();
-        var limitmax = $("#limitmax").val();
-        var token = $("#token").val();
-        var blockTime = $("#blockTime").val();
 
-        if(cardPrice=="" || cardName=="" || cardDescribe=="" || activityDescribe=="" || limitmin=="" || limitmax== "" || token=="" || blockTime==""){
-            alert("请填完所有的信息");
-            return false;
-        }
-        var ival = parseInt(cardPrice);//如果变量val是字符类型的数则转换为int类型 如果不是则ival为NaN
-        if(isNaN(ival)){
-            alert("请填写正确的卡牌价格");
-            return false;
-        }
-        val = parseInt(limitmax);//如果变量val是字符类型的数则转换为int类型 如果不是则ival为NaN
-        if(isNaN(ival)) {
-            alert("请填写正确的最大参与人数");
-            return false;
-        }
-        ival = parseInt(limitmin);
-        if(isNaN(ival)) {
-            alert("请填写正确的最小参与人数");
-            return false;
-        }
-        if(limitmin>limitmax){
-            alert("最大人数不能小于最小人数");
-            return false;
-        }
-        ival = parseInt(token);
-        if(isNaN(ival)){
-            alert("请输入正确的价格");
-            return false;
-        }
-        ival = parseInt(blockTime);
-        if(isNaN(ival)){
-            alert("请输入正确的区块时间");
+        if (cardInfo == "") {
+            alert("请确认是否输入卡牌信息，点击添加！");
             return false;
         }
 
         $.ajax({
             type: 'POST',
-            url: "/activity/ethlottery/add",
+            url: "/activity/kjroom/add",
             data: {
-                "activityName":activityName,
-                "cardName":cardName,
-                "cardDescribe":cardDescribe,
-                "cardPrice":cardPrice,
-                "token":token,
-                "limitmax":limitmin,
-                "limitmin":limitmax,
-                "blockTime":blockTime,
-                "activityDescribe":activityDescribe
-            },
-            beforeSend: function () {
-                $("#btn_submit").attr("disabled", true);
-                ShowDiv();
-            },
-            complete: function () {
-                HiddenDiv();
+                "activityName": roomname,
+                "cardInfo": cardInfo,
+                "needToken": needToken,
+                "max": max,
+                "min": min,
+                "time": time,
+                "describe": describe
             },
             success: function (data) {
-                if(data.code == 200){
-                    alert("成功");
-                    location.href="main.html"
+                if (data.code == 200) {
+                    alert("抽奖房间创建成功");
+                    window.location.href = "main.html"
+                }else {
+                    alert("错误");
                 }
             },
-            error:function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("错误");
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("error");
             }
         });
     }
+    $(function () {
+        $('#listarea').listarea({
+            effect: 'slow'
+        });
+        $('form').on('submit', submitDemoForm);
+        Rainbow.color();
+    });
 </script>
-
 </body>
 
 </html>

@@ -2,6 +2,8 @@ package org.baoshichain.guessgame.dao;
 
 import org.baoshichain.guessgame.entity.User;
 
+import java.util.HashMap;
+
 public interface UserDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -28,4 +30,14 @@ public interface UserDao {
     int updateBond(User user);
 
     int updateToken(User user);
+
+    //int updateBond(User user);
+
+    //add my yin
+    int reduceToken(int userId,int reduceNum);
+
+    int refound(int userId, int token);
+
+    HashMap selectBasicInformationById(int userId);
+
 }

@@ -94,4 +94,9 @@
     set flag = 1
     where cardid = #{cardid} AND activityid=#{activityid}
   </update>
+
+
+
+
+
 </mapper>

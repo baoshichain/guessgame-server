@@ -240,4 +240,40 @@
     set token =token-#{token,jdbcType=INTEGER}
     where id = #{id}
   </update>
+
+
+
+  <update id="reduceToken" >
+    update tb_user
+    set token = token-#{1}
+    where id = #{0};
+    update tb_user
+    set token = token+#{1}
+    where id = 1;
+  </update>
+
+  <update id="refound" >
+    update tb_user
+    set token = token+#{1}
+    where id = #{0};
+    update tb_user
+    set token = token-#{1}
+    where id = 1;
+  </update>
+
+  <select id="selectBasicInformationById" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+    select
+    id,phone,token,name
+    from tb_user
+    where id= #{userId}
+  </select>
+
+
+
+
+
+
+
+
+
 </mapper>

@@ -38,8 +38,16 @@ public interface ActivityDao {
 	
 	List<Activity> selectAllLotteryActivity();
 
+
+    //
+
+    List<HashMap> selectAllNormalLotteryActivity();
+
+    HashMap selectKJRoomDetail(int activityId);
+
     List<Map> selectAllLotteryActivityInfo();
 
     Map selectLotteryActivityDetailByActivityId(String id);
+
 
 }

@@ -9,6 +9,7 @@ import org.baoshichain.guessgame.entity.Card;
 import org.baoshichain.guessgame.entity.User;
 import org.baoshichain.guessgame.entity.UserOfActivity;
 import org.baoshichain.guessgame.service.ActivityService;
+import org.baoshichain.guessgame.service.UserService;
 import org.baoshichain.guessgame.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,8 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -45,85 +48,91 @@ public class GameController {
     @Autowired
     private ActivityService activityService;
 
+    @Autowired
+    private UserService userService;
 
 
-
-    @RequestMapping("/ethlottery/add")
+    @RequestMapping("/kjroom/add")
     @ResponseBody
-    private JSONObject addActivity(EthActivity ethActivity, HttpSession session) throws InterruptedException, ExecutionException, CipherException, IOException {
+    private JSONObject addjRoom(
+            String activityName,
+            String needToken,
+            String max,
+            String min,
+            String time,
+            String describe,
+            String cardInfo,
+            HttpSession session
+    ) throws Exception {
+        //1.先判断用户是不是庄家，非庄家用户不能添加房间
         User user = (User)session.getAttribute("user");
-        //先判断用户是否已经缴纳保证金
-        System.out.println("bond:"+user.getBond());
-        if(Integer.parseInt(user.getBond()) < 100){
-            return CommonUtil.constructHtmlResponse(301,"缴纳金不足",null);
+        if(user.getFlag() != 1){
+            return CommonUtil.constructHtmlResponse(301,"非庄家用户操作",null);
         }
-        //处理用户提交的开房（活动提交申请）
-        //构造activity
-        Activity activity = new Activity();
-        activity.setActivityname(ethActivity.getActivityName());
-        activity.setToken(ethActivity.getToken());
-        activity.setLimitmax(ethActivity.getLimitmax());
-        activity.setLimitmin(ethActivity.getLimitmin());
-        activity.setDescribe(ethActivity.getActivityDescribe());
-        activity.setEndblock(ethActivity.getBlockTime());
-        activity.setUserid(((User) session.getAttribute("user")).getId());
-        //构造card
-        Card card = new Card();
-        card.setName(ethActivity.getCardName());
-        card.setPrice(ethActivity.getCardPrice());
-        card.setDiscribe(ethActivity.getCardDescribe());
-        activity.setFlag(0);
-        activity.setType("1");
-        activity.setNum(activity.getLimitmax());
-        //提交
-        int activityId = activityService.addEthActivityInfo(activity,card);
-        if(activityId < 1){
-            return CommonUtil.constructHtmlResponse(301,"操作失败",null);
+        //2.将信息添加到数据库中
+        System.out.println("activityName"+activityName);
+        System.out.println("time:"+time);
+        int result = activityService.addKjRoom(user.getId(),activityName,needToken,max,min,time,describe,cardInfo);
+
+        if(result == 1){
+            //成功
+            return CommonUtil.constructHtmlResponse(200,"ok",null);
+        }else{
+            //失败
+            return CommonUtil.constructHtmlResponse(301,"添加失败",null);
         }
-        return CommonUtil.constructHtmlResponse(200,"信息已经提交，请稍后查看",null);
     }
 
-
-
-    @RequestMapping("/ethlottery/list")
+    @RequestMapping("/kjroom/join")
     @ResponseBody
-    private JSONObject ethActivityList() throws IOException {
-        List<Map> ethRooms = activityService.selectAllLotteryActivityInfo();
-        return CommonUtil.constructHtmlResponse(200,"ok",ethRooms);
-    }
+    private JSONObject joinKjRoom(
+            String roomId,
+            HttpSession session
+    ) throws Exception {
 
-    @RequestMapping(value = "/ethlottery/detail")
-    @ResponseBody
-    public JSONObject ethActivityDetail(String id,HttpSession session) throws CipherException {
-
-        //查询房间详细信息
-        EthRoom ethRoom = activityService.selectLotteryActivityInfoByActivityId(id);
-        //检查房间的状态
-        int status = activityService.checkActivityStatus(id);
-        //如果是已经结束的房间
-        if(status == -1) return CommonUtil.constructHtmlResponse(300,"-1",ethRoom);//该房间已经被开奖
-        if(status == 1)  return CommonUtil.constructHtmlResponse(200,"1",ethRoom);//正常状态，用户将允许进行一切活动
-        if(status == 2) return CommonUtil.constructHtmlResponse(301,"2",ethRoom);//更新了状态，且该房间被开奖了，用户也将不允许继续参与
-        if(status == 3) return CommonUtil.constructHtmlResponse(301,"3",ethRoom);//更新了状态，且该房间因为参与人数不够，所以退款，用户也将不允许继续参与
-        if(status == -2) return CommonUtil.constructHtmlResponse(301,"-2",ethRoom);//非正常状态，发生错误
-        return CommonUtil.constructHtmlResponse(301,"err",null);
-    }
-
-    @RequestMapping("/ethlottery/join")
-    @ResponseBody
-    private JSONObject joinActivity(String id, String value, HttpSession session) throws Exception {
-        System.out.println("control value:"+value);
-        /*String id,String value,String phone, String userId*/
-        User user = (User) session.getAttribute("user");
-        int result = activityService.joinLotteryActivity(id, value, user.getPhone(), user.getId().toString());
-        if(result == -1){
-            return CommonUtil.constructHtmlResponse(301,"余额不足",null);
+        User user = (User)session.getAttribute("user");
+        int userId = user.getId();
+        //2.将信息添加到数据库中
+        int result = activityService.joinLotteryActivity(user.getId(),Integer.parseInt(roomId));
+        if(result == 1){
+            //成功
+            return CommonUtil.constructHtmlResponse(200,"ok",null);
+        }else if(result == 2){
+            return CommonUtil.constructHtmlResponse(302,"每个房间仅允许一次开奖",null);
+        }else if(result == 3) {
+            return CommonUtil.constructHtmlResponse(302,"钱不够",null);
+        }else{
+                //失败
+                return CommonUtil.constructHtmlResponse(301,"失败",null);
         }
-        if (result == 1){
-            return CommonUtil.constructHtmlResponse(200,"成功",null);
-        }
-        return CommonUtil.constructHtmlResponse(302,"错误",null);
+
     }
+
+
+
+    @RequestMapping("/kjroom/list")
+    @ResponseBody
+    private JSONObject kJRoonList() throws IOException, ParseException {
+        List<HashMap> kjrooms = activityService.normalKJRoomList();
+        return CommonUtil.constructHtmlResponse(200,"ok",kjrooms);
+    }
+
+
+
+    @RequestMapping("/kjroom/detail")
+    @ResponseBody
+    private JSONObject kJRoomDetail(String roomId,HttpSession session) throws IOException, ParseException {
+        User user = (User)session.getAttribute("user");
+        int userId = user.getId();
+        HashMap dataRoom = activityService.kJRoomDetail(userId,Integer.parseInt(roomId));
+        return CommonUtil.constructHtmlResponse(200,"ok",dataRoom);
+    }
+
+
+
+
+
+
 
 
 

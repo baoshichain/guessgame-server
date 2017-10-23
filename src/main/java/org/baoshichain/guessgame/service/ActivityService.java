@@ -8,6 +8,7 @@ import org.baoshichain.guessgame.bean.EthRoom;
 import org.web3j.crypto.CipherException;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -41,16 +42,17 @@ public interface ActivityService {
     int getActivityNum(int userid);
 
     List<Map> getUserOfActivity(int userid);
-	
-	 int addEthActivityInfo(Activity activity, Card card) throws ExecutionException, InterruptedException, IOException, CipherException;
 
-    List<Activity> selectAlllotteryActivity();
 
-    public List<Map> selectAllLotteryActivityInfo() throws IOException;
 
-    EthRoom selectLotteryActivityInfoByActivityId(String id);
 
-    int joinLotteryActivity(String id,String value,String phone, String userId) throws Exception;
 
-    int checkActivityStatus(String id) throws CipherException;
+    int addKjRoom(int userId,String activityName, String needToken,String max, String min, String time, String describe,String cardInfo) throws Exception;
+
+    HashMap kJRoomDetail(int userId, int roomId);
+
+    int joinLotteryActivity(int userId, int roomId) throws Exception;
+
+    List<HashMap> normalKJRoomList() throws ParseException;
+
 }

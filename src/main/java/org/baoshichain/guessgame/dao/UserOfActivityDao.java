@@ -23,6 +23,19 @@ public interface UserOfActivityDao {
 
     List<UserOfActivity> getJoinUserNum(int activityid);
 
-	
-	 List<UserOfActivity> selectByActivityId(Integer activityId);
+
+    List<UserOfActivity> getJoinNum(int activityid);
+
+    List<UserOfActivity> selectByActivityId(Integer activityId);
+
+    int selectUserActivityCountByActivityIdAndUserId(int userId, int activityId);
+
+    int selectUserActivityCountByActivityId(int activityId);
+
+    int getRewardUserId(int activityId,int random);
+
+
+
+
+
 }
