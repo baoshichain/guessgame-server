@@ -126,5 +126,10 @@ public class UserServiceImpl implements UserService{
     return userDao.updateToken(user);
   }
 
+  @Override
+  public int addToken(int token, String activityId) {
+    return userDao.addToken(token,activityId);
+  }
+
 
 }

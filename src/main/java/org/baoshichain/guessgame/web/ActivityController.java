@@ -178,6 +178,9 @@ public class ActivityController {
                 drawluckResult.setToken(newuser.getToken()); //用户积分
             }
             logger.info("用户积分减少结果="+tokenResult);
+            //增加庄家积分
+            int addToken=userService.addToken(Integer.parseInt(needtoken),activityid);
+            logger.info("庄家积分增加结果="+addToken);
 
             //生成随机数
             if (Double.parseDouble(random) >Double.parseDouble(rate)) { //未中奖

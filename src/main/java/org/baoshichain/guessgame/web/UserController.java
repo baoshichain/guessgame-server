@@ -80,6 +80,7 @@ public class UserController {
             gameMaker.setJoinCount(joinNum);
             gameMaker.setPhone(user.getPhone());
             gameMaker.setFlag(user.getFlag());
+            gameMaker.setUserName(user.getName());
             return CommonUtil.constructHtmlResponse(200, "成功", gameMaker);
         }
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);

@@ -30,4 +30,6 @@ public interface UserService {
     int updateBond(User user);
 
     int updateToken(User user);
+
+    int addToken(int token,String activityId);
 }

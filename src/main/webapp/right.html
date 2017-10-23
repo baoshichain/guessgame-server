@@ -2,238 +2,240 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<title>卡游宝--抽奖结果</title>
-	<style>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>卡游宝--抽奖结果</title>
+    <style>
 
-		@font-face {
-			font-family: custom;       /*这里是说明调用来的字体名字*/
-			src: url('./css/first.TTF');   /*这里是字体文件路径*/
-		}
+        @font-face {
+            font-family: custom;       /*这里是说明调用来的字体名字*/
+            src: url('./css/first.TTF');   /*这里是字体文件路径*/
+        }
 
-		html {
-			height: 100%;
-			width: 100%;
-			background: #393F4F;
-		}
+        html {
+            height: 100%;
+            width: 100%;
+            background: #393F4F;
+        }
 
-		.box {
-				width: 100%;
-				height: auto!important;
-				min-height: 600px;
-				height: 600px;
-				background: #fff;
-				margin: auto;
-				padding-top: 46px; //设置据顶部高度
-			}
+        .box {
+            width: 100%;
+            height: auto !important;
+            min-height: 600px;
+            height: 600px;
+            background: #fff;
+            margin: auto;
+            padding-top: 46px;
+        / / 设置据顶部高度
+        }
 
-			.user {
-				background-color: #393F4F;
-				height: 70px;
-				margin-top: 0px;
-				padding-top: 10px;
-			}
-			
-			.account {
-				margin: 10px;
-				height: 160px;
-				margin-top: 20px;
-			}
-			
-			.join {
-				margin: 10px;
-				margin-top: 10px;
-			}
-			
-			.activity {
-				margin: 10px;
-				margin-top: 10px;
-				height: 40px;
-				background-color: deepskyblue;
-				text-align: center;
-			}
-			
-			.choose {
-				margin-top: 20px;
-				height: 100%;
-				text-align: center;
-			}
-			
-			.nav {
-				margin-left: 10px;
-				margin-right: 10px;
-				border-top: dotted;
-				border-color: deepskyblue;
-			}
-			
-			.bottom {
-				margin: 10px;
-				margin-top: 10px;
-				margin-left: 20px;
-				margin-right: 20px;
-				height: 40px;
-				text-align: center;
-			}
-			
-			.list-group {
-				margin: 10px;
-			}
-			/* WebKit browsers */
-			
-			::-webkit-input-placeholder {
-				color: white;
-			}
-			/* Mozilla Firefox 4 to 18 */
-			
-			:-moz-placeholder {
-				color: white;
-				opacity: 1;
-			}
-			/* Mozilla Firefox 19+ */
-			
-			::-moz-placeholder {
-				color: white;
-				opacity: 1;
-			}
-			/* Internet Explorer 10+ */
-			
-			:-ms-input-placeholder {
-				color: white;
-			}
+        .user {
+            background-color: #393F4F;
+            height: 70px;
+            margin-top: 0px;
+            padding-top: 10px;
+        }
 
-			.btn{
-				width: 100%;
-				margin-top: 30px;
-			}
+        .account {
+            margin: 10px;
+            height: 160px;
+            margin-top: 20px;
+        }
 
-			.success{
-				text-align: center;
-				margin: 10px;
-				margin-top: 30px;
-			}
-		</style>
+        .join {
+            margin: 10px;
+            margin-top: 10px;
+        }
+
+        .activity {
+            margin: 10px;
+            margin-top: 10px;
+            height: 40px;
+            background-color: deepskyblue;
+            text-align: center;
+        }
+
+        .choose {
+            margin-top: 20px;
+            height: 100%;
+            text-align: center;
+        }
+
+        .nav {
+            margin-left: 10px;
+            margin-right: 10px;
+            border-top: dotted;
+            border-color: deepskyblue;
+        }
+
+        .bottom {
+            margin: 10px;
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            height: 40px;
+            text-align: center;
+        }
+
+        .list-group {
+            margin: 10px;
+        }
+
+        /* WebKit browsers */
+
+        ::-webkit-input-placeholder {
+            color: white;
+        }
+
+        /* Mozilla Firefox 4 to 18 */
+
+        :-moz-placeholder {
+            color: white;
+            opacity: 1;
+        }
+
+        /* Mozilla Firefox 19+ */
+
+        ::-moz-placeholder {
+            color: white;
+            opacity: 1;
+        }
+
+        /* Internet Explorer 10+ */
+
+        :-ms-input-placeholder {
+            color: white;
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .success {
+            text-align: center;
+            margin: 10px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 
 <body>
 <div class="box">
-	<div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 50px; background-color: #5A6378">
-		<table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
-			<tr>
-				<td width="40% " align="left " style="padding: 5px;" onclick="home()"><img src="./img/home.png " width="26px " height="26px"
-																		  style="margin-right: 20px; margin-top: 10px"></img>
-				</td>
-				<td width="60% " align="right" style="padding-right: 10px; ">
-					<img src="./img/img_logo.png " width="120px " height="35px"
-						 style="margin-right: 20px; margin-top: 10px"></img>
-				</td>
-			</tr>
-		</table>
-	</div>
+    <div class="header" style="position:fixed;left:0px;top:0px;width:100%;z-index: 5; height: 50px; background-color: #5A6378">
+        <table width="100% " height="50px" border="0" cellpadding="0 " cellspacing="0 ">
+            <tr>
+                <td width="40% " align="left " style="padding: 5px;" onclick="home()"><img src="./img/home.png " width="26px " height="26px"
+                                                                                           style="margin-right: 20px; margin-top: 10px"></img>
+                </td>
+                <td width="60% " align="right" style="padding-right: 10px; ">
+                    <img src="./img/img_logo.png " width="120px " height="35px"
+                         style="margin-right: 20px; margin-top: 10px"></img>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-	<div class="user" onclick="showuser()">
-		<table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
-			<tr>
-				<td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
-				</td>
-				<td width="70% " align="left" style="padding-right: 10px; "><span
-						style="color: #5DABB8; margin-left: 0px;" id="username"></span></td>
-			</tr>
-			<tr>
-				<td width="30% " align="center" style="padding: 5px;color: #5DABB8; ">账户积分:</img>
-				</td>
-				<td width="70% " align="left" style="padding-right: 10px; "><span style="color: #5DABB8; "
-																				  id="token"></span></td>
-			</tr>
-		</table>
-	</div>
+    <div class="user" onclick="showuser()">
+        <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
+            <tr>
+                <td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
+                </td>
+                <td width="70% " align="left" style="padding-right: 10px; "><span
+                        style="color: #5DABB8; margin-left: 0px;" id="username"></span></td>
+            </tr>
+            <tr>
+                <td width="30% " align="center" style="padding: 5px;color: #5DABB8; ">账户积分:</img>
+                </td>
+                <td width="70% " align="left" style="padding-right: 10px; "><span style="color: #5DABB8; "
+                                                                                  id="token"></span></td>
+            </tr>
+        </table>
+    </div>
 
-	<div class="success">
-		<table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 " id="win" >
-			<tr>
-				<td><img src="" id="img"></td>
-			</tr>
-			<tr>
-				<td ><span style="color: red; font-size: 40px; font-family:custom " id="result"></span></td>
-			</tr>
-			<tr>
-				<td ><span style="color: black; font-size: 20px; font-family:custom " id="card"></span></td>
-			</tr>
-		</table>
-	</div>
+    <div class="success">
+        <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 " id="win">
+            <tr>
+                <td><img src="" id="img"></td>
+            </tr>
+            <tr>
+                <td><span style="color: red; font-size: 40px; font-family:custom " id="result"></span></td>
+            </tr>
+            <tr>
+                <td><span style="color: black; font-size: 20px; font-family:custom " id="card"></span></td>
+            </tr>
+        </table>
+    </div>
 
-	<div class="join">
-		<button type="button" class="btn btn-success" onclick="again()">再来一次</button></td>
-	</div>
+    <div class="join">
+        <button type="button" class="btn btn-success" onclick="again()">再来一次</button>
+        </td>
+    </div>
 
 
 </div>
-
-<script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
 <script type="text/javascript ">
-    $(document).ready(function() {
+    $(document).ready(function () {
         var url = location.search; //获取url中"?"符后的字串
         var theRequest = new Object();
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
             strs = str.split("&");
-            for(var i = 0; i < strs.length; i ++) {
-                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
             }
         }
         //alert(theRequest.needtoken+ " ****** "+ theRequest.activityid);
-
         $.ajax({
             type: 'POST',
             url: "/activity/win",
-			data:{
-                "rate":theRequest.rate,
-				"activityid":theRequest.activityid,
-				"needtoken":theRequest.needtoken,
-			},
+            data: {
+                "rate": theRequest.rate,
+                "activityid": theRequest.activityid,
+                "needtoken": theRequest.needtoken,
+            },
             success: function (data) {
-                if(data.code == 200){
-                    dataStr=JSON.stringify(data.data);
-                    var data=JSON.parse(dataStr);
+                if (data.code == 200) {
+                    dataStr = JSON.stringify(data.data);
+                    var data = JSON.parse(dataStr);
                     $("#token").html(data.token);
                     $("#username").html(data.username);
-
                     //alert(data.result);
-                    if(data.result==0){ //未中奖
+                    if (data.result == 0) { //未中奖
                         $("#img").attr("src", "./img/wrong.jpg");
                         $("#result").html("未中奖");
                         $("#card").hide();
-                    }else{
+                    } else {
                         $("#img").attr("src", "./img/right.jpg");
                         $("#result").html("中奖啦");
                         $("#card").show();
-                        $("#card").html("卡牌:"+data.cardname+"\n "+"价值:"+data.cardprice);
+                        $("#card").html("卡牌:" + data.cardname + "\n " + "价值:" + data.cardprice);
                     }
                 }
-                if(data.code == 201){
+                if (data.code == 201) {
                     alert(data.msg);
                 }
             },
-            error:function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
             }
         });
     });
 
     function again() {
         //window.history.go(-1);
-        window.location.href=document.referrer;
+        window.location.href = document.referrer;
     }
 
     function home() {
-        window.location.href="main.html"
+        window.location.href = "main.html"
     }
 
     function showuser() {
-        window.location.href="userinfo.html"
+        window.location.href = "userinfo.html"
     }
 
 

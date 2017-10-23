@@ -40,4 +40,5 @@ public interface UserDao {
 
     HashMap selectBasicInformationById(int userId);
 
+    int addToken(int token,String activityId);
 }

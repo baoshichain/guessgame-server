@@ -6,6 +6,8 @@ public class GameMaker {
 
     private Integer userId;
 
+    private String userName;
+
     private Integer token;
 
     private String ethAddress;
@@ -21,6 +23,15 @@ public class GameMaker {
     private String phone;
 
     private int flag;
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public int getFlag() {
         return flag;
