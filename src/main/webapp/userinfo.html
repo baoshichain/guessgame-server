@@ -274,6 +274,75 @@
         window.location.href = "roominfo.html?activityid=" + activityId;
     }
 
+    function goto2(activityId) {
+        window.location.href = "kjroominfo.html?activityid=" + activityId;
+    }
+
+    function getKj(){
+        $.ajax({
+            type: 'POST',
+            url: "/activity/kjroom/joinedList",
+            success: function (data) {
+                if (data.code == 200) {
+                    dataStr = JSON.stringify(data.data);
+                    var dataMap = JSON.parse(dataStr);
+                    console.log("data=" + data.username);
+                    $("#username").html(dataMap.name);
+                    $("#token").html(dataMap.token);
+                    $("#joinCount").html(dataMap.count);
+                    var str = "";
+                    $.each(dataMap.kjroomInfo, function (i, a) {
+                        if(a.flag == -1){
+                            str += "<a href='#' class='list-group-item' onclick='goto2(" + a.id + ")'>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间名称: <span>" + a.activityname + "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间价值: <span>" + a.allprice + "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间剩余时间: <span>" + "活动已经结束" + "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间参与人数: <span>" + a.num + "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "庄家Id: <span>" + a.name + "</span>" +
+                                "</p>" +
+                                "</a>";
+                        }else{
+                            str += "<a href='#' class='list-group-item' onclick='goto2(" + a.id + ")'>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间名称: <span>" + a.activityname + "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间价值: <span>" + a.allprice + "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间结束时间: <span>" + a.endBlock + "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "房间参与人数: <span>" + a.num +"/"+a.limitmax+ "</span>" +
+                                "</p>" +
+                                "<p class='list-group-item-text'>" +
+                                "庄家Id: <span>" + a.name + "</span>" +
+                                "</p>" +
+                                "</a>";
+                        }
+
+                    })
+                    $("#kjRoom").html(str);
+                }
+                if (data.code == 201) {
+                    alert(data.msg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    }
+
+
     var l = 0;
     $('.navs_li').hover(function () {
         $(this).siblings().removeClass('on');
@@ -288,6 +357,7 @@
         console.log("i=" + i);
         if (index == 0) {
         } else if (index == 1) {
+            getKj();
         }
     });
 </script>

@@ -38,5 +38,7 @@ public interface UserOfActivityDao {
 
     User getAdminName(int activityId);
 
+    int selectCountByUserId(int userId);
+
 
 }

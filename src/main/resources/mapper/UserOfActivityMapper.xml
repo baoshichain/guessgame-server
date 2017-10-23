@@ -129,5 +129,8 @@
   </select>
 
 
+  <select id="selectCountByUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*) from tb_userofactivity where userid = #{userId}
+  </select>
 
 </mapper>

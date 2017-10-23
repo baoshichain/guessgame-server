@@ -129,6 +129,14 @@ public class GameController {
     }
 
 
+    @RequestMapping("/kjroom/joinedList")
+    @ResponseBody
+    private JSONObject joinedKjRoomList(String roomId,HttpSession session) throws IOException, ParseException {
+        User user = (User)session.getAttribute("user");
+        int userId = user.getId();
+        HashMap data = activityService.allJoinedKjRoom(userId);
+        return CommonUtil.constructHtmlResponse(200,"ok",data);
+    }
 
 
 

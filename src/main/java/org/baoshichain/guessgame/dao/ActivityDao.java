@@ -53,4 +53,8 @@ public interface ActivityDao {
 
     User getAdminName(int activityId);
 
+    List<HashMap> selectAllJoinedKjRoom(int userId);
+
+
+
 }

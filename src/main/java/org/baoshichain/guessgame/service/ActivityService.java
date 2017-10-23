@@ -58,4 +58,6 @@ public interface ActivityService {
 
     User getAdminName(int activityId);
 
+    HashMap allJoinedKjRoom(int userId);
+
 }

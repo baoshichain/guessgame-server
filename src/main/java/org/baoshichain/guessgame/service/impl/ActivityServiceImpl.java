@@ -371,7 +371,15 @@ public class ActivityServiceImpl implements ActivityService {
         return dataMap;
     }
 
-
+    @Override
+    public HashMap allJoinedKjRoom(int userId) {
+        HashMap dataMap = userDao.selectBasicInformationById(userId);
+        int count = userOfActivityDao.selectCountByUserId(userId);
+        List<HashMap> activityList = activityDao.selectAllJoinedKjRoom(userId);
+        dataMap.put("count", count);
+        dataMap.put("kjroomInfo", activityList);
+        return dataMap;
+    }
 
 
 
@@ -389,6 +397,8 @@ public class ActivityServiceImpl implements ActivityService {
         winner.setActivityid(roomId);
         winnerDao.insert(winner);
     }
+
+
 
 
 }
