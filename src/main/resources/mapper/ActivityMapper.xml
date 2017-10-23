@@ -244,7 +244,7 @@
 
 
     <select id="getUserOfActivity" resultType="java.util.Map">
-       select DISTINCT a.userid,b.id,b.activityname,b.endBlock,b.startBlock
+       select DISTINCT a.userid,b.id,b.activityname,b.endBlock,b.startBlock,b.type
           from tb_userofactivity a, tb_activity b where a.activityid=b.id AND a.userid=#{userid,jdbcType=INTEGER}
     </select>
 

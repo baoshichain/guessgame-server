@@ -19,6 +19,15 @@ public class Userinfo {
         private String time;
         private int joinnum;
         private int activityid;
+        private String type;
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
 
         public int getActivityid() {
             return activityid;

@@ -15,6 +15,15 @@ public class LuckRoomInfo {
     private String des;
     private String evertoken; //每次抽奖积分
     private String joinnum; //剩余抽奖次数
+    private String endstock;  //房间结束时间
+
+    public String getEndstock() {
+        return endstock;
+    }
+
+    public void setEndstock(String endstock) {
+        this.endstock = endstock;
+    }
 
     public String getJoinnum() {
         return joinnum;

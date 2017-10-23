@@ -1,7 +1,5 @@
 package org.baoshichain.guessgame.web;
 
-import jnr.ffi.annotations.In;
-import jnr.ffi.annotations.Transient;
 import net.sf.json.JSONObject;
 import org.baoshichain.guessgame.bean.*;
 import org.baoshichain.guessgame.entity.*;
@@ -18,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
 import java.util.*;
 
 @Controller
@@ -136,6 +135,7 @@ public class ActivityController {
             luckRoomInfo.setRate(activity.getWinrate());
             luckRoomInfo.setNum(Integer.parseInt(activity.getNum()));
             luckRoomInfo.setEvertoken(activity.getToken());
+            luckRoomInfo.setEndstock(activity.getEndblock());
 
             //同一用户10次参加
             List<UserOfActivity> list= userOfActivityService.getJoinNum(activity.getId(),user.getId());
@@ -163,8 +163,10 @@ public class ActivityController {
             drawluckResult.setUserId(user.getId()); //用户id
             drawluckResult.setUsername(user.getLoginname());
             //创建随机数
-            Random rand = new Random();
-            int random = rand.nextInt(100);
+            DecimalFormat df = new DecimalFormat("#0.00");
+            String random=df.format(Math.random()*100) ;
+            //Random rand = new Random();
+            //int random = rand.nextInt(100);
             logger.info("系统random="+random);
             logger.info("房间概率rate="+rate);
 
@@ -178,7 +180,7 @@ public class ActivityController {
             logger.info("用户积分减少结果="+tokenResult);
 
             //生成随机数
-            if (random >Integer.parseInt(rate)) { //未中奖
+            if (Double.parseDouble(random) >Double.parseDouble(rate)) { //未中奖
                 drawluckResult.setResult("0"); //抽奖结果
             } else {
                 drawluckResult.setResult("1"); //中奖
@@ -249,7 +251,7 @@ public class ActivityController {
             if ((newuser.getToken() < Integer.parseInt(activity.getToken()) || newuser.getToken() <= 0)) {
                 return CommonUtil.constructHtmlResponse(201, "积分不足", null);
             }
-            if (TimerUtil.compare_date(activity.getEndblock(), TimerUtil.getCurrentTimes()) != 1) {
+            if (TimerUtil.compare_date(TimerUtil.getCurrentTimes(),activity.getEndblock()) != 1) {
                 return CommonUtil.constructHtmlResponse(201, "活动已经结束", null);
             }
             if (Integer.parseInt(activity.getNum()) <= 0) {

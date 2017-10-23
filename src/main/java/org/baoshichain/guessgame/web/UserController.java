@@ -110,6 +110,7 @@ public class UserController {
                 String startBlock = "";
                 String endBlock = "";
                 int activityId = 0;
+                String type="";
                 while (entries.hasNext()) {
                     Map.Entry entry = (Map.Entry) entries.next();
                     System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
@@ -125,19 +126,22 @@ public class UserController {
                     if (entry.getKey().equals("id")) {
                         activityId = (Integer) entry.getValue();
                     }
+                    if (entry.getKey().equals("type")) {
+                        type = (String) entry.getValue();
+                    }
                 }
-                if (TimerUtil.compare_date(endBlock, TimerUtil.getCurrentTimes()) != 1) { //活动结束
+                if (TimerUtil.compare_date(TimerUtil.getCurrentTimes(),endBlock) != 1) { //活动结束
                     continue;
-                } else {
+                } else { //活动未结束
                     String time = TimerUtil.getCompareResult(endBlock, TimerUtil.getCurrentTimes());
                     info.setTime(time);
                 }
+                //房间类型
+                info.setType(type);
                 //房间id
                 info.setActivityid(activityId);
                 //参加人数
-                //logger.info("activityId=" + activityId);
                  List<UserOfActivity> userlist = userOfActivityService.getJoinUserNum(activityId);
-                //logger.info("userlist.size=" + userlist.size());
                 info.setJoinnum(userlist.size());
                 //房间价值
                 int price = activityService.getList(activityId);

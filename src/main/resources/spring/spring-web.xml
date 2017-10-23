@@ -35,13 +35,13 @@
 
   <!--配置拦截器-->
   <!-- 类似于全局的拦截器的配置 -->
-<mvc:interceptors>
+<!--<mvc:interceptors>
 
     <mvc:interceptor>
       <mvc:mapping path="/**"/>
       <bean class="org.baoshichain.guessgame.interceptor.LoginInterceptor"/>
     </mvc:interceptor>
 
-  </mvc:interceptors>
+  </mvc:interceptors>-->
 
 </beans>
