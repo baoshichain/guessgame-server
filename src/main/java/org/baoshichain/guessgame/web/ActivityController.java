@@ -90,10 +90,10 @@ public class ActivityController {
                 luckroom.setActivityid(activity.getId());
                 luckroom.setRoomname(activity.getActivityname());
                 luckroom.setNum(Integer.parseInt(activity.getNum()));
-                luckroom.setWinrate(activity.getWinrate());
-                double price=activityService.getList(activityId);
-                logger.info("price="+price);
+                luckroom.setWinrate(activity.getWinrate()); //房间概率
+                double price=activityService.getList(activityId); //房间价值
                 luckroom.setPrice(activityService.getList(activityId));
+                luckroom.setToken(activity.getToken());
                 lucklist.add(luckroom);
             }
             room.setList(lucklist);
@@ -137,10 +137,10 @@ public class ActivityController {
             luckRoomInfo.setEvertoken(activity.getToken());
             luckRoomInfo.setEndstock(activity.getEndblock());
 
-            //同一用户10次参加
+            //同一用户 n次参加
             List<UserOfActivity> list= userOfActivityService.getJoinNum(activity.getId(),user.getId());
             logger.info("list.size="+list.size());
-            luckRoomInfo.setJoinnum(String.valueOf(10-list.size()));
+            luckRoomInfo.setJoinnum(String.valueOf(100-list.size()));
             return CommonUtil.constructHtmlResponse(200, "查询列表成功", luckRoomInfo);
         }
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
@@ -248,8 +248,8 @@ public class ActivityController {
             //同一用户10次参加
             List<UserOfActivity> list= userOfActivityService.getJoinNum(activity.getId(),user.getId());
             logger.info("list.size="+list.size());
-            if(list.size()>9){
-                return CommonUtil.constructHtmlResponse(201, "同一玩家最多参与10次抽奖", null);
+            if(list.size()>99){
+                return CommonUtil.constructHtmlResponse(201, "同一玩家最多参与100次抽奖", null);
             }
             if ((newuser.getToken() < Integer.parseInt(activity.getToken()) || newuser.getToken() <= 0)) {
                 return CommonUtil.constructHtmlResponse(201, "积分不足", null);

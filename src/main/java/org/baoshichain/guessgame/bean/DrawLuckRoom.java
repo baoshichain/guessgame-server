@@ -21,6 +21,15 @@ public class DrawLuckRoom {
         private double price;
         private String winrate;
         private int num;
+        private String token;  //每次参与积分
+
+        public String  getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
 
         public int getActivityid() {
             return activityid;
