@@ -8,7 +8,15 @@
   <component name="ChangeListManager">
     <list default="true" id="32287dc9-4c36-4d7c-bda0-c3c345f9f563" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/DrawLuckRoom.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/DrawLuckRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/ActivityDao.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/ActivityDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/UserOfActivityDao.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/UserOfActivityDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserOfActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserOfActivityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/UserOfActivityServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/UserOfActivityServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserOfActivityMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserOfActivityMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/main.html" afterPath="$PROJECT_DIR$/src/main/webapp/main.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,21 +46,151 @@
       <file leaf-file-name="ActivityController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="744">
-              <caret line="95" column="42" lean-forward="false" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="42" />
+            <state relative-caret-position="309">
+              <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DrawLuckRoom.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ActivityServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="56" column="19" lean-forward="false" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+              <folding>
+                <element signature="e#7463#7464#0" expanded="true" />
+                <element signature="e#7523#7524#0" expanded="true" />
+                <element signature="e#12438#12439#0" expanded="true" />
+                <element signature="e#12497#12498#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/ActivityDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="311" column="0" lean-forward="true" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
+              <folding>
+                <marker date="1508748907993" expanded="true" signature="1592:1709" ph="select from tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="1799:1860" ph="delete from " />
+                <marker date="1508748907993" expanded="true" signature="5771:7327" ph="update tb_ac... " />
+                <marker date="1508748907993" expanded="true" signature="7441:8083" ph="update tb_ac... " />
+                <marker date="1508748907993" expanded="true" signature="8788:8901" ph="SELECT from tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="8978:9107" ph="SELECT SUM(p... tb_activityofcard" />
+                <marker date="1508748907993" expanded="true" signature="9185:9247" ph="SELECT * fro... tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="9330:9396" ph="update tb_ac... " />
+                <marker date="1508748907993" expanded="true" signature="9482:9564" ph="SELECT COUNT... tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="9651:9840" ph="select DISTI... tb_userofactivity" />
+                <marker date="1508748907993" expanded="true" signature="10295:10763" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="10975:11450" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="11566:11830" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="11952:12406" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508748907993" expanded="true" signature="12540:12625" ph="SELECT a.* f... tb_user" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="58" column="38" lean-forward="false" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrawLuckRoom.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/DrawLuckRoom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="110">
+              <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="32" />
               <folding>
-                <element signature="e#563#564#0" expanded="true" />
-                <element signature="e#605#606#0" expanded="true" />
+                <element signature="e#619#620#0" expanded="true" />
+                <element signature="e#669#670#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="493" column="126" lean-forward="false" selection-start-line="493" selection-start-column="126" selection-end-line="493" selection-end-column="126" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1508747839686" expanded="true" signature="19633:19687" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="19896:19928" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="20110:20142" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="20293:20312" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="20327:20345" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="20468:20498" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="20614:20629" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="21985:22039" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="22335:22367" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="22560:22580" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="22597:22613" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="23052:23083" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="23254:23258" ph="..." />
+                <marker date="1508747839686" expanded="true" signature="23273:23289" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserOfActivityServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/UserOfActivityServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="13" column="59" lean-forward="true" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserOfActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserOfActivityService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserOfActivityMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserOfActivityMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="130" column="0" lean-forward="true" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+              <folding>
+                <marker date="1508748472223" expanded="true" signature="821:934" ph="select from tb_userofactivity" />
+                <marker date="1508748472223" expanded="true" signature="1021:1088" ph="delete from " />
+                <marker date="1508748472223" expanded="true" signature="1193:1421" ph="insert into tb_userofactivity... " />
+                <marker date="1508748472223" expanded="true" signature="2535:2984" ph="update tb_us... " />
+                <marker date="1508748472223" expanded="true" signature="3101:3338" ph="update tb_us... " />
+                <marker date="1508748472223" expanded="true" signature="3449:3664" ph="insert into tb_userofactivity... " />
+                <marker date="1508748472223" expanded="true" signature="3767:3863" ph="select useri... tb_userofactivity" />
+                <marker date="1508748472223" expanded="true" signature="3961:4041" ph="select DISTI... tb_userofactivity" />
+                <marker date="1508748472223" expanded="true" signature="4179:4299" ph="select from tb_userofactivity" />
+                <marker date="1508748472223" expanded="true" signature="4434:4510" ph="select count... tb_userofactivity" />
+                <marker date="1508748472223" expanded="true" signature="4611:4671" ph="select count... tb_userofactivity" />
+                <marker date="1508748472223" expanded="true" signature="4752:4823" ph="select useri... tb_userofactivity" />
               </folding>
             </state>
           </provider>
@@ -103,6 +241,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -118,8 +259,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/ethroominfo.html" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/util/WalletUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/entity/UserOfActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserOfActivityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/UserOfActivityServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/jquery.listarea.js" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/entity/Activity.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/entity/Winner.java" />
@@ -129,24 +268,18 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/regist.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/roomcontroll.html" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/ActivityDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/CardDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/UserOfActivityDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/ActivityOfCardMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/CardMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserOfActivityMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/kjroom.html" />
         <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/kjroominfo.html" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/GameController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/util/TimerUtil.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/luckroom.html" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/LuckRoomInfo.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/roominfo.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/Userinfo.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/userinfo.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
@@ -157,9 +290,17 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/GameMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/UserOfActivityDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/DrawLuckRoom.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/main.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/UserOfActivityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserOfActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserOfActivityMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/ActivityDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" />
       </list>
     </option>
   </component>
@@ -962,10 +1103,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124997000" />
+    <option name="totallyTimeSpent" value="127095000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1042,20 +1183,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/jquery.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1150">
-          <caret line="56" column="16" lean-forward="true" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/regist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="189" column="35" lean-forward="true" selection-start-line="189" selection-start-column="35" selection-end-line="189" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/roomlist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1084,34 +1211,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityOfCardMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1843">
-          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CardMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserOfActivityMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="130" column="0" lean-forward="true" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1463">
-          <caret line="77" column="60" lean-forward="true" selection-start-line="77" selection-start-column="60" selection-end-line="77" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1137,13 +1240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="55" column="26" lean-forward="false" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/kjroominfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5149">
@@ -1155,13 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/UserOfActivityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1252,22 +1341,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/ActivityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="236" column="37" lean-forward="false" selection-start-line="236" selection-start-column="37" selection-end-line="236" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/Userinfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1348,8 +1421,8 @@
         <state relative-caret-position="943">
           <caret line="53" column="18" lean-forward="false" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
           <folding>
-            <element signature="e#914#915#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="false" />
+            <element signature="e#941#942#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1359,29 +1432,6 @@
         <state relative-caret-position="184">
           <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="246" column="82" lean-forward="true" selection-start-line="246" selection-start-column="82" selection-end-line="246" selection-end-column="82" />
-          <folding>
-            <marker date="1508734025080" expanded="true" signature="1592:1709" ph="select from tb_activity" />
-            <marker date="1508734025080" expanded="true" signature="1799:1860" ph="delete from " />
-            <marker date="1508734025080" expanded="true" signature="5771:7327" ph="update tb_ac... " />
-            <marker date="1508734025080" expanded="true" signature="7441:8083" ph="update tb_ac... " />
-            <marker date="1508734025080" expanded="true" signature="8788:8901" ph="SELECT from tb_activity" />
-            <marker date="1508734025080" expanded="true" signature="8978:9107" ph="SELECT SUM(p... tb_activityofcard" />
-            <marker date="1508734025080" expanded="true" signature="9185:9247" ph="SELECT * fro... tb_activity" />
-            <marker date="1508734025080" expanded="true" signature="9330:9396" ph="update tb_ac... " />
-            <marker date="1508734025080" expanded="true" signature="9482:9564" ph="SELECT COUNT... tb_activity" />
-            <marker date="1508734025080" expanded="true" signature="9651:9840" ph="select DISTI... tb_userofactivity" />
-            <marker date="1508734025080" expanded="true" signature="10295:10763" ph="SELECT tb_ac... tb_activity" />
-            <marker date="1508734025080" expanded="true" signature="10975:11450" ph="SELECT tb_ac... tb_activity" />
-            <marker date="1508734025080" expanded="true" signature="11566:11830" ph="SELECT tb_ac... tb_activity" />
-            <marker date="1508734025080" expanded="true" signature="11952:12406" ph="SELECT tb_ac... tb_activity" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1398,8 +1448,8 @@
         <state relative-caret-position="422">
           <caret line="162" column="21" lean-forward="true" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1429,45 +1479,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="95" column="42" lean-forward="false" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="491" column="37" lean-forward="true" selection-start-line="491" selection-start-column="37" selection-end-line="491" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1508746730404" expanded="true" signature="19633:19687" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="19896:19928" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="20111:20143" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="20294:20313" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="20328:20346" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="20469:20499" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="20615:20630" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="21986:22040" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="22336:22368" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="22561:22581" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="22598:22614" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="23053:23084" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="23255:23259" ph="..." />
-            <marker date="1508746730404" expanded="true" signature="23274:23290" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/roominfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="246" column="39" lean-forward="true" selection-start-line="246" selection-start-column="39" selection-end-line="246" selection-end-column="39" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#td#2;n#tr#2;n#table#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#2;n#tr#2;n#table#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1480,9 +1498,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/UserOfActivityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityOfCardMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="906">
+          <caret line="88" column="11" lean-forward="true" selection-start-line="88" selection-start-column="11" selection-end-line="88" selection-end-column="11" />
+          <folding>
+            <marker date="1508727252045" expanded="true" signature="760:873" ph="select from tb_activityofcard" />
+            <marker date="1508727252045" expanded="true" signature="960:1027" ph="delete from " />
+            <marker date="1508727252045" expanded="true" signature="1132:1328" ph="insert into tb_activityofcard... " />
+            <marker date="1508727252045" expanded="true" signature="2304:2667" ph="update tb_ac... " />
+            <marker date="1508727252045" expanded="true" signature="2784:2980" ph="update tb_ac... " />
+            <marker date="1508727252045" expanded="true" signature="3101:3235" ph="select from tb_activityofcard" />
+            <marker date="1508727252045" expanded="true" signature="3291:3390" ph="update tb_ac... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-383">
+          <caret line="72" column="17" lean-forward="true" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+          <folding>
+            <marker date="1508474058879" expanded="true" signature="849:964" ph="select from tb_winner" />
+            <marker date="1508474058879" expanded="true" signature="1054:1113" ph="delete from " />
+            <marker date="1508474058879" expanded="true" signature="1211:1434" ph="insert into tb_winner... " />
+            <marker date="1508474058879" expanded="true" signature="2746:3279" ph="update tb_wi... " />
+            <marker date="1508474058879" expanded="true" signature="3391:3622" ph="update tb_wi... " />
+            <marker date="1508474058879" expanded="true" signature="3727:3907" ph="insert into tb_winner... " />
+            <marker date="1508474058879" expanded="true" signature="4000:4197" ph="select a.fla... tb_winner" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
+        <state relative-caret-position="1090">
           <caret line="277" column="9" lean-forward="true" selection-start-line="277" selection-start-column="9" selection-end-line="277" selection-end-column="9" />
           <folding>
             <marker date="1508742912970" expanded="true" signature="1463:1576" ph="select from tb_user" />
@@ -1507,13 +1565,135 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserOfActivityMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="130" column="0" lean-forward="true" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+          <folding>
+            <marker date="1508748472223" expanded="true" signature="821:934" ph="select from tb_userofactivity" />
+            <marker date="1508748472223" expanded="true" signature="1021:1088" ph="delete from " />
+            <marker date="1508748472223" expanded="true" signature="1193:1421" ph="insert into tb_userofactivity... " />
+            <marker date="1508748472223" expanded="true" signature="2535:2984" ph="update tb_us... " />
+            <marker date="1508748472223" expanded="true" signature="3101:3338" ph="update tb_us... " />
+            <marker date="1508748472223" expanded="true" signature="3449:3664" ph="insert into tb_userofactivity... " />
+            <marker date="1508748472223" expanded="true" signature="3767:3863" ph="select useri... tb_userofactivity" />
+            <marker date="1508748472223" expanded="true" signature="3961:4041" ph="select DISTI... tb_userofactivity" />
+            <marker date="1508748472223" expanded="true" signature="4179:4299" ph="select from tb_userofactivity" />
+            <marker date="1508748472223" expanded="true" signature="4434:4510" ph="select count... tb_userofactivity" />
+            <marker date="1508748472223" expanded="true" signature="4611:4671" ph="select count... tb_userofactivity" />
+            <marker date="1508748472223" expanded="true" signature="4752:4823" ph="select useri... tb_userofactivity" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserOfActivityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/UserOfActivityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="13" column="59" lean-forward="true" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="493" column="126" lean-forward="false" selection-start-line="493" selection-start-column="126" selection-end-line="493" selection-end-column="126" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1508747839686" expanded="true" signature="19633:19687" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="19896:19928" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="20110:20142" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="20293:20312" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="20327:20345" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="20468:20498" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="20614:20629" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="21985:22039" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="22335:22367" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="22560:22580" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="22597:22613" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="23052:23083" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="23254:23258" ph="..." />
+            <marker date="1508747839686" expanded="true" signature="23273:23289" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/bean/DrawLuckRoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        <state relative-caret-position="110">
+          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="32" />
           <folding>
-            <element signature="e#563#564#0" expanded="true" />
-            <element signature="e#605#606#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="58" column="38" lean-forward="false" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/ActivityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="56" column="19" lean-forward="false" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+          <folding>
+            <element signature="e#7463#7464#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#12438#12439#0" expanded="true" />
+            <element signature="e#12497#12498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/ActivityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="311" column="0" lean-forward="true" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
+          <folding>
+            <marker date="1508748907993" expanded="true" signature="1592:1709" ph="select from tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="1799:1860" ph="delete from " />
+            <marker date="1508748907993" expanded="true" signature="5771:7327" ph="update tb_ac... " />
+            <marker date="1508748907993" expanded="true" signature="7441:8083" ph="update tb_ac... " />
+            <marker date="1508748907993" expanded="true" signature="8788:8901" ph="SELECT from tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="8978:9107" ph="SELECT SUM(p... tb_activityofcard" />
+            <marker date="1508748907993" expanded="true" signature="9185:9247" ph="SELECT * fro... tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="9330:9396" ph="update tb_ac... " />
+            <marker date="1508748907993" expanded="true" signature="9482:9564" ph="SELECT COUNT... tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="9651:9840" ph="select DISTI... tb_userofactivity" />
+            <marker date="1508748907993" expanded="true" signature="10295:10763" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="10975:11450" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="11566:11830" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="11952:12406" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508748907993" expanded="true" signature="12540:12625" ph="SELECT a.* f... tb_user" />
           </folding>
         </state>
       </provider>

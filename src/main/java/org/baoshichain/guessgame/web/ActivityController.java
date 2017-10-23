@@ -94,6 +94,8 @@ public class ActivityController {
                 double price=activityService.getList(activityId); //房间价值
                 luckroom.setPrice(activityService.getList(activityId));
                 luckroom.setToken(activity.getToken());
+                User admins=activityService.getAdminName(activityId);
+                luckroom.setAdminName(admins.getName());
                 lucklist.add(luckroom);
             }
             room.setList(lucklist);

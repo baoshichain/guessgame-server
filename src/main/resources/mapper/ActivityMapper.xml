@@ -304,7 +304,11 @@
     </select>
 
 
-
+    <!-- 根据房间id 查找对应庄家-->
+    <select id="getAdminName" resultType="org.baoshichain.guessgame.entity.User" >
+        SELECT a.* from tb_user a JOIN tb_activity b ON a.id=b.userid
+        WHERE b.id=#{0}
+    </select>
 
 
 </mapper>

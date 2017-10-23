@@ -359,6 +359,11 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public User getAdminName(int activityId) {
+        return activityDao.getAdminName(activityId);
+    }
+
+    @Override
     public HashMap kJRoomDetail(int userId, int roomId) {
         HashMap dataMap = activityDao.selectKJRoomDetail(roomId);
         HashMap useMap = userDao.selectBasicInformationById(userId);

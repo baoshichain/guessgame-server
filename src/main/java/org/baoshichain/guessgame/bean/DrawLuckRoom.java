@@ -22,6 +22,15 @@ public class DrawLuckRoom {
         private String winrate;
         private int num;
         private String token;  //每次参与积分
+        private String adminName; //庄家姓名
+
+        public String getAdminName() {
+            return adminName;
+        }
+
+        public void setAdminName(String adminName) {
+            this.adminName = adminName;
+        }
 
         public String  getToken() {
             return token;

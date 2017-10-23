@@ -2,6 +2,7 @@ package org.baoshichain.guessgame.service.impl;
 
 import org.baoshichain.guessgame.dao.ActivityDao;
 import org.baoshichain.guessgame.dao.UserOfActivityDao;
+import org.baoshichain.guessgame.entity.User;
 import org.baoshichain.guessgame.entity.UserOfActivity;
 import org.baoshichain.guessgame.service.UserOfActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class UserOfActivityServiceImpl implements UserOfActivityService {
     public List<UserOfActivity> getJoinUserNum(int activityid) {
         return userOfActivityDao.getJoinUserNum(activityid);
     }
+
 
 
 }

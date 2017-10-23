@@ -12,4 +12,5 @@ public interface UserOfActivityService {
     List<UserOfActivity> getJoinNum(int activityid,int userid);
 
     List<UserOfActivity> getJoinUserNum(int activityid);
+
 }

@@ -1,5 +1,6 @@
 package org.baoshichain.guessgame.dao;
 
+import org.baoshichain.guessgame.entity.User;
 import org.baoshichain.guessgame.entity.UserOfActivity;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public interface UserOfActivityDao {
     int getRewardUserId(int activityId,int random);
 
 
-
+    User getAdminName(int activityId);
 
 
 }

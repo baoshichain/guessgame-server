@@ -55,4 +55,7 @@ public interface ActivityService {
 
     List<HashMap> normalKJRoomList() throws ParseException;
 
+
+    User getAdminName(int activityId);
+
 }

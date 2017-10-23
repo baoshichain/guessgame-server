@@ -3,6 +3,7 @@ package org.baoshichain.guessgame.dao;
 import org.baoshichain.guessgame.bean.DrawLuck;
 import org.baoshichain.guessgame.entity.Activity;
 import org.baoshichain.guessgame.bean.EthRoom;
+import org.baoshichain.guessgame.entity.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,5 +50,7 @@ public interface ActivityDao {
 
     Map selectLotteryActivityDetailByActivityId(String id);
 
+
+    User getAdminName(int activityId);
 
 }
