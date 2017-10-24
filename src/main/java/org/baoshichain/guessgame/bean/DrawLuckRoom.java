@@ -1,5 +1,7 @@
 package org.baoshichain.guessgame.bean;
 
+import com.github.pagehelper.PageInfo;
+
 import java.util.List;
 
 /**

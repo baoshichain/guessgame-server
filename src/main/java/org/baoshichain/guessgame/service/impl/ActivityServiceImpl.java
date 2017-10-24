@@ -203,8 +203,9 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Activity> getActivityList() {
-        return activityDao.getActivityList();
+    public List<Activity> getActivityList(int page) {
+
+        return activityDao.getActivityList((page-1)*5);
     }
 
     @Override

@@ -25,7 +25,7 @@ public interface ActivityDao {
     public int insert(DrawLuck drawLuck);
 
     //List<Activity> selectByUserId(int userId);
-    List<Activity> getActivityList();
+    List<Activity> getActivityList(int page);
 
     int getList(int activityId);
 

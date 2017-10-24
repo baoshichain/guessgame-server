@@ -219,7 +219,7 @@
     <select id="getActivityList" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        from tb_activity where `type` = 2 and endBlock > NOW()
+        from tb_activity where `type` = 2 and endBlock > NOW() limit #{0},5
     </select>
 
     <select id="getList" resultType="java.lang.Integer">

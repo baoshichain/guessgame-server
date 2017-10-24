@@ -1,5 +1,7 @@
 package org.baoshichain.guessgame.web;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import net.sf.json.JSONObject;
 import org.baoshichain.guessgame.bean.*;
 import org.baoshichain.guessgame.entity.*;
@@ -74,12 +76,13 @@ public class ActivityController {
      */
     @RequestMapping(value = "/roominfo2", method = RequestMethod.POST)
     @ResponseBody
-    public JSONObject showinfo(HttpSession session) {
+    public JSONObject showinfo(String page,HttpSession session) {
+        logger.info("page="+page);
         User user = (User) session.getAttribute("user");
         if (user != null) {
             DrawLuckRoom room = new DrawLuckRoom();
             //查询房间
-            List<Activity> alist = activityService.getActivityList();
+            List<Activity> alist = activityService.getActivityList(Integer.parseInt(page));
             List<DrawLuckRoom.LuckRoom> lucklist = new ArrayList<>();
             for (Activity activity : alist) {
                 int activityId = activity.getId();
@@ -98,12 +101,15 @@ public class ActivityController {
                 luckroom.setAdminName(admins.getName());
                 lucklist.add(luckroom);
             }
+           /* PageInfo page = new PageInfo(lucklist);
+            room.setPageInfo(page);*/
             room.setList(lucklist);
             User newuser = userService.selectByPrimaryKey(user.getId());
             room.setToken(newuser.getToken());
             room.setUserId(user.getId());
             room.setUsername(user.getLoginname());
             logger.info("room=" + room);
+
             return CommonUtil.constructHtmlResponse(200, "查询列表成功", room);
         }
         return CommonUtil.constructHtmlResponse(201, "查询失败", null);
