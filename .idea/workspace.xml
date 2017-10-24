@@ -8,14 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32287dc9-4c36-4d7c-bda0-c3c345f9f563" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/WinnerDao.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/dao/WinnerDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/WinnerService.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/WinnerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/WinnerServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/impl/WinnerServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/admininsert.html" afterPath="$PROJECT_DIR$/src/main/webapp/admininsert.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/main.html" afterPath="$PROJECT_DIR$/src/main/webapp/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/userinfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/userinfo.html" />
     </list>
@@ -43,11 +36,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ActivityController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="221" column="54" lean-forward="false" selection-start-line="221" selection-start-column="46" selection-end-line="221" selection-end-column="54" />
+              <folding>
+                <marker date="1508756566604" expanded="true" signature="1592:1709" ph="select from tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="1799:1860" ph="delete from " />
+                <marker date="1508756566604" expanded="true" signature="5771:7327" ph="update tb_ac... " />
+                <marker date="1508756566604" expanded="true" signature="7441:8083" ph="update tb_ac... " />
+                <marker date="1508756566604" expanded="true" signature="8788:8901" ph="SELECT from tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="8978:9107" ph="SELECT SUM(p... tb_activityofcard" />
+                <marker date="1508756566604" expanded="true" signature="9185:9247" ph="SELECT * fro... tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="9330:9396" ph="update tb_ac... " />
+                <marker date="1508756566604" expanded="true" signature="9482:9564" ph="SELECT COUNT... tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="9651:9840" ph="select DISTI... tb_userofactivity" />
+                <marker date="1508756566604" expanded="true" signature="10295:10763" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="10975:11450" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="11566:11830" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="11952:12406" ph="SELECT tb_ac... tb_activity" />
+                <marker date="1508756566604" expanded="true" signature="12540:12625" ph="SELECT a.* f... tb_user" />
+                <marker date="1508756566604" expanded="true" signature="12755:13321" ph="SELECT tb_ac... tb_user" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7971">
-              <caret line="266" column="106" lean-forward="true" selection-start-line="266" selection-start-column="33" selection-end-line="266" selection-end-column="106" />
+            <state relative-caret-position="157">
+              <caret line="486" column="39" lean-forward="true" selection-start-line="486" selection-start-column="39" selection-end-line="486" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -62,20 +102,20 @@
                 <element signature="n#style#0;n#span#0;n#td#1;n#tr#2;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1508826511013" expanded="true" signature="20037:20091" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="20300:20332" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="20514:20546" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="20697:20716" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="20731:20749" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="20872:20902" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="21018:21033" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="22389:22443" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="22739:22771" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="22964:22984" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="23001:23017" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="23456:23487" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="23658:23662" ph="..." />
-                <marker date="1508826511013" expanded="true" signature="23677:23693" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="20023:20077" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="20286:20318" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="20500:20532" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="20683:20702" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="20717:20735" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="20858:20888" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="21004:21019" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="22375:22429" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="22725:22757" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="22950:22970" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="22987:23003" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="23442:23473" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="23644:23648" ph="..." />
+                <marker date="1508837684693" expanded="true" signature="23663:23679" ph="..." />
               </folding>
             </state>
           </provider>
@@ -84,8 +124,8 @@
       <file leaf-file-name="userinfo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/userinfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="302" column="116" lean-forward="true" selection-start-line="302" selection-start-column="116" selection-end-line="302" selection-end-column="116" />
+            <state relative-caret-position="410">
+              <caret line="305" column="36" lean-forward="true" selection-start-line="305" selection-start-column="36" selection-end-line="305" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -95,12 +135,12 @@
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1508831247037" expanded="true" signature="8942:8996" ph="..." />
-                <marker date="1508831247037" expanded="true" signature="9205:9237" ph="..." />
-                <marker date="1508831247037" expanded="true" signature="9415:9447" ph="..." />
-                <marker date="1508831247037" expanded="true" signature="9622:9641" ph="..." />
-                <marker date="1508831247037" expanded="true" signature="9726:9756" ph="..." />
-                <marker date="1508831247037" expanded="true" signature="9875:9890" ph="..." />
+                <marker date="1508833161813" expanded="true" signature="8965:9019" ph="..." />
+                <marker date="1508833161813" expanded="true" signature="9228:9260" ph="..." />
+                <marker date="1508833161813" expanded="true" signature="9438:9470" ph="..." />
+                <marker date="1508833161813" expanded="true" signature="9645:9664" ph="..." />
+                <marker date="1508833161813" expanded="true" signature="9749:9779" ph="..." />
+                <marker date="1508833161813" expanded="true" signature="9898:9913" ph="..." />
               </folding>
             </state>
           </provider>
@@ -109,8 +149,8 @@
       <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-657">
-              <caret line="231" column="47" lean-forward="true" selection-start-line="231" selection-start-column="47" selection-end-line="231" selection-end-column="47" />
+            <state relative-caret-position="332">
+              <caret line="274" column="11" lean-forward="true" selection-start-line="274" selection-start-column="11" selection-end-line="274" selection-end-column="11" />
               <folding>
                 <marker date="1508817007040" expanded="true" signature="1463:1576" ph="select from tb_user" />
                 <marker date="1508817007040" expanded="true" signature="1666:1723" ph="delete from " />
@@ -145,21 +185,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WinnerMapper.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WinnerMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="112" column="22" lean-forward="true" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+            <state relative-caret-position="115">
+              <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="45" selection-end-column="36" />
               <folding>
-                <marker date="1508832004020" expanded="true" signature="849:964" ph="select from tb_winner" />
-                <marker date="1508832004020" expanded="true" signature="1054:1113" ph="delete from " />
-                <marker date="1508832004020" expanded="true" signature="1211:1434" ph="insert into tb_winner... " />
-                <marker date="1508832004020" expanded="true" signature="2746:3279" ph="update tb_wi... " />
-                <marker date="1508832004020" expanded="true" signature="3391:3622" ph="update tb_wi... " />
-                <marker date="1508832004020" expanded="true" signature="3727:3907" ph="insert into tb_winner... " />
-                <marker date="1508832004020" expanded="true" signature="4000:4197" ph="select a.fla... tb_winner" />
-                <marker date="1508832004020" expanded="true" signature="4686:5138" ph="SELECT DISTI... tb_winner" />
-                <marker date="1508832004020" expanded="true" signature="4695:5138" ph="SELECT DISTI... tb_winner" />
+                <marker date="1508835328203" expanded="true" signature="849:964" ph="select from tb_winner" />
+                <marker date="1508835328203" expanded="true" signature="1054:1113" ph="delete from " />
+                <marker date="1508835328203" expanded="true" signature="1211:1434" ph="insert into tb_winner... " />
+                <marker date="1508835328203" expanded="true" signature="2746:3279" ph="update tb_wi... " />
+                <marker date="1508835328203" expanded="true" signature="3391:3622" ph="update tb_wi... " />
+                <marker date="1508835328203" expanded="true" signature="3727:3907" ph="insert into tb_winner... " />
+                <marker date="1508835328203" expanded="true" signature="4000:4197" ph="select a.fla... tb_winner" />
+                <marker date="1508835328203" expanded="true" signature="4695:4876" ph="select a.use... tb_winner" />
               </folding>
             </state>
           </provider>
@@ -289,10 +328,10 @@
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/admininsert.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/main.html" />
         <option value="$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/userinfo.html" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/main.html" />
       </list>
     </option>
   </component>
@@ -417,6 +456,11 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="guess game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="guessgame-server" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -1065,12 +1109,12 @@
       <workItem from="1508647880956" duration="68000" />
       <workItem from="1508725141827" duration="38000" />
       <workItem from="1508752242976" duration="532000" />
-      <workItem from="1508811839997" duration="13328000" />
+      <workItem from="1508811839997" duration="18085000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141803000" />
+    <option name="totallyTimeSpent" value="146560000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="1" />
@@ -1097,7 +1141,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35791758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17864807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2194206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1129,20 +1173,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.1.7.RELEASE/spring-aop-4.1.7.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="177" column="0" lean-forward="false" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/kjroominfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5149">
-          <caret line="271" column="9" lean-forward="false" selection-start-line="271" selection-start-column="9" selection-end-line="271" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/WinnerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -1188,13 +1218,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/img/img_logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-web.xml">
@@ -1307,13 +1330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="60" column="40" lean-forward="false" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="751">
@@ -1333,39 +1349,6 @@
         <state relative-caret-position="770">
           <caret line="133" column="11" lean-forward="false" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-496">
-          <caret line="294" column="72" lean-forward="true" selection-start-line="294" selection-start-column="72" selection-end-line="294" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="246" column="82" lean-forward="false" selection-start-line="246" selection-start-column="78" selection-end-line="246" selection-end-column="82" />
-          <folding>
-            <marker date="1508756566604" expanded="true" signature="1592:1709" ph="select from tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="1799:1860" ph="delete from " />
-            <marker date="1508756566604" expanded="true" signature="5771:7327" ph="update tb_ac... " />
-            <marker date="1508756566604" expanded="true" signature="7441:8083" ph="update tb_ac... " />
-            <marker date="1508756566604" expanded="true" signature="8788:8901" ph="SELECT from tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="8978:9107" ph="SELECT SUM(p... tb_activityofcard" />
-            <marker date="1508756566604" expanded="true" signature="9185:9247" ph="SELECT * fro... tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="9330:9396" ph="update tb_ac... " />
-            <marker date="1508756566604" expanded="true" signature="9482:9564" ph="SELECT COUNT... tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="9651:9840" ph="select DISTI... tb_userofactivity" />
-            <marker date="1508756566604" expanded="true" signature="10295:10763" ph="SELECT tb_ac... tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="10975:11450" ph="SELECT tb_ac... tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="11566:11830" ph="SELECT tb_ac... tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="11952:12406" ph="SELECT tb_ac... tb_activity" />
-            <marker date="1508756566604" expanded="true" signature="12540:12625" ph="SELECT a.* f... tb_user" />
-            <marker date="1508756566604" expanded="true" signature="12755:13321" ph="SELECT tb_ac... tb_user" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1471,42 +1454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7971">
-          <caret line="266" column="106" lean-forward="true" selection-start-line="266" selection-start-column="33" selection-end-line="266" selection-end-column="106" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#1;n#tr#2;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#1;n#tr#2;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1508826511013" expanded="true" signature="20037:20091" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="20300:20332" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="20514:20546" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="20697:20716" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="20731:20749" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="20872:20902" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="21018:21033" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="22389:22443" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="22739:22771" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="22964:22984" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="23001:23017" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="23456:23487" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="23658:23662" ph="..." />
-            <marker date="1508826511013" expanded="true" signature="23677:23693" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/roomcontroll.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-717">
@@ -1529,10 +1476,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/contract/Game.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3508">
+          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="45" selection-end-column="36" />
+          <folding>
+            <marker date="1508835328203" expanded="true" signature="849:964" ph="select from tb_winner" />
+            <marker date="1508835328203" expanded="true" signature="1054:1113" ph="delete from " />
+            <marker date="1508835328203" expanded="true" signature="1211:1434" ph="insert into tb_winner... " />
+            <marker date="1508835328203" expanded="true" signature="2746:3279" ph="update tb_wi... " />
+            <marker date="1508835328203" expanded="true" signature="3391:3622" ph="update tb_wi... " />
+            <marker date="1508835328203" expanded="true" signature="3727:3907" ph="insert into tb_winner... " />
+            <marker date="1508835328203" expanded="true" signature="4000:4197" ph="select a.fla... tb_winner" />
+            <marker date="1508835328203" expanded="true" signature="4695:4876" ph="select a.use... tb_winner" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="233" column="56" lean-forward="false" selection-start-line="233" selection-start-column="43" selection-end-line="233" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-657">
-          <caret line="231" column="47" lean-forward="true" selection-start-line="231" selection-start-column="47" selection-end-line="231" selection-end-column="47" />
+        <state relative-caret-position="332">
+          <caret line="274" column="11" lean-forward="true" selection-start-line="274" selection-start-column="11" selection-end-line="274" selection-end-column="11" />
           <folding>
             <marker date="1508817007040" expanded="true" signature="1463:1576" ph="select from tb_user" />
             <marker date="1508817007040" expanded="true" signature="1666:1723" ph="delete from " />
@@ -1556,18 +1552,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="233" column="56" lean-forward="false" selection-start-line="233" selection-start-column="43" selection-end-line="233" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/userinfo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="302" column="116" lean-forward="true" selection-start-line="302" selection-start-column="116" selection-end-line="302" selection-end-column="116" />
+        <state relative-caret-position="410">
+          <caret line="305" column="36" lean-forward="true" selection-start-line="305" selection-start-column="36" selection-end-line="305" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1577,31 +1565,90 @@
             <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1508831247037" expanded="true" signature="8942:8996" ph="..." />
-            <marker date="1508831247037" expanded="true" signature="9205:9237" ph="..." />
-            <marker date="1508831247037" expanded="true" signature="9415:9447" ph="..." />
-            <marker date="1508831247037" expanded="true" signature="9622:9641" ph="..." />
-            <marker date="1508831247037" expanded="true" signature="9726:9756" ph="..." />
-            <marker date="1508831247037" expanded="true" signature="9875:9890" ph="..." />
+            <marker date="1508833161813" expanded="true" signature="8965:9019" ph="..." />
+            <marker date="1508833161813" expanded="true" signature="9228:9260" ph="..." />
+            <marker date="1508833161813" expanded="true" signature="9438:9470" ph="..." />
+            <marker date="1508833161813" expanded="true" signature="9645:9664" ph="..." />
+            <marker date="1508833161813" expanded="true" signature="9749:9779" ph="..." />
+            <marker date="1508833161813" expanded="true" signature="9898:9913" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/WinnerMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="112" column="22" lean-forward="true" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+        <state relative-caret-position="157">
+          <caret line="486" column="39" lean-forward="true" selection-start-line="486" selection-start-column="39" selection-end-line="486" selection-end-column="39" />
           <folding>
-            <marker date="1508832004020" expanded="true" signature="849:964" ph="select from tb_winner" />
-            <marker date="1508832004020" expanded="true" signature="1054:1113" ph="delete from " />
-            <marker date="1508832004020" expanded="true" signature="1211:1434" ph="insert into tb_winner... " />
-            <marker date="1508832004020" expanded="true" signature="2746:3279" ph="update tb_wi... " />
-            <marker date="1508832004020" expanded="true" signature="3391:3622" ph="update tb_wi... " />
-            <marker date="1508832004020" expanded="true" signature="3727:3907" ph="insert into tb_winner... " />
-            <marker date="1508832004020" expanded="true" signature="4000:4197" ph="select a.fla... tb_winner" />
-            <marker date="1508832004020" expanded="true" signature="4686:5138" ph="SELECT DISTI... tb_winner" />
-            <marker date="1508832004020" expanded="true" signature="4695:5138" ph="SELECT DISTI... tb_winner" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#2;n#table#0;n#a#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#1;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#1;n#tr#2;n#table#0;n#a#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#2;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1508837684693" expanded="true" signature="20023:20077" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="20286:20318" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="20500:20532" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="20683:20702" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="20717:20735" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="20858:20888" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="21004:21019" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="22375:22429" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="22725:22757" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="22950:22970" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="22987:23003" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="23442:23473" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="23644:23648" ph="..." />
+            <marker date="1508837684693" expanded="true" signature="23663:23679" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/service/ActivityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="221" column="54" lean-forward="false" selection-start-line="221" selection-start-column="46" selection-end-line="221" selection-end-column="54" />
+          <folding>
+            <marker date="1508756566604" expanded="true" signature="1592:1709" ph="select from tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="1799:1860" ph="delete from " />
+            <marker date="1508756566604" expanded="true" signature="5771:7327" ph="update tb_ac... " />
+            <marker date="1508756566604" expanded="true" signature="7441:8083" ph="update tb_ac... " />
+            <marker date="1508756566604" expanded="true" signature="8788:8901" ph="SELECT from tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="8978:9107" ph="SELECT SUM(p... tb_activityofcard" />
+            <marker date="1508756566604" expanded="true" signature="9185:9247" ph="SELECT * fro... tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="9330:9396" ph="update tb_ac... " />
+            <marker date="1508756566604" expanded="true" signature="9482:9564" ph="SELECT COUNT... tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="9651:9840" ph="select DISTI... tb_userofactivity" />
+            <marker date="1508756566604" expanded="true" signature="10295:10763" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="10975:11450" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="11566:11830" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="11952:12406" ph="SELECT tb_ac... tb_activity" />
+            <marker date="1508756566604" expanded="true" signature="12540:12625" ph="SELECT a.* f... tb_user" />
+            <marker date="1508756566604" expanded="true" signature="12755:13321" ph="SELECT tb_ac... tb_user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/baoshichain/guessgame/web/ActivityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -109,13 +109,8 @@ LEFT JOIN tb_user c ON a.userid=c.id LEFT JOIN tb_card d ON a.cardId=d.id;-->
         where a.userId= #{0}-->
     <!-- 查询抽奖房间中奖详情 -->
     <select id="getWinnerListByUserId" resultType="java.util.Map" >
-        SELECT DISTINCT tb_winner.userId,tb_activity.id,tb_activity.activityname,tb_activity.token,tb_activity.startBlock ,tb_activity.endBlock ,tb_userofactivity.time
-        FROM tb_winner
-        LEFT JOIN tb_userofactivity
-        ON tb_winner.activityId = tb_userofactivity.activityid
-        LEFT JOIN tb_activity
-        ON tb_userofactivity.activityid = tb_activity.id
-        WHERE tb_winner.userId = #{0} ORDER BY tb_userofactivity.time DESC
+        select a.userId,b.id,b.activityname,b.token,b.startBlock ,b.endBlock from  tb_winner a  LEFT JOIN tb_activity b ON a.activityId=b.id
+        where a.userId= #{0} ORDER BY a.id  DESC
     </select>
 
 </mapper>
