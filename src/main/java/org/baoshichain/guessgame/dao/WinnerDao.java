@@ -22,5 +22,5 @@ public interface WinnerDao {
 
     int updateByPrimaryKey(Winner record);
 	
-	
+	List<Map> getWinnerListByUserId(int userId);
 }

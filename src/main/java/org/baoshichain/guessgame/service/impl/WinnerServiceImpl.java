@@ -25,4 +25,9 @@ public class WinnerServiceImpl implements WinnerService {
     public List<Map> getWinnerList() {
         return winnerDao.getWinnerList();
     }
+
+    @Override
+    public List<Map> getWinnerList(int id) {
+        return winnerDao.getWinnerListByUserId(id);
+    }
 }

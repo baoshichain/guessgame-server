@@ -226,11 +226,11 @@
     where phone = #{phone,jdbcType=VARCHAR}
   </select>
 
-
+    <!-- 用户增加积分 -->
     <update id="updateBond" parameterType="org.baoshichain.guessgame.entity.User">
     update tb_user
-    set token = #{token,jdbcType=INTEGER},
-    bond = #{bond,jdbcType=VARCHAR}
+    set token =token+#{token,jdbcType=INTEGER},
+    bond =bond+ #{bond,jdbcType=VARCHAR}
     where phone = #{phone}
   </update>
 

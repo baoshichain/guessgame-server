@@ -103,7 +103,7 @@
         <table width="100% " height="100%" border="0" cellpadding="" cellspacing="0 ">
             <tr>
                 <td width="10% " align="center">
-                    <input type="text" name="phone" class='input' id="phone" placeholder="手机"/>
+                    <input type="text" name="phone" class='input' id="phone" placeholder="用户手机"/>
                 </td>
             </tr>
             <tr>
@@ -114,6 +114,16 @@
             <tr>
                 <td width="10% " align="center">
                     <input type="text" name="qq" class='input' id="bond" placeholder="保证金"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="pwd" class='input' id="adminphone" placeholder="庄家手机号码"/>
+                </td>
+            </tr>
+            <tr>
+                <td width="10% " align="center">
+                    <input type="text" name="pwd" class='input' id="pwd" placeholder="密码"/>
                 </td>
             </tr>
         </table>
@@ -140,8 +150,10 @@
     function sure() {
         var bond = $("#bond").val();
         var token = $("#token").val();
+        var adminphone = $("#adminphone").val();
+        var pwd = $("#pwd").val();
         var phone = document.getElementById("phone").value;
-        if (phone == "" || bond == "" || token == "") {
+        if (phone == "" || bond == "" || token == ""|| adminphone == "" || pwd == "") {
             alert("请确认是否有空缺项！");
             return false;
         }
@@ -152,6 +164,8 @@
                 "phone": phone,
                 "bond": bond,
                 "token": token,
+                "pwd":pwd,
+                "adminphone":adminphone
             },
             success: function (data) {
                 if (data.code == 200) {

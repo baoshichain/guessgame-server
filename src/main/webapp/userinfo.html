@@ -71,7 +71,6 @@
 
         .box_163css {
             width: 100%;
-            position: fixed;
             background-color: #393F4F;
         }
 
@@ -145,6 +144,10 @@
             border-top: 0px;
             text-align: center;
         }
+
+        .list_item{
+            border-bottom: 1px solid gray;
+        }
     </style>
 </head>
 
@@ -165,7 +168,7 @@
     </div>
 
     <div class="user">
-        <table width="100% "  border="0" cellpadding=" " cellspacing="0 ">
+        <table width="100% " border="0" cellpadding=" " cellspacing="0 ">
             <tr>
                 <td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
                 </td>
@@ -183,9 +186,7 @@
                 <td width="70% " align="left" style="padding-right: 10px; "><span style="color: #5DABB8; " id="joinCount"></span></td>
             </tr>
         </table>
-    </div>
 
-    <div class="">
         <div class="box_163css">
             <ul class="nav">
                 <li class="navs_li on">抽奖房间</li>
@@ -202,11 +203,38 @@
         </div>
     </div>
 
+    <div class="">
+
+    </div>
+
 
     <div class="zlbox_content">
         <!-- 抽奖房间-->
         <div class="item_tab" style="display: block;">
-            <div class="list" id="luckRoom" style="margin-top: 20px">
+            <div class="list" id="luckRoom" style="margin-top: 40px">
+               <!-- <a href="#">
+                    <table width="100% " height="90px " border="0" cellpadding=" " cellspacing="0 " class="list_item">
+                        <tr>
+                            <td colspan="2" width="100% " align="left" style="padding-left: 15px; color: #FF6B6B;font-family: custom">房间名称</img>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="50% " align="left" style="padding-left: 15px;color: gray; ">房间价值:50/100</img>
+                            </td>
+                            <td width="50% " align="right" style="padding-right: 10px "></td>
+                        </tr>
+                        <tr>
+                            <td width="50% " align="left" style="padding-left: 15px;color: gray ">房间剩余时间:18:00</img>
+                            </td>
+                            <td width="50% " align="left" style=""><span style="color: #5DABB8; " id="time"></span></td>
+                        </tr>
+                        <tr>
+                            <td width="50% " align="left" style="padding-left: 15px;color: gray ">房间参与人数:18:00</img>
+                            </td>
+                            <td width="50% " align="left" style=""><span style="color: #5DABB8; " id="num"></span></td>
+                        </tr>
+                    </table>
+                </a>-->
 
             </div>
         </div>
@@ -223,47 +251,9 @@
 
 </div>
 
-<script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
 <script type="text/javascript ">
     $(document).ready(function () {
-        $.ajax({
-            type: 'POST',
-            url: "/user/info",
-            success: function (data) {
-                if (data.code == 200) {
-                    dataStr = JSON.stringify(data.data);
-                    var data = JSON.parse(dataStr);
-                    console.log("data=" + data.username);
-                    $("#username").html(data.username);
-                    $("#token").html(data.token);
-                    $("#joinCount").html(data.joinnum);
-                    var str = "";
-                    $.each(data.list, function (i, a) {
-                        str += "<a href='#' class='list-group-item' onclick='goto(" + a.activityid + ")'>" +
-                            "<p class='list-group-item-text'>" +
-                            "房间名称: <span>" + a.roomname + "</span>" +
-                            "</p>" +
-                            "<p class='list-group-item-text'>" +
-                            "房间价值: <span>" + a.price + "</span>" +
-                            "</p>" +
-                            "<p class='list-group-item-text'>" +
-                            "房间剩余时间: <span>" + a.time + "</span>" +
-                            "</p>" +
-                            "<p class='list-group-item-text'>" +
-                            "房间参与人数: <span>" + a.joinnum + "</span>" +
-                            "</p>" +
-                            "</a>";
-                        alert(str);
-                    })
-                    $("#luckRoom").html(str);
-                }
-                if (data.code == 201) {
-                    alert(data.msg);
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            }
-        });
+         getLuckRomm();
     });
 
     function back() {
@@ -278,7 +268,79 @@
         window.location.href = "kjroominfo.html?activityid=" + activityId;
     }
 
-    function getKj(){
+    function getLuckRomm() {
+        $.ajax({
+            type: 'POST',
+            url: "/user/showLuckRomm",
+            success: function (data) {
+                if (data.code == 200) {
+                    dataStr = JSON.stringify(data.data);
+                    var data = JSON.parse(dataStr);
+                    console.log("data=" + data.username);
+                    $("#username").html(data.username);
+                    $("#token").html(data.token);
+                    $("#joinCount").html(data.joinnum);
+                    var str = "";
+                    $.each(data.list, function (i, a) {
+                        str +=
+                            "<table width='100%' height='120px' border='0' cellspacing='0' class='list_item' onclick='goto(" + a.activityid + ")'>" +
+                            "<tr>" +
+                            "<td colspan='2' width='100%' align='left' style='padding-left: 15px; color: #FF6B6B;font-family: custom'>" + a.roomname + "</img>" +
+                            "</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                            "<td width='70%'  align='left' style='padding-left: 15px;color: gray; '>" + "房间价值:" + a.price + "</img>" +
+                            "</td>" +
+                            "<tr>" +
+                            "<td width='70%'  align='left' style='padding-left: 15px;color: gray; '>" + "房间剩" +
+                            "余时间:" + a.time + "</img>" +
+                            "</td>" +
+                            "<td width='70%' align='right' style='padding-right: 10px'></td></tr>" +
+                            "<tr><td width='50%' align='left' style='padding-left: 15px;color: gray'>" + "房间参与人数: " + a.joinnum + "</img> </td>" +
+                            "<td width='30%' align='left'><span style='color: #5DABB8;' id='time'></span></td></tr></table>";
+                    })
+                    $("#luckRoom").html(str);
+                    /*<button type='button' class='loadbtn' onclick='deleteItem(" + a.activityid + ")'>删除</button>*/
+                }
+                if (data.code == 201) {
+                    alert(data.msg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    }
+
+
+    function deleteItem(activityid){
+        var msg = "您确定要删除吗？";
+        if (confirm(msg)==true) {
+            $.ajax({
+                type: 'POST',
+                url: "/user/deleteitem",
+                data: {
+                    "activityid":activityid ,
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        dataStr = JSON.stringify(data.data);
+                        var data = JSON.parse(dataStr);
+                        console.log("data=" + data);
+
+                    }
+                    if (data.code == 201) {
+                        alert(data.msg);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+        }else{
+            return false;
+        }
+    }
+
+    function getKj() {
         $.ajax({
             type: 'POST',
             url: "/activity/kjroom/joinedList",
@@ -292,7 +354,7 @@
                     $("#joinCount").html(dataMap.count);
                     var str = "";
                     $.each(dataMap.kjroomInfo, function (i, a) {
-                        if(a.flag == -1){
+                        if (a.flag == -1) {
                             str += "<a href='#' class='list-group-item' onclick='goto2(" + a.id + ")'>" +
                                 "<p class='list-group-item-text'>" +
                                 "房间名称: <span>" + a.activityname + "</span>" +
@@ -310,7 +372,7 @@
                                 "庄家Id: <span>" + a.name + "</span>" +
                                 "</p>" +
                                 "</a>";
-                        }else{
+                        } else {
                             str += "<a href='#' class='list-group-item' onclick='goto2(" + a.id + ")'>" +
                                 "<p class='list-group-item-text'>" +
                                 "房间名称: <span>" + a.activityname + "</span>" +
@@ -322,7 +384,7 @@
                                 "房间结束时间: <span>" + a.endBlock + "</span>" +
                                 "</p>" +
                                 "<p class='list-group-item-text'>" +
-                                "房间参与人数: <span>" + a.num +"/"+a.limitmax+ "</span>" +
+                                "房间参与人数: <span>" + a.num + "/" + a.limitmax + "</span>" +
                                 "</p>" +
                                 "<p class='list-group-item-text'>" +
                                 "庄家Id: <span>" + a.name + "</span>" +
@@ -360,6 +422,8 @@
             getKj();
         }
     });
+
+
 </script>
 </body>
 

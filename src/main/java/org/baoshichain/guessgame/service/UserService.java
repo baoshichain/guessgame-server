@@ -32,4 +32,5 @@ public interface UserService {
     int updateToken(User user);
 
     int addToken(int token,String activityId);
+
 }

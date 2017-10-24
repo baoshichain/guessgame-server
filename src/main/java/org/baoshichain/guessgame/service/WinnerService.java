@@ -11,4 +11,6 @@ public interface WinnerService {
     int insertWinner(Winner winner);
 
     List<Map> getWinnerList();
+
+    List<Map> getWinnerList(int id);
 }
