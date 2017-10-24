@@ -382,7 +382,6 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
 
-
     public void kj(int roomId){
         Activity activity = activityDao.selectByPrimaryKey(roomId);
         int joinedNum =  Integer.parseInt(activity.getNum());
