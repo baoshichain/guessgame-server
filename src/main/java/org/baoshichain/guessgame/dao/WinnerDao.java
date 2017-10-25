@@ -13,7 +13,7 @@ public interface WinnerDao {
 
     int insertWinner(Winner winner);
 
-    List<Map> getWinnerList();
+    List<Map> getWinnerList(int apge);
  int insertSelective(Winner record);
 
     Winner selectByPrimaryKey(Integer id);
@@ -22,7 +22,7 @@ public interface WinnerDao {
 
     int updateByPrimaryKey(Winner record);
 	
-	List<Map> getWinnerListByUserId(int userId);
+	List<Map> getWinnerListByUserId(int userId,int page);
 
     String selectWinnerPhoneByActivityId(int activityId);
 }

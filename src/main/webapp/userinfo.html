@@ -148,6 +148,10 @@
         .list_item {
             border-bottom: 1px solid gray;
         }
+
+        .loadbtn {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -252,8 +256,20 @@
 </div>
 
 <script type="text/javascript ">
+    var str = "";
+    var page = 1;
+    var addbtn=  "   <div>" +
+        "                     <table width='100%' height='50px' border='0'" +
+        "                         <tr>" +
+        "                             <td width='100%' style='padding: 15px; color: gray;font-family: custom'>" +
+        "                                 <button type='button' class='loadbtn' onclick='load()'>点击加载更多...</button>" +
+        "                             </td>" +
+        "                         </tr>" +
+        "                     </table>" +
+        "                 </div>";
+
     $(document).ready(function () {
-        getLuckRomm();
+        getLuckRomm(page);
     });
 
     function back() {
@@ -268,10 +284,13 @@
         window.location.href = "kjroominfo.html?activityid=" + activityId;
     }
 
-    function getLuckRomm() {
+    function getLuckRomm(page) {
         $.ajax({
             type: 'POST',
             url: "/user/showLuckRomm",
+            data:{
+                "page":page
+            },
             success: function (data) {
                 if (data.code == 200) {
                     dataStr = JSON.stringify(data.data);
@@ -280,7 +299,6 @@
                     $("#username").html(data.username);
                     $("#token").html(data.token);
                     $("#joinCount").html(data.joinnum);
-                    var str = "";
                     $.each(data.list, function (i, a) {
                         str +=
                             "<table width='100%' height='120px' border='0' cellspacing='0' class='list_item' onclick='goto(" + a.activityid + ")'>" +
@@ -299,7 +317,7 @@
                             "<tr><td width='50%' align='left' style='padding-left: 15px;color: gray'>" + "房间参与人数: " + a.joinnum + "</img> </td>" +
                             "<td width='30%' align='left'><span style='color: #5DABB8;' id='time'></span></td></tr></table>";
                     })
-                    $("#luckRoom").html(str);
+                    $("#luckRoom").html(str+addbtn);
                     /*<button type='button' class='loadbtn' onclick='deleteItem(" + a.activityid + ")'>删除</button>*/
                 }
                 if (data.code == 201) {
@@ -394,7 +412,10 @@
         }
     });
 
-
+    function load() {
+        page = page + 1;
+        getLuckRomm(page);
+    }
 </script>
 </body>
 

@@ -289,7 +289,7 @@ public class ActivityController {
     @RequestMapping(value = "/roomcontroll", method = RequestMethod.POST)
     @ResponseBody
     @Transactional
-    public JSONObject getCardNum(HttpSession session) {
+    public JSONObject getCardNumList(String page,HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user != null) {
             User newuser = userService.selectByPrimaryKey(user.getId());
@@ -301,7 +301,7 @@ public class ActivityController {
             int  size = activityService.getActivityNum(newuser.getId());
             logger.info("size="+size);
             roomControll.setPublishnum(size);
-            List<Map> list=winnerService.getWinnerList();
+            List<Map> list=winnerService.getWinnerList(Integer.parseInt(page));
             logger.info("list="+list.size());
             for(int i=0;i<list.size();i++){
                 RoomControll.Wininfo wininfo=new RoomControll.Wininfo();

@@ -10,9 +10,9 @@ public interface WinnerService {
 
     int insertWinner(Winner winner);
 
-    List<Map> getWinnerList();
+    List<Map> getWinnerList(int page);
 
-    List<Map> getWinnerList(int id);
+    List<Map> getWinnerList(int id,int page);
 
     String getWinnerPhoneByActivityId(int activityId);
 }

@@ -82,6 +82,10 @@
             background-color: white;
             border-bottom: 1px solid gray;
         }
+
+        .loadbtn {
+            width: 100%;
+        }
 		</style>
 </head>
 
@@ -101,7 +105,7 @@
         </table>
     </div>
 
-    <div class="user" onclick="showuser()">
+    <div class="user" >
         <table width="100% " height="50px " border="0" cellpadding=" " cellspacing="0 ">
             <tr>
                 <td width="30% " align="center" style="padding: 5px; color: #5DABB8;">用户:</img>
@@ -148,14 +152,34 @@
 
 <script type="text/javascript " src="http://11.mydrivers.com/common/js/swipe.min.js "></script>
 <script type="text/javascript ">
+    var str = "";
+    var page = 1;
+    var addbtn=  "   <div>" +
+        "                     <table width='100%' height='50px' border='0'" +
+        "                         <tr>" +
+        "                             <td width='100%' style='padding: 15px; color: gray;font-family: custom'>" +
+        "                                 <button type='button' class='loadbtn' onclick='load()'>点击加载更多...</button>" +
+        "                             </td>" +
+        "                         </tr>" +
+        "                     </table>" +
+        "                 </div>";
+
+
     function back() {
         window.history.go(-1);
     }
     $(document).ready(function() {
         //alert(mask('18721323434',3,6,'*'));
+        getInfo(page);
+    });
+
+    function getInfo(page) {
         $.ajax({
             type: 'POST',
             url: "/activity/roomcontroll",
+            data:{
+                "page":page,
+            },
             success: function (data) {
                 if(data.code == 200){
                     dataStr=JSON.stringify(data.data);
@@ -164,7 +188,6 @@
                     $("#token").html(data.token);
                     $("#username").html(data.username);
                     $("#publishnum").html(data.publishnum);
-                    var str ="";
                     $.each(data.list,function (i,a) {
                         str +=
                             "<table width='100%' height='60px' border='0' cellspacing='0' class='list_item' onclick=''>"+
@@ -180,7 +203,7 @@
                             "</tr></table>";
                         //alert(str);  mask(a.phone,3,6,'*')
                     })
-                    $("#winner_group").html(str);
+                    $("#winner_group").html(str+addbtn);
                 }
                 if(data.code == 201){
                     alert(data.msg);
@@ -189,7 +212,7 @@
             error:function (XMLHttpRequest, textStatus, errorThrown) {
             }
         });
-    });
+    }
 
     //遮罩功能
     //str,要替换的字符串，begin替换起始位置,end替换结束位置,char替代查找到的字符串
@@ -216,6 +239,11 @@
         var lstStr = str.substring(end,str.length);
         var res = scdStr.replace(/([\s\S]*)/,'***');
         return fstStr+res+lstStr;
+    }
+
+    function load() {
+        page = page + 1;
+        getInfo(page);
     }
 </script>
 </body>

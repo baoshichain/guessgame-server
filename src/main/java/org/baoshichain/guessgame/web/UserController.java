@@ -216,7 +216,7 @@ public class UserController {
     //用户信息
     @RequestMapping(value = "/showLuckRomm", method = RequestMethod.POST)
     @ResponseBody
-    public JSONObject showLuckRomm(HttpSession session) {
+    public JSONObject showLuckRomm(String page,HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user != null) {
             Userinfo userinfo = new Userinfo();
@@ -231,7 +231,7 @@ public class UserController {
             //活动列表
             List<Userinfo.ActivityofJoin> userinfolist = new ArrayList<>();
             //List<Map> list = activityService.getUserOfActivity(user.getId());
-            List<Map> list = winnerService.getWinnerList(user.getId());
+            List<Map> list = winnerService.getWinnerList(user.getId(),Integer.parseInt(page));
             logger.info("list.size=" + list.size());
             for (int i = 0; i < list.size(); i++) {
                 Userinfo.ActivityofJoin info = new Userinfo.ActivityofJoin();

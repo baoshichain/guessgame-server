@@ -22,13 +22,13 @@ public class WinnerServiceImpl implements WinnerService {
     }
 
     @Override
-    public List<Map> getWinnerList() {
-        return winnerDao.getWinnerList();
+    public List<Map> getWinnerList(int page) {
+        return winnerDao.getWinnerList((page-1)*5);
     }
 
     @Override
-    public List<Map> getWinnerList(int id) {
-        return winnerDao.getWinnerListByUserId(id);
+    public List<Map> getWinnerList(int id,int page) {
+        return winnerDao.getWinnerListByUserId(id,(page-1)*3);
     }
 
     @Override
