@@ -186,48 +186,55 @@
         window.history.go(-1);
     }
     function insertData() {
-        var roomname = document.getElementById("roomname").value;
-        var cardInfo = $('#listarea').val();  //卡牌名称
-        var needToken = document.getElementById("needToken").value;
-        var max = document.getElementById("max").value;
-        var min = document.getElementById("min").value;
-        var time = document.getElementById("time").value;
-        var describe = document.getElementById("describe").value;
-        if (roomname == "" || needToken == "" || cardInfo == "" || max == "" || min == "" || time == "" ||describe=="") {
-            alert("请确认是否有空缺项！");
-            return false;
-        }
+        var msg = "您确定要提交吗？\n\n";
 
-
-        if (cardInfo == "") {
-            alert("请确认是否输入卡牌信息，点击添加！");
-            return false;
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: "/activity/kjroom/add",
-            data: {
-                "activityName": roomname,
-                "cardInfo": cardInfo,
-                "needToken": needToken,
-                "max": max,
-                "min": min,
-                "time": time,
-                "describe": describe
-            },
-            success: function (data) {
-                if (data.code == 200) {
-                    alert("抽奖房间创建成功");
-                    window.location.href = "main.html"
-                }else {
-                    alert("错误");
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("error");
+        if (confirm(msg)==true) {
+            var roomname = document.getElementById("roomname").value;
+            var cardInfo = $('#listarea').val();  //卡牌名称
+            var needToken = document.getElementById("needToken").value;
+            var max = document.getElementById("max").value;
+            var min = document.getElementById("min").value;
+            var time = document.getElementById("time").value;
+            var describe = document.getElementById("describe").value;
+            if (roomname == "" || needToken == "" || cardInfo == "" || max == "" || min == "" || time == "" ||describe=="") {
+                alert("请确认是否有空缺项！");
+                return false;
             }
-        });
+
+
+            if (cardInfo == "") {
+                alert("请确认是否输入卡牌信息，点击添加！");
+                return false;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "/activity/kjroom/add",
+                data: {
+                    "activityName": roomname,
+                    "cardInfo": cardInfo,
+                    "needToken": needToken,
+                    "max": max,
+                    "min": min,
+                    "time": time,
+                    "describe": describe
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert("抽奖房间创建成功");
+                        window.location.href = "main.html"
+                    }else {
+                        alert("错误");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
+        }else{
+            return false;
+        }
+
     }
     $(function () {
         $('#listarea').listarea({

@@ -113,4 +113,13 @@ LEFT JOIN tb_user c ON a.userid=c.id LEFT JOIN tb_card d ON a.cardId=d.id;-->
         where a.userId= #{0} ORDER BY a.id  DESC
     </select>
 
+
+    <select id="selectWinnerPhoneByActivityId" resultType="java.lang.String" parameterType="java.lang.Integer">
+        SELECT tb_user.phone
+        FROM tb_user,tb_winner
+        WHERE tb_user.id = tb_winner.id
+        AND tb_winner.activityId = #{activityId}
+    </select>
+
+
 </mapper>

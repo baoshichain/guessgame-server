@@ -200,7 +200,7 @@
 
     <div style="height: 2px;width: 100%;background-color: #F2F4F8"></div>
 
-    <div class="join">
+    <div class="join" id="joindiv">
         <table width="100% " height="100%" border="0" cellpadding=" " cellspacing="0 ">
             <tr>
                 <td width="35% " align="center" style="padding: 5px; color: white; ">
@@ -211,6 +211,10 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+    <div class="rewardWin" id="rewardWin">
+
     </div>
 
     <div style="height: 2px;width: 100%;background-color: #F2F4F8"></div>
@@ -249,7 +253,22 @@
                     $("#des").html(dataArr.describe);
                     $("#needtoken").html(dataArr.needtoken);
                     $("#allprice").html(dataArr.allprice);
-                }else{
+                }else if(data.code == 201) {
+                    var dataArr = data.data;
+                    $("#joindiv").hide();
+                    $("#token").html(dataArr.token);
+                    $("#endTime").html(dataArr.endBlock);
+                    $("#username").html(dataArr.name);
+                    $("#roomname").html(dataArr.activityname);
+                    $("#people").html(dataArr.num+"/"+dataArr.limitMax);
+                    $("#des").html(dataArr.describe);
+                    $("#needtoken").html(dataArr.needtoken);
+                    $("#allprice").html(dataArr.allprice);
+                    $("#rewardWin").html("中奖手机号码"+dataArr.winnerPhone);
+                }else if(data.code == 202){
+                    $("#joindiv").hide();
+                    $("#rewardWin").html("应不满足开奖要求，无中奖者");
+                } else{
                     alert("错误");
                 }
             },
@@ -261,32 +280,38 @@
         window.history.go(-1);
     }
     function join() {
-        var url = location.search; //获取url中"?"符后的字串
-        var theRequest = new Object();
-        if (url.indexOf("?") != -1) {
-            var str = url.substr(1);
-            strs = str.split("&");
-            for (var i = 0; i < strs.length; i++) {
-                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-            }
-        }
-        $.ajax({
-            type: 'POST',
-            url: "/activity/kjroom/join",
-            data: {
-                "roomId": theRequest.activityid
-            },
-            success: function (data) {
-                if (data.code == 200) {
-                    alert("参加成功");
-                    window.location.reload();
-                }else{
-                    alert(data.msg);
+        var msg = "您确定要提交吗？\n\n";
+
+        if (confirm(msg)==true) {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
                 }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
             }
-        });
+            $.ajax({
+                type: 'POST',
+                url: "/activity/kjroom/join",
+                data: {
+                    "roomId": theRequest.activityid
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert("参加成功");
+                        window.location.reload();
+                    }else{
+                        alert(data.msg);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+        }else{
+            return false;
+        }
     }
     function showuser() {
         window.location.href = "userinfo.html"

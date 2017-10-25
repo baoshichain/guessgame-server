@@ -13,4 +13,6 @@ public interface WinnerService {
     List<Map> getWinnerList();
 
     List<Map> getWinnerList(int id);
+
+    String getWinnerPhoneByActivityId(int activityId);
 }

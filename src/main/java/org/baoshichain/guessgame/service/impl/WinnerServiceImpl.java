@@ -30,4 +30,10 @@ public class WinnerServiceImpl implements WinnerService {
     public List<Map> getWinnerList(int id) {
         return winnerDao.getWinnerListByUserId(id);
     }
+
+    @Override
+    public String getWinnerPhoneByActivityId(int activityId) {
+        return winnerDao.selectWinnerPhoneByActivityId(activityId);
+    }
+
 }

@@ -396,6 +396,12 @@ public class ActivityServiceImpl implements ActivityService {
         winner.setUserid(rewardUserId);
         winner.setActivityid(roomId);
         winnerDao.insert(winner);
+        //同时庄家获得钱
+        int ownerId = activity.getUserid();
+        int token = Integer.parseInt(activity.getToken());
+        int num = userOfActivityDao.selectUserActivityCountByActivityId(roomId);
+        int rewardValue = token*num;
+        userDao.refound(ownerId,rewardUserId);
     }
 
 

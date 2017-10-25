@@ -10,6 +10,7 @@ import org.baoshichain.guessgame.entity.User;
 import org.baoshichain.guessgame.entity.UserOfActivity;
 import org.baoshichain.guessgame.service.ActivityService;
 import org.baoshichain.guessgame.service.UserService;
+import org.baoshichain.guessgame.service.WinnerService;
 import org.baoshichain.guessgame.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +51,10 @@ public class GameController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private WinnerService winnerService;
+
 
 
     @RequestMapping("/kjroom/add")
@@ -125,6 +130,13 @@ public class GameController {
         User user = (User)session.getAttribute("user");
         int userId = user.getId();
         HashMap dataRoom = activityService.kJRoomDetail(userId,Integer.parseInt(roomId));
+        if((int)dataRoom.get("flag") == -1){
+            String winnerPhone = winnerService.getWinnerPhoneByActivityId(Integer.parseInt(roomId));
+            dataRoom.put("winnerPhone",winnerPhone);
+            return CommonUtil.constructHtmlResponse(201,"开奖已经结束",dataRoom);
+        }else if((int)dataRoom.get("flag") == -2){
+            return CommonUtil.constructHtmlResponse(202,"未达到开奖要求，无中奖者",dataRoom);
+        }
         return CommonUtil.constructHtmlResponse(200,"ok",dataRoom);
     }
 
