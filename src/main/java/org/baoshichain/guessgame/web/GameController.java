@@ -71,7 +71,7 @@ public class GameController {
     ) throws Exception {
         //1.先判断用户是不是庄家，非庄家用户不能添加房间
         User user = (User)session.getAttribute("user");
-        if(user.getFlag() != 1){
+        if(user.getFlag() != 2){
             return CommonUtil.constructHtmlResponse(301,"非庄家用户操作",null);
         }
         //2.将信息添加到数据库中
@@ -117,8 +117,8 @@ public class GameController {
 
     @RequestMapping("/kjroom/list")
     @ResponseBody
-    private JSONObject kJRoonList() throws IOException, ParseException {
-        List<HashMap> kjrooms = activityService.normalKJRoomList();
+    private JSONObject kJRoonList(int page) throws IOException, ParseException {
+        List<HashMap> kjrooms = activityService.normalKJRoomList(page);
         return CommonUtil.constructHtmlResponse(200,"ok",kjrooms);
     }
 

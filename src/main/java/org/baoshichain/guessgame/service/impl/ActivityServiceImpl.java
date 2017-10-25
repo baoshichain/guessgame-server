@@ -327,8 +327,8 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<HashMap> normalKJRoomList() throws ParseException {
-        List<HashMap> datalist = activityDao.selectAllNormalLotteryActivity();
+    public List<HashMap> normalKJRoomList(int page) throws ParseException {
+        List<HashMap> datalist = activityDao.selectAllNormalLotteryActivity((page-1)*5);
         //循环判断
         for(int i=0;i<datalist.size();i++){
             //取出判断时间

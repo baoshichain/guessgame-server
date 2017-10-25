@@ -53,7 +53,7 @@ public interface ActivityService {
 
     int joinLotteryActivity(int userId, int roomId) throws Exception;
 
-    List<HashMap> normalKJRoomList() throws ParseException;
+    List<HashMap> normalKJRoomList(int page) throws ParseException;
 
 
     User getAdminName(int activityId);

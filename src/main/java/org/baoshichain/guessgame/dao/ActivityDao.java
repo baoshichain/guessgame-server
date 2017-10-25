@@ -42,7 +42,7 @@ public interface ActivityDao {
 
     //
 
-    List<HashMap> selectAllNormalLotteryActivity();
+    List<HashMap> selectAllNormalLotteryActivity(int page);
 
     HashMap selectKJRoomDetail(int activityId);
 
